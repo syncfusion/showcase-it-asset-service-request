@@ -1,0 +1,1183 @@
+/* =============================================================================
+   IT Asset & Service Request Portal — Handover page styles
+   Two-pane workbench layout for the dedicated `/handover` page.
+   Sections (in CSS file order):
+
+     1. Page wrapper          — 12-col grid (8/4 split)
+     2. Page header Cancel    — scoped primary-CTA override
+     3. Source asset card     — right-rail locked asset hero
+     4. Activity timeline     — pure-CSS ordered list with dot + connector
+     5. Handoff checklist     — live validation rules
+     6. Risk card             — gauge + regenerate CTA
+     7. Right-rail submit     — primary CTA at the bottom of the right rail
+     8. Section progress rail — `● ── ● ── ○` stepper
+     9. HandoverForm surface  — visual integration with the dialog form
+    10. Responsive collapse   — tablet + mobile
+    11. Reduced motion        — accessibility preference
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------*
+ * 1. Page wrapper — 12-col grid (left 8 / right 4) inside the existing
+ * `app-shell__main` column. Uses CSS Grid so the workbench respects
+ * the page body's max-width while still allowing the right rail to
+ * stick while the user scrolls the left column.
+ * -----------------------------------------------------------------------------*/
+.handover-page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-5);
+}
+
+.handover-workbench {
+  display: grid;
+  grid-template-columns: minmax(0, 8fr) minmax(0, 4fr);
+  gap: var(--sf-space-6);
+  align-items: start;
+  min-width: 0;
+}
+
+/* Left column — vertical stack: form card on top, stepper progress
+   rail below. The form card is a surface wrapper that gives the
+   HandoverForm the "SfCard" treatment. */
+.handover-workbench__primary {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-4);
+  min-width: 0;
+}
+
+.handover-workbench__form-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-lg);
+  box-shadow: var(--sf-shadow-sm);
+  overflow: hidden;
+  min-width: 0;
+}
+
+/* The HandoverForm renders into this surface — neutralise the
+   redundant chrome the previous single-column page used to add
+   (e.g. its own card border) so the form sits flush against the
+   `handover-workbench__form-card` surface. */
+.handover-workbench__form-card .handover-form {
+  border: 0;
+  box-shadow: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+/* Right column — sticky side rail. `position: sticky` keeps the
+   rail visible while the user scrolls the left column. `top` is
+   pinned below the appbar + page header (`--app-appbar-height` +
+   `--app-pageheader-height`) so the rail's first card isn't
+   hidden behind the page chrome. The single inline-style
+   exception in the project lives here; the spec allows it for
+   sticky positioning math. */
+.handover-workbench__rail {
+  /* position: sticky; */
+  /* top: calc(var(--app-appbar-height, 56px) + var(--app-pageheader-height, 56px) + var(--sf-space-4)); */
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-4);
+  min-width: 0;
+  /* Cap the rail height so a tall right column doesn't push the
+     main column out of view when the viewport is short. The
+     overflow-y allows the user to scroll inside the rail when
+     its contents exceed the visible area. */
+  /* max-height: calc(100vh - var(--app-appbar-height, 56px) - var(--app-pageheader-height, 56px) - var(--sf-space-8)); */
+  overflow-y: auto;
+  padding-right: var(--sf-space-1);
+  /* Scrollbar styling — same token as the rest of the app. */
+  scrollbar-width: thin;
+  scrollbar-color: var(--color-sf-scrollbar) transparent;
+}
+
+.handover-workbench__rail::-webkit-scrollbar {
+  width: 8px;
+}
+
+.handover-workbench__rail::-webkit-scrollbar-thumb {
+  background: var(--color-sf-scrollbar);
+  border-radius: var(--sf-radius-full);
+}
+
+/* -----------------------------------------------------------------------------*
+ * 2. Page header Cancel button — same override the previous
+ * Handover.css had, but scoped to the Handover page so the rule
+ * doesn't leak to other pages. Mirrors the dashboard's primary
+ * CTA treatment so the two CTAs feel like the same family.
+ * -----------------------------------------------------------------------------*/
+.page-header .icon-btn.page-header__icon-btn,
+.page-header .page-header__icon-btn {
+  width: auto;
+  min-width: 0;
+  height: 36px;
+  padding-inline: var(--sf-space-3);
+  gap: var(--sf-space-2);
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-medium);
+  white-space: nowrap;
+  background: var(--color-sf-fg-brand-primary);
+  color: #fff;
+  border: 1px solid var(--color-sf-fg-brand-primary);
+}
+
+.page-header .icon-btn.page-header__icon-btn:hover,
+.page-header .page-header__icon-btn:hover {
+  filter: brightness(0.95);
+}
+
+.page-header .icon-btn.page-header__icon-btn:focus-visible,
+.page-header .page-header__icon-btn:focus-visible {
+  outline: 2px solid var(--app-focus-ring);
+  outline-offset: 2px;
+}
+
+/* -----------------------------------------------------------------------------*
+ * 3. Source asset card — the right-rail "what's being handed over"
+ * hero block. Pulls from the same brand surface tokens as the
+ * dialog's `AssetPreviewCard` so the two read as the same
+ * component family.
+ * -----------------------------------------------------------------------------*/
+.source-asset-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-3);
+  padding: var(--sf-space-4);
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-lg);
+  box-shadow: var(--sf-shadow-sm);
+  transition: box-shadow var(--sf-duration-base) var(--sf-ease-out);
+  min-width: 0;
+}
+
+.source-asset-card:hover {
+  box-shadow: var(--sf-shadow-md);
+}
+
+.source-asset-card__header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.source-asset-card__eyebrow {
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.source-asset-card__title {
+  margin: 0;
+  font-size: var(--sf-text-base);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+  font-family: var(--sf-font-mono);
+  letter-spacing: 0.02em;
+}
+
+.source-asset-card__hero {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-3);
+  padding: var(--sf-space-3);
+  background: linear-gradient(
+    135deg,
+    var(--color-sf-asset-card-gradient-from) 0%,
+    var(--color-sf-asset-card-gradient-to) 100%
+  );
+  border: 1px solid var(--color-sf-divider);
+  border-radius: var(--sf-radius-md);
+  min-width: 0;
+}
+
+.source-asset-card__hero-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--sf-radius-md);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--app-card-bg);
+  color: var(--color-sf-fg-brand-primary);
+  border: 1px solid var(--color-sf-divider);
+  flex-shrink: 0;
+}
+
+.source-asset-card__hero-text {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  flex: 1;
+}
+
+.source-asset-card__model {
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.source-asset-card__sub {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sf-space-1);
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  flex-wrap: wrap;
+}
+
+.source-asset-card__chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 2px 8px;
+  border-radius: var(--sf-radius-full);
+  background: var(--color-sf-bg-brand-subtle);
+  color: var(--color-sf-fg-brand-primary);
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+}
+
+.source-asset-card__chip--available {
+  background: var(--app-status-success-bg);
+  color: var(--app-status-success-fg);
+}
+
+.source-asset-card__chip--inuse {
+  background: var(--app-status-info-bg);
+  color: var(--app-status-info-fg);
+}
+
+.source-asset-card__chip--inrepair {
+  background: var(--app-status-warning-bg);
+  color: var(--app-status-warning-fg);
+}
+
+.source-asset-card__chip--retired {
+  background: var(--app-status-neutral-bg);
+  color: var(--app-status-neutral-fg);
+}
+
+.source-asset-card__chip-divider {
+  color: var(--color-sf-fg-secondary);
+  opacity: 0.6;
+}
+
+.source-asset-card__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 0;
+  padding: var(--sf-space-2) 0 0;
+  border-top: 1px solid var(--color-sf-divider);
+  min-width: 0;
+}
+
+.source-asset-card__meta-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sf-space-2);
+  font-size: var(--sf-text-xs);
+  min-width: 0;
+}
+
+.source-asset-card__meta-key {
+  color: var(--color-sf-fg-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: var(--sf-font-medium);
+  font-size: var(--sf-text-xs);
+}
+
+.source-asset-card__meta-value {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--color-sf-fg-primary);
+  font-weight: var(--sf-font-medium);
+  font-size: var(--sf-text-xs);
+  text-align: right;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.source-asset-card__change {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  align-self: flex-end;
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-brand-primary);
+  padding: 4px 8px;
+  border-radius: var(--sf-radius-sm);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: background var(--sf-duration-fast) var(--sf-ease-in);
+}
+
+.source-asset-card__change:hover {
+  background: var(--color-sf-bg-surface-hover);
+}
+
+.source-asset-card__change:focus-visible {
+  outline: 2px solid var(--color-sf-fg-brand-primary);
+  outline-offset: 2px;
+}
+
+/* -----------------------------------------------------------------------------*
+ * 4. Activity timeline — pure-CSS ordered list (NOT ejs-timeline,
+ * which drops React children). Each row has a circular dot on the
+ * left vertical rail, an event title, an actor/date meta row, an
+ * optional note, and an optional attachments list.
+ * -----------------------------------------------------------------------------*/
+.handover-activity {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-3);
+  padding: var(--sf-space-4);
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-lg);
+  box-shadow: var(--sf-shadow-sm);
+  min-width: 0;
+}
+
+.handover-activity__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sf-space-2);
+  min-width: 0;
+}
+
+.handover-activity__title {
+  margin: 0;
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.handover-activity__count {
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  font-weight: var(--sf-font-medium);
+  font-variant-numeric: tabular-nums;
+}
+
+.handover-activity__empty {
+  margin: 0;
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  line-height: var(--sf-leading-normal);
+  padding: var(--sf-space-3);
+  background: var(--color-sf-bg-surface-muted);
+  border: 1px dashed var(--color-sf-border-strong);
+  border-radius: var(--sf-radius-md);
+  text-align: center;
+}
+
+.handover-activity__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-3);
+  position: relative;
+  min-width: 0;
+}
+
+.handover-activity__row {
+  position: relative;
+  display: grid;
+  grid-template-columns: 16px minmax(0, 1fr);
+  gap: var(--sf-space-2);
+  padding-bottom: var(--sf-space-3);
+  min-width: 0;
+}
+
+.handover-activity__row.is-last {
+  padding-bottom: 0;
+}
+
+.handover-activity__row:not(.is-last)::before {
+  /* Vertical connector line — drawn as a 2px-wide
+     token-driven line from the dot to the next row. */
+  content: '';
+  position: absolute;
+  left: 7px;
+  top: 12px;
+  bottom: -2px;
+  width: 2px;
+  background: var(--color-sf-border-strong);
+}
+
+.handover-activity__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--app-card-bg);
+  border: 2px solid var(--color-sf-fg-brand-primary);
+  margin-top: 4px;
+  flex-shrink: 0;
+}
+
+.handover-activity__row[data-has-attachments="true"] .handover-activity__dot {
+  background: var(--color-sf-fg-brand-primary);
+}
+
+.handover-activity__content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.handover-activity__row-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sf-space-2);
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  min-width: 0;
+}
+
+.handover-activity__actor {
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.handover-activity__date {
+  font-variant-numeric: tabular-nums;
+  flex-shrink: 0;
+}
+
+.handover-activity__title-line {
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-medium);
+  color: var(--color-sf-fg-primary);
+  line-height: 1.3;
+  word-break: break-word;
+}
+
+.handover-activity__note {
+  margin: 0;
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  line-height: var(--sf-leading-normal);
+}
+
+.handover-activity__attachments {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.handover-activity__attachment {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  min-width: 0;
+}
+
+.handover-activity__attachment-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+/* -----------------------------------------------------------------------------*
+ * 5. Handoff checklist — live-computed list of validation rules.
+ * Each row has a read-only checkbox (rendered through the
+ * Syncfusion `CheckBoxComponent`) + label + tooltip wrapper.
+ * -----------------------------------------------------------------------------*/
+.handoff-checklist {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-3);
+  padding: var(--sf-space-4);
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-lg);
+  box-shadow: var(--sf-shadow-sm);
+  min-width: 0;
+}
+
+.handoff-checklist__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sf-space-2);
+  min-width: 0;
+}
+
+.handoff-checklist__title {
+  margin: 0;
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.handoff-checklist__counter {
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-secondary);
+  font-variant-numeric: tabular-nums;
+  padding: 2px 8px;
+  border-radius: var(--sf-radius-full);
+  background: var(--color-sf-bg-surface-muted);
+  border: 1px solid var(--app-card-border);
+  transition: background var(--sf-duration-fast) var(--sf-ease-in),
+    color var(--sf-duration-fast) var(--sf-ease-in),
+    border-color var(--sf-duration-fast) var(--sf-ease-in);
+}
+
+.handoff-checklist__counter.is-complete {
+  background: var(--app-status-success-bg);
+  color: var(--app-status-success-fg);
+  border-color: var(--app-status-success-fg);
+}
+
+.handoff-checklist__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+}
+
+.handoff-checklist__row {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  padding: 6px 8px;
+  border-radius: var(--sf-radius-sm);
+  background: transparent;
+  border: 1px solid transparent;
+  min-width: 0;
+  transition: background var(--sf-duration-fast) var(--sf-ease-in),
+    border-color var(--sf-duration-fast) var(--sf-ease-in);
+}
+
+.handoff-checklist__row.is-done {
+  background: var(--app-status-success-bg);
+  border-color: var(--app-status-success-fg);
+}
+
+.handoff-checklist__row.is-done .handoff-checklist__label {
+  color: var(--app-status-success-fg);
+}
+
+.handoff-checklist__row.is-done .handoff-checklist__check {
+  color: var(--app-status-success-fg);
+}
+
+.handoff-checklist__checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 20px;
+  height: 20px;
+}
+
+.handoff-checklist__cb.e-checkbox-wrapper {
+  pointer-events: none;
+}
+
+.handoff-checklist__cb.e-checkbox-wrapper .e-frame {
+  border-color: var(--color-sf-border-strong);
+}
+
+.handoff-checklist__cb.e-checkbox-wrapper.e-check .e-frame {
+  background: var(--app-status-success-fg);
+  border-color: var(--app-status-success-fg);
+}
+
+.handoff-checklist__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-medium);
+  color: var(--color-sf-fg-primary);
+  line-height: 1.3;
+  min-width: 0;
+  flex: 1;
+}
+
+.handoff-checklist__check,
+.handoff-checklist__info {
+  flex-shrink: 0;
+}
+
+.handoff-checklist__info {
+  color: var(--color-sf-fg-secondary);
+}
+
+/* -----------------------------------------------------------------------------*
+ * 6. Risk card — placeholder AI risk score. Token-driven progress
+ * bar (no `SfLinearGauge` in this project's dependency set),
+ * `Regenerate` CTA, and a `MessageComponent` warning so the user
+ * knows it's a placeholder.
+ * -----------------------------------------------------------------------------*/
+.handover-risk-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-3);
+  padding: var(--sf-space-4);
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-lg);
+  box-shadow: var(--sf-shadow-sm);
+  min-width: 0;
+}
+
+.handover-risk-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-3);
+  min-width: 0;
+}
+
+.handover-risk-card__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: var(--sf-radius-md);
+  background: var(--color-sf-bg-brand-subtle);
+  color: var(--color-sf-fg-brand-primary);
+  flex-shrink: 0;
+}
+
+.handover-risk-card__header-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.handover-risk-card__title {
+  margin: 0;
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.handover-risk-card__subtitle {
+  margin: 0;
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  line-height: 1.3;
+}
+
+.handover-risk-card__score-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--sf-space-2);
+  min-width: 0;
+}
+
+.handover-risk-card__score-label {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 4px;
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-sf-fg-primary);
+  min-width: 0;
+}
+
+.handover-risk-card__score-band {
+  font-size: var(--sf-text-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.handover-risk-card__score-divider {
+  color: var(--color-sf-fg-secondary);
+  opacity: 0.6;
+}
+
+.handover-risk-card__score-value {
+  font-size: var(--sf-text-2xl);
+  font-weight: var(--sf-font-bold);
+  font-variant-numeric: tabular-nums;
+  color: var(--color-sf-fg-primary);
+}
+
+.handover-risk-card__score-unit {
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  font-weight: var(--sf-font-medium);
+}
+
+.handover-risk-card__score-label.is-low .handover-risk-card__score-value {
+  color: var(--app-status-success-fg);
+}
+
+.handover-risk-card__score-label.is-medium .handover-risk-card__score-value {
+  color: var(--app-status-warning-fg);
+}
+
+.handover-risk-card__score-label.is-high .handover-risk-card__score-value {
+  color: var(--app-status-danger-fg);
+}
+
+.handover-risk-card__gauge {
+  position: relative;
+  height: 8px;
+  background: var(--color-sf-bg-neutral-primary);
+  border-radius: var(--sf-radius-full);
+  overflow: hidden;
+}
+
+.handover-risk-card__gauge-fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  background: var(--app-status-success-fg);
+  border-radius: var(--sf-radius-full);
+  transition: width var(--sf-duration-slow) var(--sf-ease-in);
+}
+
+.handover-risk-card__gauge.is-medium .handover-risk-card__gauge-fill {
+  background: var(--app-status-warning-fg);
+}
+
+.handover-risk-card__gauge.is-high .handover-risk-card__gauge-fill {
+  background: var(--app-status-danger-fg);
+}
+
+.handover-risk-card__gauge-marker {
+  position: absolute;
+  top: -2px;
+  bottom: -2px;
+  width: 1px;
+  background: var(--color-sf-border-strong);
+  pointer-events: none;
+}
+
+.handover-risk-card__legend {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sf-space-2);
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  font-weight: var(--sf-font-medium);
+  font-variant-numeric: tabular-nums;
+}
+
+.handover-risk-card__legend-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.handover-risk-card__legend-item::before {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.handover-risk-card__legend-item.is-low::before {
+  background: var(--app-status-success-fg);
+}
+
+.handover-risk-card__legend-item.is-medium::before {
+  background: var(--app-status-warning-fg);
+}
+
+.handover-risk-card__legend-item.is-high::before {
+  background: var(--app-status-danger-fg);
+}
+
+.handover-risk-card__message.e-message {
+  margin: 0;
+  font-size: var(--sf-text-xs);
+  line-height: var(--sf-leading-normal);
+}
+
+.handover-risk-card__actions {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--sf-space-2);
+}
+
+.handover-risk-card__regen.e-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 12px;
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-medium);
+  background: var(--app-card-bg);
+  color: var(--color-sf-fg-primary);
+  border: 1px solid var(--color-sf-border-strong);
+  border-radius: var(--sf-radius-md);
+  box-shadow: none;
+  transition: background var(--sf-duration-fast) var(--sf-ease-in),
+    border-color var(--sf-duration-fast) var(--sf-ease-in);
+}
+
+.handover-risk-card__regen.e-btn:hover:not(:disabled) {
+  background: var(--color-sf-bg-surface-muted);
+  border-color: var(--color-sf-fg-brand-primary);
+}
+
+.handover-risk-card__regen.e-btn:disabled {
+  background: var(--color-sf-bg-disabled);
+  color: var(--color-sf-fg-disabled);
+  border-color: var(--color-sf-bg-disabled);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.handover-rail-submit__spinner {
+  animation: handoverRailSubmitSpin 700ms linear infinite;
+}
+
+@keyframes handoverRailSubmitSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* -----------------------------------------------------------------------------*
+ * 7. Right-rail submit — primary CTA at the bottom of the
+ * right rail. Replaces the previous sticky action bar's
+ * `Submit handover` button so the user always sees the
+ * next action at the end of the right rail without having
+ * to reach the bottom of the page. The trigger still uses
+ * the form's hidden submit bridge
+ * (`data-handover-submit="true"`) so the form's own
+ * `validate()` + `onSubmit` pipeline runs unchanged.
+ * -----------------------------------------------------------------------------*/
+
+/* -----------------------------------------------------------------------------*
+ * 8. Section progress rail — `● ── ● ── ○` line below the form
+ * card. Drawn as a custom `<ol>` with circular dots and a
+ * horizontal connector between each pair.
+ * -----------------------------------------------------------------------------*/
+.handover-stepper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-2);
+  padding: var(--sf-space-3) var(--sf-space-4);
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-lg);
+  box-shadow: var(--sf-shadow-sm);
+  min-width: 0;
+}
+
+.handover-stepper__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  min-width: 0;
+}
+
+.handover-stepper__step {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.handover-stepper__step:last-child {
+  flex: 0 0 auto;
+}
+
+.handover-stepper__dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--app-card-bg);
+  border: 2px solid var(--color-sf-border-strong);
+  color: var(--color-sf-fg-secondary);
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  flex-shrink: 0;
+  transition: background var(--sf-duration-base) var(--sf-ease-out),
+    border-color var(--sf-duration-base) var(--sf-ease-out),
+    color var(--sf-duration-base) var(--sf-ease-out);
+}
+
+.handover-stepper__dot-number {
+  font-size: var(--sf-text-xs);
+  line-height: 1;
+}
+
+.handover-stepper__step.is-active .handover-stepper__dot {
+  background: var(--color-sf-bg-brand-subtle);
+  border-color: var(--color-sf-fg-brand-primary);
+  color: var(--color-sf-fg-brand-primary);
+}
+
+.handover-stepper__step.is-done .handover-stepper__dot {
+  background: var(--color-sf-fg-brand-primary);
+  border-color: var(--color-sf-fg-brand-primary);
+  color: #fff;
+}
+
+.handover-stepper__label {
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-medium);
+  color: var(--color-sf-fg-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+}
+
+.handover-stepper__step.is-active .handover-stepper__label {
+  color: var(--color-sf-fg-brand-primary);
+  font-weight: var(--sf-font-semibold);
+}
+
+.handover-stepper__step.is-done .handover-stepper__label {
+  color: var(--color-sf-fg-primary);
+  font-weight: var(--sf-font-semibold);
+}
+
+.handover-stepper__connector {
+  flex: 1 1 auto;
+  height: 2px;
+  background: var(--color-sf-border-strong);
+  margin-inline: var(--sf-space-2);
+  border-radius: var(--sf-radius-full);
+  min-width: 16px;
+  transition: background var(--sf-duration-base) var(--sf-ease-out);
+}
+
+.handover-stepper__step.is-done .handover-stepper__connector {
+  background: var(--color-sf-fg-brand-primary);
+}
+
+.handover-stepper__summary {
+  margin: 0;
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  font-weight: var(--sf-font-medium);
+  font-variant-numeric: tabular-nums;
+}
+
+/* -----------------------------------------------------------------------------*
+ * 9. HandoverForm surface adjustments — when rendered inside the
+ * workbench card, neutralise the form's redundant borders /
+ * backgrounds so the form sits flush against the SfCard
+ * chrome. Also make the form's own three section dividers
+ * read as the SfCard's internal section breaks.
+ * -----------------------------------------------------------------------------*/
+.handover-workbench__form-card .handover-dialog__section {
+  padding: var(--sf-space-4) 0;
+  border-top: 1px solid var(--color-sf-divider);
+  gap: var(--sf-space-3);
+}
+
+.handover-workbench__form-card .handover-dialog__section:first-of-type {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.handover-workbench__form-card .handover-form__body {
+  padding: var(--sf-space-4) var(--sf-space-5);
+  gap: var(--sf-space-4);
+}
+
+.handover-workbench__form-card .handover-form__footer {
+  border-top: 1px solid var(--color-sf-divider);
+  padding: var(--sf-space-3) var(--sf-space-5);
+  /* Hide the form's own footer — the right-rail submit
+     button is the primary submit surface. The
+     `data-handover-submit="true"` bridge is still
+     mounted (off-screen) so the page's
+     `triggerSubmit()` click still fires. */
+  display: none;
+}
+
+.handover-workbench__form-card .handover-form__footer-submit {
+  display: none;
+}
+
+/* The submit bridge is rendered via the form's footer; we
+ * keep it DOM-mounted for the keyboard shortcut and the
+ * page's `triggerSubmit()` click but make it completely
+ * off-screen. The footer container is `display: none`
+ * above, so the bridge is implicitly hidden too. */
+
+/* -----------------------------------------------------------------------------*
+ * 10. Responsive collapse — tablet (≤ 1023px) and mobile (≤ 767px).
+ * On tablet the right rail drops below the form (single column);
+ * on mobile the action bar stacks with Submit full-width.
+ * -----------------------------------------------------------------------------*/
+@media (max-width: 1199px) {
+  .handover-workbench {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .handover-workbench__rail {
+    position: static;
+    top: auto;
+    max-height: none;
+    overflow: visible;
+    /* Reset the scrollbar styling since the rail is no
+     * longer an internal scroll container. */
+    padding-right: 0;
+  }
+}
+
+@media (max-width: 1023px) {
+  .handover-page {
+    padding-bottom: var(--sf-space-12);
+  }
+}
+
+@media (max-width: 767px) {
+  .handover-stepper__label {
+    display: none;
+  }
+
+  .handover-stepper__connector {
+    margin-inline: 4px;
+  }
+
+  .handover-stepper__summary {
+    text-align: center;
+  }
+}
+
+/* -----------------------------------------------------------------------------*
+ * 7. Right-rail submit — primary CTA at the bottom of the
+ * right rail. Replaces the previous sticky action bar's
+ * `Submit handover` button so the user always sees the
+ * next action at the end of the right rail without having
+ * to reach the bottom of the page. The trigger still uses
+ * the form's hidden submit bridge
+ * (`data-handover-submit="true"`) so the form's own
+ * `validate()` + `onSubmit` pipeline runs unchanged.
+ * -----------------------------------------------------------------------------*/
+.handover-rail-submit.e-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  width: 100%;
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  padding: 10px 18px;
+  border-radius: var(--sf-radius-md);
+  background: var(--color-sf-fg-brand-primary);
+  color: #fff;
+  border: 1px solid var(--color-sf-fg-brand-primary);
+  box-shadow: 0 1px 2px rgb(16 24 40 / 8%);
+  transition: filter var(--sf-duration-fast) var(--sf-ease-in),
+    background var(--sf-duration-fast) var(--sf-ease-in);
+}
+
+.handover-rail-submit.e-btn:hover:not(:disabled) {
+  filter: brightness(0.95);
+}
+
+.handover-rail-submit.e-btn:disabled {
+  background: var(--color-sf-bg-disabled);
+  color: var(--color-sf-fg-disabled);
+  border-color: var(--color-sf-bg-disabled);
+  cursor: not-allowed;
+  opacity: 0.8;
+  box-shadow: none;
+}
+
+.handover-rail-submit.e-btn:focus-visible {
+  outline: 2px solid var(--color-sf-fg-brand-primary);
+  outline-offset: 2px;
+}
+
+.handover-rail-submit__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.handover-rail-submit__spinner {
+  animation: handoverActionbarSpin 700ms linear infinite;
+}
+
+/* -----------------------------------------------------------------------------*
+ * 11. Reduced motion — disable transitions for users who prefer
+ * reduced motion. Honours the project-wide motion policy.
+ * -----------------------------------------------------------------------------*/
+@media (prefers-reduced-motion: reduce) {
+  .handover-workbench__form-card,
+  .handover-section-card,
+  .source-asset-card,
+  .handover-risk-card,
+  .handover-activity,
+  .handoff-checklist,
+  .handover-stepper,
+  .handover-rail-submit {
+    transition: none;
+  }
+
+  .handover-section-card__body,
+  .handover-risk-card__gauge-fill,
+  .handover-stepper__dot,
+  .handover-stepper__connector {
+    transition: none;
+  }
+
+  .handover-rail-submit__spinner {
+    animation: none;
+  }
+}

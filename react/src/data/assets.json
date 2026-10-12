@@ -1,0 +1,2966 @@
+﻿{
+    "assets":  [
+                   {
+                       "id":  "A-00001",
+                       "title":  "MacBook Pro 14\" (M3)",
+                       "sub":  "A-00001 A· SN SN-GLU7RW8E7W",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Dana Quinn",
+                                     "initials":  "DQ"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2023-07-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00002",
+                       "title":  "MacBook Air 13\" (M2)",
+                       "sub":  "A-00002 A· SN SN-88RFRNIEG5",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Neil Chen",
+                                     "initials":  "NC"
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2020-06-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00003",
+                       "title":  "ThinkPad T14 Gen 3",
+                       "sub":  "A-00003 A· SN SN-8XIOOPHYJR",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Maya Tan",
+                                     "initials":  "MT"
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2023-02-09",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00004",
+                       "title":  "ThinkPad X1 Carbon Gen 11",
+                       "sub":  "A-00004 A· SN SN-1Y7OQKTMRJ",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Carlos Wright",
+                                     "initials":  "CW"
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2021-02-09",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00005",
+                       "title":  "Dell XPS 13",
+                       "sub":  "A-00005 A· SN SN-GY258V4EU0",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Aisha Sanders",
+                                     "initials":  "AS"
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2026-08-01",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00006",
+                       "title":  "HP EliteBook 840",
+                       "sub":  "A-00006 A· SN SN-4EPR10FOOD",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Tomas Jensen",
+                                     "initials":  "TJ"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2026-03-25",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00007",
+                       "title":  "Surface Laptop 5",
+                       "sub":  "A-00007 A· SN SN-BMVAVR4HMQ",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Priya Lang",
+                                     "initials":  "PL"
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2021-01-13",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00008",
+                       "title":  "Razer Blade 14",
+                       "sub":  "A-00008 A· SN SN-A1RJ4NA9M3",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Ethan Weber",
+                                     "initials":  "EW"
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2020-04-09",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00009",
+                       "title":  "Framework Laptop 13",
+                       "sub":  "A-00009 A· SN SN-CI3LHZVZIG",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Lina Sharma",
+                                     "initials":  "LS"
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2020-08-09",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00010",
+                       "title":  "Lenovo Yoga 9i",
+                       "sub":  "A-00010 A· SN SN-41RJVFRGHA",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Ravi Okafor",
+                                     "initials":  "RO"
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2026-09-05",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00011",
+                       "title":  "MacBook Pro 14\" (M3)",
+                       "sub":  "A-00011 A· SN SN-O76RIQ3M4J",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Sofia Mendez",
+                                     "initials":  "SM"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2022-10-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00012",
+                       "title":  "MacBook Air 13\" (M2)",
+                       "sub":  "A-00012 A· SN SN-WTSLPFWS8U",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Jin Romero",
+                                     "initials":  "JR"
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2026-04-09",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00013",
+                       "title":  "ThinkPad T14 Gen 3",
+                       "sub":  "A-00013 A· SN SN-Q3BCWYAF7C",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Hannah Vargas",
+                                     "initials":  "HV"
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2022-06-17",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00014",
+                       "title":  "ThinkPad X1 Carbon Gen 11",
+                       "sub":  "A-00014 A· SN SN-6Y6JW8MK3U",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Marcus Koch",
+                                     "initials":  "MK"
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2023-02-01",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00015",
+                       "title":  "Dell XPS 13",
+                       "sub":  "A-00015 A· SN SN-NHHTPMZGLJ",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Lila Wagner",
+                                     "initials":  "LW"
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2026-12-17",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00016",
+                       "title":  "HP EliteBook 840",
+                       "sub":  "A-00016 A· SN SN-JHLZA21JM1",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Owen Nakamura",
+                                     "initials":  "ON"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2025-04-13",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00017",
+                       "title":  "Surface Laptop 5",
+                       "sub":  "A-00017 A· SN SN-RDLOKARJ0A",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Yara Lopez",
+                                     "initials":  "YL"
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2024-03-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00018",
+                       "title":  "Razer Blade 14",
+                       "sub":  "A-00018 A· SN SN-WL49KVN3N4",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Mateo Diaz",
+                                     "initials":  "MD"
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2024-03-01",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00019",
+                       "title":  "Framework Laptop 13",
+                       "sub":  "A-00019 A· SN SN-X5D95MDY67",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Naomi Bianchi",
+                                     "initials":  "NB"
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2020-06-17",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00020",
+                       "title":  "Lenovo Yoga 9i",
+                       "sub":  "A-00020 A· SN SN-5N96MKDIZ7",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Felix Costa",
+                                     "initials":  "FC"
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2022-08-25",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00021",
+                       "title":  "MacBook Pro 14\" (M3)",
+                       "sub":  "A-00021 A· SN SN-HWVCS0NVPD",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Ines Klein",
+                                     "initials":  "IK"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2024-06-09",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00022",
+                       "title":  "MacBook Air 13\" (M2)",
+                       "sub":  "A-00022 A· SN SN-FSZZP7TQ46",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Kai Schmitt",
+                                     "initials":  "KS"
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2024-12-05",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00023",
+                       "title":  "ThinkPad T14 Gen 3",
+                       "sub":  "A-00023 A· SN SN-DCL1UXDMM6",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Zara Khan",
+                                     "initials":  "ZK"
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2024-07-17",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00024",
+                       "title":  "ThinkPad X1 Carbon Gen 11",
+                       "sub":  "A-00024 A· SN SN-UH0E6CWE01",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Asha Reyes",
+                                     "initials":  "AR"
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2020-11-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00025",
+                       "title":  "Dell XPS 13",
+                       "sub":  "A-00025 A· SN SN-YBG619N2Y7",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Liam Cohen",
+                                     "initials":  "LC"
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2021-06-05",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00026",
+                       "title":  "HP EliteBook 840",
+                       "sub":  "A-00026 A· SN SN-MZ30EUTUN1",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Nora Muller",
+                                     "initials":  "NM"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2023-04-25",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00027",
+                       "title":  "Surface Laptop 5",
+                       "sub":  "A-00027 A· SN SN-Q4TN2C0BWD",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Pablo Sorensen",
+                                     "initials":  "PS"
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2024-02-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00028",
+                       "title":  "Razer Blade 14",
+                       "sub":  "A-00028 A· SN SN-56GC00QQVK",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Quinn Fischer",
+                                     "initials":  "QF"
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2020-01-05",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00029",
+                       "title":  "Framework Laptop 13",
+                       "sub":  "A-00029 A· SN SN-7OMN78JGAB",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Rosa Roth",
+                                     "initials":  "RR"
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2026-07-17",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00030",
+                       "title":  "Lenovo Yoga 9i",
+                       "sub":  "A-00030 A· SN SN-7499I5TXTI",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Sven Patel",
+                                     "initials":  "SP"
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2024-09-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00031",
+                       "title":  "MacBook Pro 14\" (M3)",
+                       "sub":  "A-00031 A· SN SN-1A3ASII04B",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Tariq Park",
+                                     "initials":  "TP"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2022-11-05",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00032",
+                       "title":  "MacBook Air 13\" (M2)",
+                       "sub":  "A-00032 A· SN SN-DFULSCE0WO",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Uma Wong",
+                                     "initials":  "UW"
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2026-03-09",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00033",
+                       "title":  "ThinkPad T14 Gen 3",
+                       "sub":  "A-00033 A· SN SN-FUY1ABMIAZ",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Vera Sato",
+                                     "initials":  "VS"
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2021-01-09",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00034",
+                       "title":  "ThinkPad X1 Carbon Gen 11",
+                       "sub":  "A-00034 A· SN SN-BJWODR38XS",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Will Olsen",
+                                     "initials":  "WO"
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2022-04-17",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00035",
+                       "title":  "Dell XPS 13",
+                       "sub":  "A-00035 A· SN SN-JUUS7DAR7E",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Xochi Becker",
+                                     "initials":  "XB"
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2025-11-01",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00036",
+                       "title":  "HP EliteBook 840",
+                       "sub":  "A-00036 A· SN SN-FMWPVTEPR6",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Yusuf Pfeiffer",
+                                     "initials":  "YP"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2026-12-09",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00037",
+                       "title":  "Surface Laptop 5",
+                       "sub":  "A-00037 A· SN SN-QWN4R4Y4CX",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Zane Ruiz",
+                                     "initials":  "ZR"
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2024-04-17",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00038",
+                       "title":  "Razer Blade 14",
+                       "sub":  "A-00038 A· SN SN-0IOQ3AX46C",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Ada Singh",
+                                     "initials":  "AS"
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2024-03-13",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00039",
+                       "title":  "Framework Laptop 13",
+                       "sub":  "A-00039 A· SN SN-SGYQFKOI7A",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Ben Ali",
+                                     "initials":  "BA"
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2021-03-01",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00040",
+                       "title":  "Lenovo Yoga 9i",
+                       "sub":  "A-00040 A· SN SN-LWEWNQ4NHL",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Cleo Yilmaz",
+                                     "initials":  "CY"
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2021-07-09",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00041",
+                       "title":  "MacBook Pro 14\" (M3)",
+                       "sub":  "A-00041 A· SN SN-E7OLVC5HX5",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Dax Andersson",
+                                     "initials":  "DA"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2024-03-09",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00042",
+                       "title":  "MacBook Air 13\" (M2)",
+                       "sub":  "A-00042 A· SN SN-6ZHH1O2W7A",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Eve Bauer",
+                                     "initials":  "EB"
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2023-05-05",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00043",
+                       "title":  "ThinkPad T14 Gen 3",
+                       "sub":  "A-00043 A· SN SN-M8OAUWJOHL",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Finn Mayer",
+                                     "initials":  "FM"
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2022-07-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00044",
+                       "title":  "ThinkPad X1 Carbon Gen 11",
+                       "sub":  "A-00044 A· SN SN-L6JX60CFBP",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Gia Iyer",
+                                     "initials":  "GI"
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2023-05-01",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00045",
+                       "title":  "Dell XPS 13",
+                       "sub":  "A-00045 A· SN SN-Q9WAEZYXRC",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Hugo Garcia",
+                                     "initials":  "HG"
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2022-04-13",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00046",
+                       "title":  "HP EliteBook 840",
+                       "sub":  "A-00046 A· SN SN-D71H3B7BVL",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Iris Kato",
+                                     "initials":  "IK"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2021-05-13",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00047",
+                       "title":  "Surface Laptop 5",
+                       "sub":  "A-00047 A· SN SN-UUX9XQIV9B",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Jude Hassan",
+                                     "initials":  "JH"
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2022-02-09",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00048",
+                       "title":  "Razer Blade 14",
+                       "sub":  "A-00048 A· SN SN-P9324Z8753",
+                       "type":  "Laptop",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Kira Petrov",
+                                     "initials":  "KP"
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2020-01-01",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00049",
+                       "title":  "Framework Laptop 13",
+                       "sub":  "A-00049 A· SN SN-35UV8941CR",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2020-01-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00050",
+                       "title":  "Lenovo Yoga 9i",
+                       "sub":  "A-00050 A· SN SN-GII0K72W61",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2021-11-17",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00051",
+                       "title":  "MacBook Pro 14\" (M3)",
+                       "sub":  "A-00051 A· SN SN-NN8XFU9B2X",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2023-04-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00052",
+                       "title":  "MacBook Air 13\" (M2)",
+                       "sub":  "A-00052 A· SN SN-36J3M52B2X",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2023-08-01",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00053",
+                       "title":  "ThinkPad T14 Gen 3",
+                       "sub":  "A-00053 A· SN SN-UY1UK0CEI4",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2020-06-01",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00054",
+                       "title":  "ThinkPad X1 Carbon Gen 11",
+                       "sub":  "A-00054 A· SN SN-DE5A3ZNYFS",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2025-10-05",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00055",
+                       "title":  "Dell XPS 13",
+                       "sub":  "A-00055 A· SN SN-0TZ6DYDAD7",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2025-02-05",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00056",
+                       "title":  "HP EliteBook 840",
+                       "sub":  "A-00056 A· SN SN-YCAM3MTSF7",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2021-11-05",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00057",
+                       "title":  "Surface Laptop 5",
+                       "sub":  "A-00057 A· SN SN-J7G4LBWEG9",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2020-03-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00058",
+                       "title":  "Razer Blade 14",
+                       "sub":  "A-00058 A· SN SN-9FE0DXR396",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2022-05-01",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00059",
+                       "title":  "Framework Laptop 13",
+                       "sub":  "A-00059 A· SN SN-8Y0L94VY1D",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2020-02-09",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00060",
+                       "title":  "Lenovo Yoga 9i",
+                       "sub":  "A-00060 A· SN SN-1FHD1NQRHE",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2023-12-01",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00061",
+                       "title":  "MacBook Pro 14\" (M3)",
+                       "sub":  "A-00061 A· SN SN-IF4JVT23KV",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2023-10-13",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00062",
+                       "title":  "MacBook Air 13\" (M2)",
+                       "sub":  "A-00062 A· SN SN-9AYA8FUOUQ",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2023-08-09",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00063",
+                       "title":  "ThinkPad T14 Gen 3",
+                       "sub":  "A-00063 A· SN SN-WXRX84DN86",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2024-03-05",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00064",
+                       "title":  "ThinkPad X1 Carbon Gen 11",
+                       "sub":  "A-00064 A· SN SN-7WIF1W5JSA",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2026-11-01",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00065",
+                       "title":  "Dell XPS 13",
+                       "sub":  "A-00065 A· SN SN-U2HOPIH3WH",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2025-07-09",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00066",
+                       "title":  "HP EliteBook 840",
+                       "sub":  "A-00066 A· SN SN-UE0VX1RACK",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2020-10-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00067",
+                       "title":  "Surface Laptop 5",
+                       "sub":  "A-00067 A· SN SN-NGU9HM4V6T",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2024-06-17",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00068",
+                       "title":  "Razer Blade 14",
+                       "sub":  "A-00068 A· SN SN-968ZX7CK4K",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2025-12-05",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00069",
+                       "title":  "Framework Laptop 13",
+                       "sub":  "A-00069 A· SN SN-D8GKE2ZZA8",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2024-05-25",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00070",
+                       "title":  "Lenovo Yoga 9i",
+                       "sub":  "A-00070 A· SN SN-4HL6BUXJ0I",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2022-10-13",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00071",
+                       "title":  "MacBook Pro 14\" (M3)",
+                       "sub":  "A-00071 A· SN SN-M24UOFDXVC",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2021-01-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00072",
+                       "title":  "MacBook Air 13\" (M2)",
+                       "sub":  "A-00072 A· SN SN-IMTREZPTTU",
+                       "type":  "Laptop",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2024-02-13",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00073",
+                       "title":  "ThinkPad T14 Gen 3",
+                       "sub":  "A-00073 A· SN SN-DIKQB0JIB5",
+                       "type":  "Laptop",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2026-10-09",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00074",
+                       "title":  "ThinkPad X1 Carbon Gen 11",
+                       "sub":  "A-00074 A· SN SN-3EM7OCVI0A",
+                       "type":  "Laptop",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2021-08-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00075",
+                       "title":  "Dell XPS 13",
+                       "sub":  "A-00075 A· SN SN-FELR6UR4OU",
+                       "type":  "Laptop",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2023-05-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00076",
+                       "title":  "HP EliteBook 840",
+                       "sub":  "A-00076 A· SN SN-BTQY2X63WW",
+                       "type":  "Laptop",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2021-04-01",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00077",
+                       "title":  "Surface Laptop 5",
+                       "sub":  "A-00077 A· SN SN-XZV5WT8EHG",
+                       "type":  "Laptop",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2024-03-25",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00078",
+                       "title":  "Razer Blade 14",
+                       "sub":  "A-00078 A· SN SN-9HMBOGVKWK",
+                       "type":  "Laptop",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2023-03-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00079",
+                       "title":  "Framework Laptop 13",
+                       "sub":  "A-00079 A· SN SN-O1SDFQY9XX",
+                       "type":  "Laptop",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2026-09-17",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00080",
+                       "title":  "Lenovo Yoga 9i",
+                       "sub":  "A-00080 A· SN SN-PGECIKTUHO",
+                       "type":  "Laptop",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2022-05-05",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00081",
+                       "title":  "MacBook Pro 14\" (M3)",
+                       "sub":  "A-00081 A· SN SN-XT1VZ7L8LV",
+                       "type":  "Laptop",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2022-10-25",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00082",
+                       "title":  "MacBook Air 13\" (M2)",
+                       "sub":  "A-00082 A· SN SN-LM9GB1T7XV",
+                       "type":  "Laptop",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2025-09-25",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00083",
+                       "title":  "ThinkPad T14 Gen 3",
+                       "sub":  "A-00083 A· SN SN-228WK4UHI6",
+                       "type":  "Laptop",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2020-08-13",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00084",
+                       "title":  "ThinkPad X1 Carbon Gen 11",
+                       "sub":  "A-00084 A· SN SN-HOO0LV4U3R",
+                       "type":  "Laptop",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2024-11-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00085",
+                       "title":  "Dell XPS 13",
+                       "sub":  "A-00085 A· SN SN-PQR2JV8N20",
+                       "type":  "Laptop",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2023-01-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00086",
+                       "title":  "HP EliteBook 840",
+                       "sub":  "A-00086 A· SN SN-OALLGXOO46",
+                       "type":  "Laptop",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2026-03-01",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00087",
+                       "title":  "Surface Laptop 5",
+                       "sub":  "A-00087 A· SN SN-ASAZWRDSUY",
+                       "type":  "Laptop",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2026-12-01",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00088",
+                       "title":  "Razer Blade 14",
+                       "sub":  "A-00088 A· SN SN-KRPIPBYIRH",
+                       "type":  "Laptop",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2024-06-25",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00089",
+                       "title":  "Framework Laptop 13",
+                       "sub":  "A-00089 A· SN SN-6EYQJY665M",
+                       "type":  "Laptop",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2020-12-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00090",
+                       "title":  "Lenovo Yoga 9i",
+                       "sub":  "A-00090 A· SN SN-QOR1MQSOEW",
+                       "type":  "Laptop",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2022-11-21",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00091",
+                       "title":  "MacBook Pro 14\" (M3)",
+                       "sub":  "A-00091 A· SN SN-AHPI2L0LZM",
+                       "type":  "Laptop",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2022-05-09",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00092",
+                       "title":  "MacBook Air 13\" (M2)",
+                       "sub":  "A-00092 A· SN SN-KYW0FWXNVF",
+                       "type":  "Laptop",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2021-01-25",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00093",
+                       "title":  "ThinkPad T14 Gen 3",
+                       "sub":  "A-00093 A· SN SN-2ZYOAHVUXE",
+                       "type":  "Laptop",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2026-06-17",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00094",
+                       "title":  "ThinkPad X1 Carbon Gen 11",
+                       "sub":  "A-00094 A· SN SN-KN2MHY3MY3",
+                       "type":  "Laptop",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2020-12-25",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00095",
+                       "title":  "Dell XPS 13",
+                       "sub":  "A-00095 A· SN SN-Y813FWOUR0",
+                       "type":  "Laptop",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2022-01-01",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00096",
+                       "title":  "HP EliteBook 840",
+                       "sub":  "A-00096 A· SN SN-2SY9NGB4BF",
+                       "type":  "Laptop",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2021-07-05",
+                       "icon":  "laptop"
+                   },
+                   {
+                       "id":  "A-00097",
+                       "title":  "Dell UltraSharp 27\"",
+                       "sub":  "A-00097 A· SN SN-LC3J16GFYO",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Levi Adler",
+                                     "initials":  "LA"
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2026-03-05",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00098",
+                       "title":  "LG 4K 27\" UltraFine",
+                       "sub":  "A-00098 A· SN SN-UCWGBDVT4F",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Mae Maier",
+                                     "initials":  "MM"
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2020-04-13",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00099",
+                       "title":  "BenQ PD2725U",
+                       "sub":  "A-00099 A· SN SN-LJWH5SDBW3",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Dana Quinn",
+                                     "initials":  "DQ"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2020-09-13",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00100",
+                       "title":  "Samsung ViewFinity S8",
+                       "sub":  "A-00100 A· SN SN-V5NQ1VAK6X",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Neil Chen",
+                                     "initials":  "NC"
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2023-04-13",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00101",
+                       "title":  "Apple Studio Display 27\"",
+                       "sub":  "A-00101 A· SN SN-PSJEWVWTX3",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Maya Tan",
+                                     "initials":  "MT"
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2023-02-21",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00102",
+                       "title":  "Eizo FlexScan EV2785",
+                       "sub":  "A-00102 A· SN SN-S6HYTAYXAB",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Carlos Wright",
+                                     "initials":  "CW"
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2023-06-09",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00103",
+                       "title":  "Acer ConceptD CP7",
+                       "sub":  "A-00103 A· SN SN-Z1X6I1HOUV",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Aisha Sanders",
+                                     "initials":  "AS"
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2025-07-01",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00104",
+                       "title":  "HP Z27q G3",
+                       "sub":  "A-00104 A· SN SN-PAQ9HM11V3",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Tomas Jensen",
+                                     "initials":  "TJ"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2023-01-17",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00105",
+                       "title":  "Dell UltraSharp 27\"",
+                       "sub":  "A-00105 A· SN SN-LI4D4FIFI8",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Priya Lang",
+                                     "initials":  "PL"
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2025-04-05",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00106",
+                       "title":  "LG 4K 27\" UltraFine",
+                       "sub":  "A-00106 A· SN SN-1TVYKE6RTO",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Ethan Weber",
+                                     "initials":  "EW"
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2024-08-09",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00107",
+                       "title":  "BenQ PD2725U",
+                       "sub":  "A-00107 A· SN SN-NSGUL3OHGT",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Lina Sharma",
+                                     "initials":  "LS"
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2020-07-13",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00108",
+                       "title":  "Samsung ViewFinity S8",
+                       "sub":  "A-00108 A· SN SN-ACZA9X9VAG",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Ravi Okafor",
+                                     "initials":  "RO"
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2026-11-09",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00109",
+                       "title":  "Apple Studio Display 27\"",
+                       "sub":  "A-00109 A· SN SN-URKC8Z1REA",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Sofia Mendez",
+                                     "initials":  "SM"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2020-11-25",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00110",
+                       "title":  "Eizo FlexScan EV2785",
+                       "sub":  "A-00110 A· SN SN-Y00O7OEMOG",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Jin Romero",
+                                     "initials":  "JR"
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2021-05-17",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00111",
+                       "title":  "Acer ConceptD CP7",
+                       "sub":  "A-00111 A· SN SN-F7490DX2Z8",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Hannah Vargas",
+                                     "initials":  "HV"
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2023-01-01",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00112",
+                       "title":  "HP Z27q G3",
+                       "sub":  "A-00112 A· SN SN-HDBSM4E27L",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Marcus Koch",
+                                     "initials":  "MK"
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2020-12-17",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00113",
+                       "title":  "Dell UltraSharp 27\"",
+                       "sub":  "A-00113 A· SN SN-TMWEBDO5GW",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Lila Wagner",
+                                     "initials":  "LW"
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2021-02-13",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00114",
+                       "title":  "LG 4K 27\" UltraFine",
+                       "sub":  "A-00114 A· SN SN-GXJI0QONEG",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Owen Nakamura",
+                                     "initials":  "ON"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2024-12-01",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00115",
+                       "title":  "BenQ PD2725U",
+                       "sub":  "A-00115 A· SN SN-Y5TRQ2M19Z",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Yara Lopez",
+                                     "initials":  "YL"
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2021-03-25",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00116",
+                       "title":  "Samsung ViewFinity S8",
+                       "sub":  "A-00116 A· SN SN-ALZJUPWUMA",
+                       "type":  "Monitor",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Mateo Diaz",
+                                     "initials":  "MD"
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2023-08-25",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00117",
+                       "title":  "Apple Studio Display 27\"",
+                       "sub":  "A-00117 A· SN SN-DEBMCTR88H",
+                       "type":  "Monitor",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2023-08-05",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00118",
+                       "title":  "Eizo FlexScan EV2785",
+                       "sub":  "A-00118 A· SN SN-RXLSQ4UZ97",
+                       "type":  "Monitor",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2020-11-01",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00119",
+                       "title":  "Acer ConceptD CP7",
+                       "sub":  "A-00119 A· SN SN-R83ROG587F",
+                       "type":  "Monitor",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2024-05-21",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00120",
+                       "title":  "HP Z27q G3",
+                       "sub":  "A-00120 A· SN SN-S44ZYE78QN",
+                       "type":  "Monitor",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2024-08-01",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00121",
+                       "title":  "Dell UltraSharp 27\"",
+                       "sub":  "A-00121 A· SN SN-MOI5RIU7B9",
+                       "type":  "Monitor",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2021-05-05",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00122",
+                       "title":  "LG 4K 27\" UltraFine",
+                       "sub":  "A-00122 A· SN SN-DM7PRY0Q63",
+                       "type":  "Monitor",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2023-11-05",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00123",
+                       "title":  "BenQ PD2725U",
+                       "sub":  "A-00123 A· SN SN-9MFUUS4H45",
+                       "type":  "Monitor",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2022-02-17",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00124",
+                       "title":  "Samsung ViewFinity S8",
+                       "sub":  "A-00124 A· SN SN-IQDIO42JBN",
+                       "type":  "Monitor",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2020-07-01",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00125",
+                       "title":  "Apple Studio Display 27\"",
+                       "sub":  "A-00125 A· SN SN-6NF6HQ17LO",
+                       "type":  "Monitor",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2021-12-17",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00126",
+                       "title":  "Eizo FlexScan EV2785",
+                       "sub":  "A-00126 A· SN SN-N46ZCPFNGT",
+                       "type":  "Monitor",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2022-06-09",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00127",
+                       "title":  "Acer ConceptD CP7",
+                       "sub":  "A-00127 A· SN SN-MXSH4BYSYR",
+                       "type":  "Monitor",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2024-12-21",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00128",
+                       "title":  "HP Z27q G3",
+                       "sub":  "A-00128 A· SN SN-HPHRET0WRB",
+                       "type":  "Monitor",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2024-02-01",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00129",
+                       "title":  "Dell UltraSharp 27\"",
+                       "sub":  "A-00129 A· SN SN-NBG2FUCHCO",
+                       "type":  "Monitor",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2024-10-01",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00130",
+                       "title":  "LG 4K 27\" UltraFine",
+                       "sub":  "A-00130 A· SN SN-5QUE6G0OD8",
+                       "type":  "Monitor",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2020-03-01",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00131",
+                       "title":  "BenQ PD2725U",
+                       "sub":  "A-00131 A· SN SN-F93KCV92TT",
+                       "type":  "Monitor",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2022-08-05",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00132",
+                       "title":  "Samsung ViewFinity S8",
+                       "sub":  "A-00132 A· SN SN-5JWVEB2GVX",
+                       "type":  "Monitor",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2026-04-25",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00133",
+                       "title":  "Apple Studio Display 27\"",
+                       "sub":  "A-00133 A· SN SN-W9KON33NFO",
+                       "type":  "Monitor",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2020-08-05",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00134",
+                       "title":  "Eizo FlexScan EV2785",
+                       "sub":  "A-00134 A· SN SN-FFHBH1CYMH",
+                       "type":  "Monitor",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2021-06-01",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00135",
+                       "title":  "Acer ConceptD CP7",
+                       "sub":  "A-00135 A· SN SN-Y9DZDBKECU",
+                       "type":  "Monitor",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2023-11-13",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00136",
+                       "title":  "HP Z27q G3",
+                       "sub":  "A-00136 A· SN SN-UARQFFOZW7",
+                       "type":  "Monitor",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2026-05-05",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00137",
+                       "title":  "Dell UltraSharp 27\"",
+                       "sub":  "A-00137 A· SN SN-3AEC3T0MHR",
+                       "type":  "Monitor",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2023-10-09",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00138",
+                       "title":  "LG 4K 27\" UltraFine",
+                       "sub":  "A-00138 A· SN SN-3BRV7R19OV",
+                       "type":  "Monitor",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2026-08-13",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00139",
+                       "title":  "BenQ PD2725U",
+                       "sub":  "A-00139 A· SN SN-WVV0JI46CW",
+                       "type":  "Monitor",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2020-11-13",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00140",
+                       "title":  "Samsung ViewFinity S8",
+                       "sub":  "A-00140 A· SN SN-JJZPV3W5RL",
+                       "type":  "Monitor",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2020-02-21",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00141",
+                       "title":  "Apple Studio Display 27\"",
+                       "sub":  "A-00141 A· SN SN-ZMYZ1EVRGF",
+                       "type":  "Monitor",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2023-06-01",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00142",
+                       "title":  "Eizo FlexScan EV2785",
+                       "sub":  "A-00142 A· SN SN-WWTFDH6P66",
+                       "type":  "Monitor",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2021-03-05",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00143",
+                       "title":  "Acer ConceptD CP7",
+                       "sub":  "A-00143 A· SN SN-WDBI3NXUUW",
+                       "type":  "Monitor",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2024-02-09",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00144",
+                       "title":  "HP Z27q G3",
+                       "sub":  "A-00144 A· SN SN-4O377715IW",
+                       "type":  "Monitor",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2021-12-01",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00145",
+                       "title":  "Dell UltraSharp 27\"",
+                       "sub":  "A-00145 A· SN SN-D6E4KZ8J2J",
+                       "type":  "Monitor",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2026-10-17",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00146",
+                       "title":  "LG 4K 27\" UltraFine",
+                       "sub":  "A-00146 A· SN SN-90CCJ9ZX69",
+                       "type":  "Monitor",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2022-03-17",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00147",
+                       "title":  "BenQ PD2725U",
+                       "sub":  "A-00147 A· SN SN-5C8C0107ZG",
+                       "type":  "Monitor",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2025-05-01",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00148",
+                       "title":  "Samsung ViewFinity S8",
+                       "sub":  "A-00148 A· SN SN-4KMAZRIP2S",
+                       "type":  "Monitor",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2020-02-17",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00149",
+                       "title":  "Apple Studio Display 27\"",
+                       "sub":  "A-00149 A· SN SN-49E4MG6BSL",
+                       "type":  "Monitor",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2026-06-13",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00150",
+                       "title":  "Eizo FlexScan EV2785",
+                       "sub":  "A-00150 A· SN SN-S90FALMB8D",
+                       "type":  "Monitor",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2024-10-17",
+                       "icon":  "monitor"
+                   },
+                   {
+                       "id":  "A-00151",
+                       "title":  "iPhone 13",
+                       "sub":  "A-00151 A· SN SN-SX0GH1LUP7",
+                       "type":  "Phone",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Naomi Bianchi",
+                                     "initials":  "NB"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2020-09-05",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00152",
+                       "title":  "iPhone 14",
+                       "sub":  "A-00152 A· SN SN-7G8BYJ3RHH",
+                       "type":  "Phone",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Felix Costa",
+                                     "initials":  "FC"
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2024-09-09",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00153",
+                       "title":  "iPhone 15 Pro",
+                       "sub":  "A-00153 A· SN SN-VK9J69AAZ2",
+                       "type":  "Phone",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Ines Klein",
+                                     "initials":  "IK"
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2026-07-01",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00154",
+                       "title":  "Pixel 8",
+                       "sub":  "A-00154 A· SN SN-KEQOD8GLPM",
+                       "type":  "Phone",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Kai Schmitt",
+                                     "initials":  "KS"
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2020-03-17",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00155",
+                       "title":  "Galaxy S23",
+                       "sub":  "A-00155 A· SN SN-SBAKIC3XLT",
+                       "type":  "Phone",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Zara Khan",
+                                     "initials":  "ZK"
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2026-03-13",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00156",
+                       "title":  "Galaxy A55",
+                       "sub":  "A-00156 A· SN SN-O3MQUIUYCN",
+                       "type":  "Phone",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Asha Reyes",
+                                     "initials":  "AR"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2020-05-21",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00157",
+                       "title":  "OnePlus 11",
+                       "sub":  "A-00157 A· SN SN-A63BQ1LHQ2",
+                       "type":  "Phone",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Liam Cohen",
+                                     "initials":  "LC"
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2021-09-01",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00158",
+                       "title":  "Motorola Edge 40",
+                       "sub":  "A-00158 A· SN SN-VTQB1R8GS1",
+                       "type":  "Phone",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Nora Muller",
+                                     "initials":  "NM"
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2025-07-17",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00159",
+                       "title":  "iPhone 13",
+                       "sub":  "A-00159 A· SN SN-ZVTIPAO166",
+                       "type":  "Phone",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Pablo Sorensen",
+                                     "initials":  "PS"
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2022-03-13",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00160",
+                       "title":  "iPhone 14",
+                       "sub":  "A-00160 A· SN SN-3BPE066KS9",
+                       "type":  "Phone",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Quinn Fischer",
+                                     "initials":  "QF"
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2023-12-17",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00161",
+                       "title":  "iPhone 15 Pro",
+                       "sub":  "A-00161 A· SN SN-SA23XMMLPO",
+                       "type":  "Phone",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2025-02-13",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00162",
+                       "title":  "Pixel 8",
+                       "sub":  "A-00162 A· SN SN-M64YXJDPJM",
+                       "type":  "Phone",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2020-06-13",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00163",
+                       "title":  "Galaxy S23",
+                       "sub":  "A-00163 A· SN SN-NW1XJKW87G",
+                       "type":  "Phone",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2025-10-21",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00164",
+                       "title":  "Galaxy A55",
+                       "sub":  "A-00164 A· SN SN-I61R7TU67A",
+                       "type":  "Phone",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2020-09-01",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00165",
+                       "title":  "OnePlus 11",
+                       "sub":  "A-00165 A· SN SN-EA63CWY8IV",
+                       "type":  "Phone",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2022-08-09",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00166",
+                       "title":  "Motorola Edge 40",
+                       "sub":  "A-00166 A· SN SN-N5XM0MPJ2I",
+                       "type":  "Phone",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2023-06-25",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00167",
+                       "title":  "iPhone 13",
+                       "sub":  "A-00167 A· SN SN-VE10VWRG47",
+                       "type":  "Phone",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2025-06-05",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00168",
+                       "title":  "iPhone 14",
+                       "sub":  "A-00168 A· SN SN-QH7C3HYOA0",
+                       "type":  "Phone",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2024-12-17",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00169",
+                       "title":  "iPhone 15 Pro",
+                       "sub":  "A-00169 A· SN SN-KHLNJEV3KQ",
+                       "type":  "Phone",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2021-02-17",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00170",
+                       "title":  "Pixel 8",
+                       "sub":  "A-00170 A· SN SN-4UMOD1FKVU",
+                       "type":  "Phone",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2023-05-25",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00171",
+                       "title":  "Galaxy S23",
+                       "sub":  "A-00171 A· SN SN-BJZVSDXELN",
+                       "type":  "Phone",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2021-04-17",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00172",
+                       "title":  "Galaxy A55",
+                       "sub":  "A-00172 A· SN SN-C5NIDPDG1G",
+                       "type":  "Phone",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2024-11-13",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00173",
+                       "title":  "OnePlus 11",
+                       "sub":  "A-00173 A· SN SN-UVI78WNNEN",
+                       "type":  "Phone",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2025-11-17",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00174",
+                       "title":  "Motorola Edge 40",
+                       "sub":  "A-00174 A· SN SN-3YP19LMZA4",
+                       "type":  "Phone",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2020-09-21",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00175",
+                       "title":  "iPhone 13",
+                       "sub":  "A-00175 A· SN SN-PRH7XOZ3PC",
+                       "type":  "Phone",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2026-10-01",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00176",
+                       "title":  "iPhone 14",
+                       "sub":  "A-00176 A· SN SN-W2J8LAJ7HK",
+                       "type":  "Phone",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2025-12-21",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00177",
+                       "title":  "iPhone 15 Pro",
+                       "sub":  "A-00177 A· SN SN-18L90BHTQ0",
+                       "type":  "Phone",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2021-12-25",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00178",
+                       "title":  "Pixel 8",
+                       "sub":  "A-00178 A· SN SN-EPEL7MQMGX",
+                       "type":  "Phone",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2026-02-13",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00179",
+                       "title":  "Galaxy S23",
+                       "sub":  "A-00179 A· SN SN-ACHMS9BMX1",
+                       "type":  "Phone",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2024-08-17",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00180",
+                       "title":  "Galaxy A55",
+                       "sub":  "A-00180 A· SN SN-TGF6W6OHHB",
+                       "type":  "Phone",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2026-07-09",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00181",
+                       "title":  "OnePlus 11",
+                       "sub":  "A-00181 A· SN SN-RYHE79QQ9H",
+                       "type":  "Phone",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2021-04-05",
+                       "icon":  "smartphone"
+                   },
+                   {
+                       "id":  "A-00182",
+                       "title":  "Logitech MX Master 3S",
+                       "sub":  "A-00182 A· SN SN-XXLWFUQRFX",
+                       "type":  "Peripheral",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Rosa Roth",
+                                     "initials":  "RR"
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2020-11-05",
+                       "icon":  "mouse"
+                   },
+                   {
+                       "id":  "A-00183",
+                       "title":  "Keychron K3 Pro",
+                       "sub":  "A-00183 A· SN SN-CXMPJX9FTD",
+                       "type":  "Peripheral",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Sven Patel",
+                                     "initials":  "SP"
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2024-04-21",
+                       "icon":  "keyboard"
+                   },
+                   {
+                       "id":  "A-00184",
+                       "title":  "AirPods Pro 2",
+                       "sub":  "A-00184 A· SN SN-PE15L5F9L4",
+                       "type":  "Peripheral",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Tariq Park",
+                                     "initials":  "TP"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2024-01-13",
+                       "icon":  "headphones"
+                   },
+                   {
+                       "id":  "A-00185",
+                       "title":  "Sony WH-1000XM5",
+                       "sub":  "A-00185 A· SN SN-OSQVR7MWOD",
+                       "type":  "Peripheral",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Uma Wong",
+                                     "initials":  "UW"
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2020-10-25",
+                       "icon":  "headphones"
+                   },
+                   {
+                       "id":  "A-00186",
+                       "title":  "Bose QC45",
+                       "sub":  "A-00186 A· SN SN-6A7D9QWL2F",
+                       "type":  "Peripheral",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Vera Sato",
+                                     "initials":  "VS"
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2023-02-13",
+                       "icon":  "headphones"
+                   },
+                   {
+                       "id":  "A-00187",
+                       "title":  "Sennheiser Momentum 4",
+                       "sub":  "A-00187 A· SN SN-VGCR5MYAGR",
+                       "type":  "Peripheral",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Will Olsen",
+                                     "initials":  "WO"
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2021-05-21",
+                       "icon":  "headphones"
+                   },
+                   {
+                       "id":  "A-00188",
+                       "title":  "Apple Magic Trackpad",
+                       "sub":  "A-00188 A· SN SN-IF0OA6X7GD",
+                       "type":  "Peripheral",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Xochi Becker",
+                                     "initials":  "XB"
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2022-09-13",
+                       "icon":  "mouse"
+                   },
+                   {
+                       "id":  "A-00189",
+                       "title":  "Logitech MX Keys",
+                       "sub":  "A-00189 A· SN SN-D1Y3D1LMHT",
+                       "type":  "Peripheral",
+                       "status":  "InUse",
+                       "owner":  {
+                                     "name":  "Yusuf Pfeiffer",
+                                     "initials":  "YP"
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2023-05-13",
+                       "icon":  "keyboard"
+                   },
+                   {
+                       "id":  "A-00190",
+                       "title":  "Webcam C920",
+                       "sub":  "A-00190 A· SN SN-LNXC634TEJ",
+                       "type":  "Peripheral",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2022-07-17",
+                       "icon":  "webcam"
+                   },
+                   {
+                       "id":  "A-00191",
+                       "title":  "USB-C Hub",
+                       "sub":  "A-00191 A· SN SN-2U0NO5ZYX3",
+                       "type":  "Peripheral",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2021-10-17",
+                       "icon":  "cable"
+                   },
+                   {
+                       "id":  "A-00192",
+                       "title":  "Logitech MX Master 3S",
+                       "sub":  "A-00192 A· SN SN-F5MMPS2GYS",
+                       "type":  "Peripheral",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2026-02-09",
+                       "icon":  "mouse"
+                   },
+                   {
+                       "id":  "A-00193",
+                       "title":  "Keychron K3 Pro",
+                       "sub":  "A-00193 A· SN SN-EAJ0BKD8ER",
+                       "type":  "Peripheral",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2020-08-25",
+                       "icon":  "keyboard"
+                   },
+                   {
+                       "id":  "A-00194",
+                       "title":  "AirPods Pro 2",
+                       "sub":  "A-00194 A· SN SN-Y3RCLVTOM2",
+                       "type":  "Peripheral",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2024-06-05",
+                       "icon":  "headphones"
+                   },
+                   {
+                       "id":  "A-00195",
+                       "title":  "Sony WH-1000XM5",
+                       "sub":  "A-00195 A· SN SN-3P25QG9OWK",
+                       "type":  "Peripheral",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2024-07-13",
+                       "icon":  "headphones"
+                   },
+                   {
+                       "id":  "A-00196",
+                       "title":  "Bose QC45",
+                       "sub":  "A-00196 A· SN SN-3F2YCKDRKS",
+                       "type":  "Peripheral",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2026-09-25",
+                       "icon":  "headphones"
+                   },
+                   {
+                       "id":  "A-00197",
+                       "title":  "Sennheiser Momentum 4",
+                       "sub":  "A-00197 A· SN SN-JS8NBQWID4",
+                       "type":  "Peripheral",
+                       "status":  "Available",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2025-10-01",
+                       "icon":  "headphones"
+                   },
+                   {
+                       "id":  "A-00198",
+                       "title":  "Apple Magic Trackpad",
+                       "sub":  "A-00198 A· SN SN-4HKN7BTWIQ",
+                       "type":  "Peripheral",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2024-01-21",
+                       "icon":  "mouse"
+                   },
+                   {
+                       "id":  "A-00199",
+                       "title":  "Logitech MX Keys",
+                       "sub":  "A-00199 A· SN SN-KWFV04FV9C",
+                       "type":  "Peripheral",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2026-01-25",
+                       "icon":  "keyboard"
+                   },
+                   {
+                       "id":  "A-00200",
+                       "title":  "Webcam C920",
+                       "sub":  "A-00200 A· SN SN-AO1N7SUQPQ",
+                       "type":  "Peripheral",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2021-10-13",
+                       "icon":  "webcam"
+                   },
+                   {
+                       "id":  "A-00201",
+                       "title":  "USB-C Hub",
+                       "sub":  "A-00201 A· SN SN-JVLM0POK6N",
+                       "type":  "Peripheral",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2026-05-13",
+                       "icon":  "cable"
+                   },
+                   {
+                       "id":  "A-00202",
+                       "title":  "Logitech MX Master 3S",
+                       "sub":  "A-00202 A· SN SN-1O0Z6GT3AZ",
+                       "type":  "Peripheral",
+                       "status":  "InRepair",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2026-08-21",
+                       "icon":  "mouse"
+                   },
+                   {
+                       "id":  "A-00203",
+                       "title":  "Keychron K3 Pro",
+                       "sub":  "A-00203 A· SN SN-ZPM33W4JID",
+                       "type":  "Peripheral",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2021-02-05",
+                       "icon":  "keyboard"
+                   },
+                   {
+                       "id":  "A-00204",
+                       "title":  "AirPods Pro 2",
+                       "sub":  "A-00204 A· SN SN-M7FSR381AS",
+                       "type":  "Peripheral",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2024-09-13",
+                       "icon":  "headphones"
+                   },
+                   {
+                       "id":  "A-00205",
+                       "title":  "Sony WH-1000XM5",
+                       "sub":  "A-00205 A· SN SN-NZN1NMNG1T",
+                       "type":  "Peripheral",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2022-10-05",
+                       "icon":  "headphones"
+                   },
+                   {
+                       "id":  "A-00206",
+                       "title":  "Bose QC45",
+                       "sub":  "A-00206 A· SN SN-LIQOLAZINR",
+                       "type":  "Peripheral",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Depot A· Repair bay",
+                       "purchased":  "2024-07-05",
+                       "icon":  "headphones"
+                   },
+                   {
+                       "id":  "A-00207",
+                       "title":  "Sennheiser Momentum 4",
+                       "sub":  "A-00207 A· SN SN-PIFFDV3BHX",
+                       "type":  "Peripheral",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "HQ A· Floor 3",
+                       "purchased":  "2022-08-01",
+                       "icon":  "headphones"
+                   },
+                   {
+                       "id":  "A-00208",
+                       "title":  "Apple Magic Trackpad",
+                       "sub":  "A-00208 A· SN SN-74YDAF5PAU",
+                       "type":  "Peripheral",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Remote",
+                       "purchased":  "2025-06-17",
+                       "icon":  "mouse"
+                   },
+                   {
+                       "id":  "A-00209",
+                       "title":  "Logitech MX Keys",
+                       "sub":  "A-00209 A· SN SN-QQXE5T1FXI",
+                       "type":  "Peripheral",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "Archive A· Bay 2",
+                       "purchased":  "2021-03-17",
+                       "icon":  "keyboard"
+                   },
+                   {
+                       "id":  "A-00210",
+                       "title":  "Webcam C920",
+                       "sub":  "A-00210 A· SN SN-3S4DRB3Z1B",
+                       "type":  "Peripheral",
+                       "status":  "Retired",
+                       "owner":  {
+                                     "name":  "Unassigned",
+                                     "initials":  ""
+                                 },
+                       "location":  "West campus",
+                       "purchased":  "2022-12-01",
+                       "icon":  "webcam"
+                   }
+               ],
+    "filterOptions":  {
+                          "status":  [
+                                         "InUse",
+                                         "Available",
+                                         "InRepair",
+                                         "Retired"
+                                     ],
+                          "type":  [
+                                       "Laptop",
+                                       "Monitor",
+                                       "Phone",
+                                       "Peripheral"
+                                   ],
+                          "location":  [
+                                           "HQ A· Floor 3",
+                                           "West campus",
+                                           "Remote",
+                                           "Depot A· Repair bay",
+                                           "Archive A· Bay 2"
+                                       ],
+                          "aging":  true
+                      }
+}

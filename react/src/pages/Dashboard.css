@@ -1,0 +1,115 @@
+/* Dashboard body — KPI strip + chart pair + AI rail. Layout is driven
+   by the prototype's CSS Grid: desktop layout = `minmax(0,1fr) 360px`
+   with the inner chart row = `1.2fr 0.8fr` so Request volume is wider
+   than SLA health. Mobile/tablet breakpoints collapse the AI rail under
+   the charts and stack the charts vertically. */
+
+/* Shared card chrome. The Syncfusion Card wrapper isn't a separately
+   packaged React component on the public npm; we mirror the prototype's
+   `.card / .card__header / .card__body` markup with token-driven CSS
+   so the dashboard chart pair shares the same visual treatment as the
+   prototype's `#view-dashboard` reference. */
+.card {
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-lg);
+  box-shadow: var(--sf-shadow-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-content-gap);
+  padding: var(--sf-space-4) var(--app-content-inset-inline);
+}
+
+.dashboard-body {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: var(--app-content-gap);
+  align-items: start;
+  min-width: 0;
+}
+
+.dashboard-charts {
+  display: grid;
+  grid-template-rows: 1.2fr 0.8fr;
+  gap: var(--app-content-gap);
+  min-width: 0;
+}
+
+/* SLA-at-risk grid row — full-width below the two charts, sits
+   inside the `.dashboard` flex column so it inherits the same
+   vertical gap as the rest of the dashboard family. The grid
+   itself is responsive (Syncfusion handles horizontal scroll on
+   narrow viewports), so this wrapper only needs to be a single
+   full-width column at every breakpoint. */
+.dashboard-sla-grid {
+  display: block;
+  min-width: 0;
+}
+
+.page-header__btn {
+  height: 36px;
+  padding-inline: var(--sf-space-3);
+}
+
+.page-header__icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--sf-radius-md);
+  color: var(--color-sf-fg-secondary);
+  border: 1px solid var(--app-card-border);
+  background: var(--app-card-bg);
+  cursor: pointer;
+  transition: color var(--sf-transition), border-color var(--sf-transition);
+}
+
+.page-header__icon-btn:hover {
+  color: var(--color-sf-fg-primary);
+  border-color: var(--color-sf-border-brand);
+}
+
+.ai-assist-view .e-toolbar-inline {
+  width: 340px;
+}
+/* Tablet — AI rail moves below charts */
+@media (max-width: 1279px) {
+  .dashboard-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dashboard-charts {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+@media (max-width: 1023px) {
+  .dashboard-charts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .dashboard {
+    padding: var(--sf-space-3);
+  }
+
+  .dashboard-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .dashboard-charts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .ai-rail {
+    position: relative;
+  }
+}

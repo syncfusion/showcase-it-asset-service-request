@@ -1,0 +1,14 @@
+
+# APM dependencies
+apm_modules/
+.agents/
+.github/
+.designs/
+design tokens/
+apm*
+openspec/
+memories/
+.copilot/
+prototype/
+.codestudio/
+.vscode

@@ -1,0 +1,37 @@
+.chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sf-space-2);
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  height: 28px;
+  padding-inline: 10px;
+  border-radius: var(--sf-radius-full);
+  border: 1px solid var(--app-card-border);
+  background: var(--app-card-bg);
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  cursor: pointer;
+  transition: background var(--sf-transition), color var(--sf-transition),
+    border-color var(--sf-transition);
+}
+
+.chip:hover {
+  color: var(--color-sf-fg-primary);
+}
+
+.chip[aria-pressed="true"],
+.chip.is-active {
+  background: var(--app-nav-active-bg);
+  border-color: var(--color-sf-border-brand);
+  color: var(--app-nav-active-fg);
+}
+
+.chip:focus-visible {
+  outline: 2px solid var(--app-focus-ring);
+  outline-offset: 2px;
+}

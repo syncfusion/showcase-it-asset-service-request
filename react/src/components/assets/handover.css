@@ -1,0 +1,1273 @@
+/* =============================================================================
+   IT Asset & Service Request Portal — Handover dialog styles
+   Enterprise-SaaS grade redesign. Token-driven; no hardcoded hex / px / rem
+   values. Honours the existing `handover-dialog` BEM block; all new elements
+   add `handover-dialog__*` modifiers, no new blocks.
+
+   Sections (in CSS file order):
+     1. Dialog chrome                  — Syncfusion DialogComponent overrides
+     2. Scroll container + body        — fixed-height body, sticky footer
+     3. Form-level alert               — danger summary
+     4. Section chrome                 — section title + hint
+     5. Asset preview card             — locked source-asset summary
+     6. Person field + dropdown rows   — From / To with avatar rows
+     7. Chips                          — reason + accessory groups
+     8. Condition cards                — 3-card radio group
+     9. Notes field                    — textarea + char counter + AI link
+     10. Agreement cards               — 2-card acknowledgement group
+     11. Footer                        — Cancel / Save draft / Submit
+     12. Field state helpers           — invalid / success / hint
+     13. Responsive collapse           — tablet + mobile
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   1. Dialog chrome — Syncfusion DialogComponent primitives restyled to use
+   the project's semantic tokens. Mirrors the same token mapping the
+   `.e-dialog.requests-dialog` rules in `requests.css` use so the two dialogs
+   read as the same component family.
+   ----------------------------------------------------------------------------- */
+.e-dialog.handover-dialog {
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-lg);
+  box-shadow: var(--sf-shadow-lg);
+  color: var(--color-sf-fg-primary);
+  max-width: 640px;
+  overflow: hidden;
+  transition:
+    opacity var(--sf-duration-slow) var(--sf-ease-out),
+    transform var(--sf-duration-slow) var(--sf-ease-out);
+}
+
+.e-dialog.handover-dialog .e-dlg-header {
+  background: var(--app-card-bg);
+  border-bottom: 1px solid var(--color-sf-divider);
+  color: var(--color-sf-fg-primary);
+  padding: var(--sf-space-4) var(--sf-space-6);
+  position: relative;
+}
+
+.e-dialog.handover-dialog .e-dlg-header-content {
+  color: var(--color-sf-fg-primary);
+  font-size: var(--sf-text-base);
+  font-weight: var(--sf-font-semibold);
+  width: 100%;
+}
+
+.e-dialog.handover-dialog .e-dlg-content {
+  background: transparent;
+  color: var(--color-sf-fg-primary);
+  padding: 0;
+  overflow: hidden;
+}
+
+.e-dialog.handover-dialog .e-dlg-footer {
+  background: var(--app-card-bg);
+  border-top: 1px solid var(--color-sf-divider);
+  padding: var(--sf-space-3) var(--sf-space-6);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--sf-space-2);
+}
+
+.e-dialog.handover-dialog .e-dlg-overlay {
+  background: var(--color-sf-overlay);
+  opacity: 1;
+}
+
+/* The close (×) icon — kept in the top-right of the dialog header. */
+.e-dialog.handover-dialog .e-dlg-closeicon-btn {
+  color: var(--color-sf-fg-secondary);
+  font-size: var(--sf-text-base);
+  width: 28px;
+  height: 28px;
+  border-radius: var(--sf-radius-sm);
+  transition: background var(--sf-duration-fast) var(--sf-ease-in),
+    color var(--sf-duration-fast) var(--sf-ease-in);
+  top: var(--sf-space-3);
+  right: var(--sf-space-3);
+}
+
+.e-dialog.handover-dialog .e-dlg-closeicon-btn:hover {
+  background: var(--color-sf-bg-surface-muted);
+  color: var(--color-sf-fg-primary);
+}
+
+/* -----------------------------------------------------------------------------
+   2. Scroll container + body — fixed page padding, 24px row gap.
+   Body sits inside a scroll container so the footer can stay sticky.
+   ----------------------------------------------------------------------------- */
+.handover-dialog__scroll {
+  max-height: calc(100vh - 240px);
+  overflow-y: auto;
+  padding: var(--sf-space-2) var(--sf-space-8) var(--sf-space-2) var(--sf-space-8);
+}
+
+.handover-dialog__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-6);
+  min-width: 0;
+}
+
+/* -----------------------------------------------------------------------------
+   3. Form-level alert — danger-token background + text + 4px left border,
+   `AlertTriangle` icon, bullet list, dismiss link.
+   ----------------------------------------------------------------------------- */
+.handover-dialog__alert {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sf-space-3);
+  background: var(--color-sf-bg-danger-primary);
+  color: var(--color-sf-fg-danger-primary);
+  border: 1px solid var(--color-sf-fg-danger-primary);
+  border-left: 4px solid var(--color-sf-fg-danger-primary);
+  padding: var(--sf-space-3) var(--sf-space-4);
+  border-radius: var(--sf-radius-md);
+  font-size: var(--sf-text-sm);
+  line-height: var(--sf-leading-normal);
+  animation: handoverFormSlideIn var(--sf-duration-slow) var(--sf-ease-in);
+}
+
+.handover-dialog__alert-icon {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-top: 1px;
+  color: var(--color-sf-fg-danger-primary);
+}
+
+.handover-dialog__alert-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-1);
+  min-width: 0;
+  flex: 1;
+}
+
+.handover-dialog__alert-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sf-space-2);
+}
+
+.handover-dialog__alert-row > strong {
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-danger-primary);
+}
+
+.handover-dialog__alert-dismiss {
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-danger-primary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding: 2px 6px;
+  border-radius: var(--sf-radius-sm);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: background var(--sf-duration-fast) var(--sf-ease-in);
+}
+
+.handover-dialog__alert-dismiss:hover {
+  background: color-mix(in srgb, var(--color-sf-fg-danger-primary) 12%, transparent);
+}
+
+.handover-dialog__alert-list {
+  margin: 0;
+  padding-left: var(--sf-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  color: var(--color-sf-fg-danger-primary);
+}
+
+.handover-dialog__alert-list li {
+  list-style: disc;
+  padding-left: 0;
+}
+
+@keyframes handoverFormSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* -----------------------------------------------------------------------------
+   4. Section chrome — title + hint paragraph.
+   ----------------------------------------------------------------------------- */
+
+/* The dialog title sits in the Syncfusion header bar as the
+   "Asset handover" string. The two-row subtitle (asset id · title
+   or a muted hint) is rendered inside the body, just above the
+   alert + section 1. */
+.handover-dialog__header {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  padding-bottom: var(--sf-space-3);
+  border-bottom: 1px solid var(--color-sf-divider);
+}
+
+.handover-dialog__header-title {
+  font-size: var(--sf-text-lg);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+  line-height: 1.3;
+}
+
+.handover-dialog__header-subtitle {
+  font-size: var(--sf-text-sm);
+  color: var(--color-sf-fg-secondary);
+  line-height: 1.4;
+}
+
+.handover-dialog__section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-3);
+  min-width: 0;
+  padding-top: var(--sf-space-2);
+  border-top: 1px solid var(--color-sf-divider);
+}
+
+.handover-dialog__section:first-child {
+  padding-top: 0;
+  border-top: 0;
+}
+
+.handover-dialog__section-title {
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+}
+
+.handover-dialog__section-hint {
+  font-size: var(--sf-text-sm);
+  color: var(--color-sf-fg-secondary);
+  line-height: var(--sf-leading-normal);
+  margin-top: -2px;
+}
+
+/* -----------------------------------------------------------------------------
+   5. Asset preview card — locked source asset summary.
+   ----------------------------------------------------------------------------- */
+.handover-dialog__asset-card {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-3);
+  padding: var(--sf-space-3);
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-md);
+  min-width: 0;
+}
+
+.handover-dialog__asset-card__art {
+  width: 48px;
+  height: 48px;
+  flex-shrink: 0;
+  border-radius: var(--sf-radius-md);
+  background: linear-gradient(
+    135deg,
+    var(--color-sf-asset-card-gradient-from) 0%,
+    var(--color-sf-asset-card-gradient-to) 100%
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--color-sf-divider);
+}
+
+.handover-dialog__asset-card__art-initials {
+  font-size: var(--sf-text-base);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-brand-primary);
+  letter-spacing: 0.04em;
+}
+
+.handover-dialog__asset-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.handover-dialog__asset-card__row {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  min-width: 0;
+}
+
+.handover-dialog__asset-card__id {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: var(--sf-radius-full);
+  background: var(--color-sf-bg-brand-subtle);
+  color: var(--color-sf-fg-brand-primary);
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  font-family: var(--sf-font-mono);
+  letter-spacing: 0.02em;
+  flex-shrink: 0;
+}
+
+.handover-dialog__asset-card__title {
+  font-size: var(--sf-text-base);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+}
+
+.handover-dialog__asset-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-1);
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  min-width: 0;
+}
+
+.handover-dialog__asset-card__meta-sep {
+  color: var(--color-sf-fg-secondary);
+  opacity: 0.6;
+}
+
+.handover-dialog__asset-card__view {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-brand-primary);
+  padding: var(--sf-space-1) var(--sf-space-2);
+  border-radius: var(--sf-radius-sm);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background var(--sf-duration-fast) var(--sf-ease-in);
+}
+
+.handover-dialog__asset-card__view:hover {
+  background: var(--color-sf-bg-surface-hover);
+}
+
+/* -----------------------------------------------------------------------------
+   6. Person field + dropdown rows — From / To with avatar rows.
+   ----------------------------------------------------------------------------- */
+.handover-dialog__people {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sf-space-3);
+  min-width: 0;
+}
+
+.handover-dialog__people-hint {
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  line-height: var(--sf-leading-normal);
+  margin-top: -2px;
+}
+
+.handover-dialog__person-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.handover-dialog__person-item {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  padding: 4px 6px;
+  min-width: 0;
+  /* Override Syncfusion's `.e-dropdownbase .e-list-item
+     { text-indent: 12px; padding-right: 16px; line-height:
+     32px; font-size: 14px; background: var(...); }` so the
+     avatar + name line up on the popup row's left edge. Without
+     this override the avatar's text gets a 12px text-indent
+     push, which (combined with the avatar's own centering)
+     makes the initials look misaligned to the right of the
+     circle. */
+  text-indent: 0;
+  line-height: 1.3;
+  font-size: inherit;
+  background: transparent;
+}
+
+.handover-dialog__person-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  flex-shrink: 0;
+  font-family: var(--sf-font-sans);
+  letter-spacing: 0;
+  line-height: 1;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  /* Same override as `.person-item` — the avatar is rendered
+     inside the popup's `.e-list-item` and inherits
+     `text-indent: 12px` from Syncfusion. Zero it out so the
+     initials are centered in the circle. */
+  text-indent: 0;
+}
+
+/* Inner span that wraps the initials. Required because a bare
+   text node in a flex container becomes an anonymous flex item
+   whose width is computed from the line box, not the text run
+   — so `justify-content: center` ends up centering the line
+   box, which leaves the text right-shifted. Wrapping the text
+   in this span makes it a real flex item that centers exactly. */
+.handover-dialog__person-avatar-text {
+  display: inline-block;
+  line-height: 1;
+  text-align: center;
+  width: auto;
+  padding: 0;
+  margin: 0;
+  text-indent: 0;
+}
+
+/* Value template — compact single-line display used inside the
+   dropdown's input control once a person is selected. Mirrors
+   the popup row's avatar + name but drops the role line and the
+   taller `person-item` padding so the avatar sits flush against
+   the input edge and is perfectly aligned with the input's
+   vertical centre line. */
+.handover-dialog__person-value {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  padding: 0;
+  margin: 0;
+  min-width: 0;
+  line-height: 1;
+  text-indent: 0;
+}
+
+.handover-dialog__person-value.is-empty {
+  display: none;
+}
+
+.handover-dialog__person-value-name {
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-medium);
+  color: var(--color-sf-fg-primary);
+  line-height: 1.2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 0;
+  flex: 1;
+}
+
+.handover-dialog__person-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+  flex: 1;
+}
+
+.handover-dialog__person-name {
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.handover-dialog__person-name.is-muted {
+  color: var(--color-sf-fg-secondary);
+  font-weight: var(--sf-font-medium);
+}
+
+.handover-dialog__person-role {
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  line-height: 1.3;
+}
+
+.handover-dialog__person-role.is-muted {
+  color: var(--color-sf-fg-secondary);
+  opacity: 0.8;
+}
+
+/* Syncfusion DropDownListComponent chrome — restyled to match
+   the text-box chrome on the requests dialog. The wrappers all
+   resolve through the same `--app-card-bg` / `--app-card-border`
+   tokens. */
+.handover-dialog__input.e-input-group,
+.handover-dialog__input.e-input-group.e-control-wrapper,
+.handover-dialog__input.e-ddl {
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-md);
+  color: var(--color-sf-fg-primary);
+  font-family: inherit;
+  font-size: var(--sf-text-sm);
+  transition: border-color var(--sf-duration-fast) var(--sf-ease-in),
+    box-shadow var(--sf-duration-fast) var(--sf-ease-in);
+  min-height: 36px;
+}
+
+.handover-dialog__input.e-input-group input,
+.handover-dialog__input.e-input-group.e-control-wrapper input,
+.handover-dialog__input.e-ddl .e-input {
+  background: transparent;
+  color: var(--color-sf-fg-primary);
+  font-family: inherit;
+  font-size: var(--sf-text-sm);
+  padding: 8px 12px;
+  min-height: 36px;
+}
+
+.handover-dialog__input.e-input-group.e-control-wrapper.e-input-focus,
+.handover-dialog__input.e-ddl.e-input-focus {
+  border-color: var(--color-sf-fg-brand-primary);
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--color-sf-fg-brand-primary) 25%, transparent);
+}
+
+/* -----------------------------------------------------------------------------
+   7. Chips — reason + accessory groups.
+   ----------------------------------------------------------------------------- */
+.handover-dialog__chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--sf-space-2);
+  min-width: 0;
+}
+
+.handover-dialog__chips--accessories {
+  gap: var(--sf-space-2);
+}
+
+.handover-dialog__chip.e-btn {
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-medium);
+  border-radius: var(--sf-radius-full);
+  padding: 6px 14px;
+  min-height: 32px;
+  background: var(--app-card-bg);
+  color: var(--color-sf-fg-primary);
+  border: 1px solid var(--app-card-border);
+  box-shadow: none;
+  transition: background var(--sf-duration-fast) var(--sf-ease-in),
+    border-color var(--sf-duration-fast) var(--sf-ease-in),
+    color var(--sf-duration-fast) var(--sf-ease-in);
+}
+
+.handover-dialog__chip.e-btn:hover {
+  background: var(--color-sf-bg-surface-muted);
+  border-color: var(--color-sf-border-strong);
+}
+
+.handover-dialog__chip.e-btn:focus-visible {
+  outline: 2px solid var(--color-sf-fg-brand-primary);
+  outline-offset: 2px;
+}
+
+.handover-dialog__chip.is-selected.e-btn {
+  background: var(--color-sf-bg-brand-subtle);
+  color: var(--color-sf-fg-brand-primary);
+  border: 2px solid var(--color-sf-fg-brand-primary);
+  font-weight: var(--sf-font-semibold);
+}
+
+.handover-dialog__chip--accessory.is-selected.e-btn {
+  background: var(--color-sf-bg-info-primary);
+  color: var(--color-sf-fg-info-primary);
+  border: 2px solid var(--color-sf-border-brand);
+}
+
+/* -----------------------------------------------------------------------------
+   8. Condition cards — 3-card radio group with coloured selected state.
+   ----------------------------------------------------------------------------- */
+.handover-dialog__conditions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sf-space-2);
+  min-width: 0;
+}
+
+.handover-dialog__condition {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sf-space-2);
+  padding: var(--sf-space-3);
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-md);
+  cursor: pointer;
+  min-width: 0;
+  transition: border-color var(--sf-duration-fast) var(--sf-ease-in),
+    background var(--sf-duration-fast) var(--sf-ease-in),
+    box-shadow var(--sf-duration-fast) var(--sf-ease-in);
+}
+
+.handover-dialog__condition:hover {
+  border-color: var(--color-sf-border-strong);
+  background: var(--color-sf-bg-surface-muted);
+}
+
+.handover-dialog__condition-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.handover-dialog__condition:focus-within {
+  outline: 2px solid var(--color-sf-fg-brand-primary);
+  outline-offset: 2px;
+}
+
+/* Suppress the focus-within ring on the currently-selected
+   card so the coloured 2px state border (good/fair/damaged) is
+   the only visible border. Without this, a selected card shows
+   an outer brand-blue ring + an inner coloured border, which
+   reads as a "double border". */
+.handover-dialog__condition.is-selected:focus-within {
+  outline: none;
+}
+
+.handover-dialog__condition-icon {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: var(--sf-radius-sm);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-sf-bg-neutral-primary);
+  color: var(--color-sf-fg-neutral-primary);
+}
+
+.handover-dialog__condition-icon[data-state="good"] {
+  background: var(--color-sf-bg-condition-good);
+  color: var(--color-sf-fg-condition-good);
+}
+
+.handover-dialog__condition-icon[data-state="fair"] {
+  background: var(--color-sf-bg-condition-fair);
+  color: var(--color-sf-fg-condition-fair);
+}
+
+.handover-dialog__condition-icon[data-state="damaged"] {
+  background: var(--color-sf-bg-condition-damaged);
+  color: var(--color-sf-fg-condition-damaged);
+}
+
+.handover-dialog__condition-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--color-sf-fg-condition-fair);
+  display: block;
+}
+
+.handover-dialog__condition-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.handover-dialog__condition-label {
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+  line-height: 1.3;
+}
+
+.handover-dialog__condition-desc {
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  line-height: 1.3;
+}
+
+.handover-dialog__condition-check {
+  position: absolute;
+  top: var(--sf-space-2);
+  right: var(--sf-space-2);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--app-card-bg);
+  background: var(--color-sf-fg-brand-primary);
+}
+
+.handover-dialog__condition--good.is-selected {
+  border: 2px solid var(--color-sf-border-condition-good);
+  background: var(--color-sf-bg-condition-good);
+}
+
+.handover-dialog__condition--good.is-selected .handover-dialog__condition-check {
+  background: var(--color-sf-fg-condition-good);
+}
+
+.handover-dialog__condition--fair.is-selected {
+  border: 2px solid var(--color-sf-border-condition-fair);
+  background: var(--color-sf-bg-condition-fair);
+}
+
+.handover-dialog__condition--fair.is-selected .handover-dialog__condition-check {
+  background: var(--color-sf-fg-condition-fair);
+}
+
+.handover-dialog__condition--damaged.is-selected {
+  border: 2px solid var(--color-sf-border-condition-damaged);
+  background: var(--color-sf-bg-condition-damaged);
+}
+
+.handover-dialog__condition--damaged.is-selected .handover-dialog__condition-check {
+  background: var(--color-sf-fg-condition-damaged);
+}
+
+/* -----------------------------------------------------------------------------
+   9. Notes field — TextArea + char counter + Sample AI link.
+   ----------------------------------------------------------------------------- */
+.handover-dialog__notes-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-2);
+  min-width: 0;
+}
+
+.handover-dialog__textarea.e-input-group.e-control-wrapper,
+.handover-dialog__textarea.e-input-group {
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-md);
+  color: var(--color-sf-fg-primary);
+  padding: 0;
+  min-height: 80px;
+  font-family: inherit;
+  font-size: var(--sf-text-sm);
+  line-height: var(--sf-leading-normal);
+  transition: border-color var(--sf-duration-fast) var(--sf-ease-in),
+    box-shadow var(--sf-duration-fast) var(--sf-ease-in);
+}
+
+.handover-dialog__textarea.e-input-group.e-control-wrapper textarea,
+.handover-dialog__textarea.e-input-group textarea {
+  background: transparent;
+  color: var(--color-sf-fg-primary);
+  font-family: inherit;
+  font-size: var(--sf-text-sm);
+  line-height: var(--sf-leading-normal);
+  padding: 10px 12px;
+  min-height: 64px;
+  resize: vertical;
+  width: 100%;
+  border: 0;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.handover-dialog__textarea.e-input-group.e-control-wrapper textarea::placeholder,
+.handover-dialog__textarea.e-input-group textarea::placeholder {
+  color: var(--color-sf-fg-secondary);
+}
+
+.handover-dialog__notes-field.is-invalid .handover-dialog__textarea.e-input-group,
+.handover-dialog__notes-field.is-invalid .handover-dialog__textarea.e-input-group.e-control-wrapper {
+  border: 2px solid var(--color-sf-fg-danger-primary);
+}
+
+.handover-dialog__notes-field.is-success .handover-dialog__textarea.e-input-group,
+.handover-dialog__notes-field.is-success .handover-dialog__textarea.e-input-group.e-control-wrapper {
+  border: 2px solid var(--color-sf-fg-success-primary);
+}
+
+.handover-dialog__notes-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sf-space-2);
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+.handover-dialog__notes-footer-left {
+  flex: 1;
+  min-width: 0;
+}
+
+.handover-dialog__notes-footer-right {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sf-space-3);
+  flex-shrink: 0;
+}
+
+.handover-dialog__ai-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-brand-primary);
+  padding: 2px 6px;
+  border-radius: var(--sf-radius-sm);
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: background var(--sf-duration-fast) var(--sf-ease-in);
+}
+
+.handover-dialog__ai-link:hover {
+  background: var(--color-sf-bg-surface-hover);
+}
+
+.handover-dialog__ai-link:focus-visible {
+  outline: 2px solid var(--color-sf-fg-brand-primary);
+  outline-offset: 2px;
+}
+
+.handover-dialog__char-counter {
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-medium);
+  color: var(--color-sf-fg-secondary);
+  font-variant-numeric: tabular-nums;
+  transition: color var(--sf-duration-fast) var(--sf-ease-in);
+}
+
+.handover-dialog__char-counter.is-warning {
+  color: var(--color-sf-fg-warning-primary);
+  font-weight: var(--sf-font-semibold);
+}
+
+.handover-dialog__char-counter.is-danger {
+  color: var(--color-sf-fg-danger-primary);
+  font-weight: var(--sf-font-semibold);
+}
+
+/* -----------------------------------------------------------------------------
+   10. Acknowledgement rows — selected person chips + notification status.
+   ----------------------------------------------------------------------------- */
+.handover-dialog__agreements {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-3);
+  min-width: 0;
+}
+
+.handover-dialog__ack-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-3);
+  padding: var(--sf-space-3) var(--sf-space-4);
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-md);
+  cursor: pointer;
+  min-width: 0;
+  transition: border-color var(--sf-duration-fast) var(--sf-ease-in),
+    background var(--sf-duration-fast) var(--sf-ease-in),
+    box-shadow var(--sf-duration-fast) var(--sf-ease-in);
+}
+
+.handover-dialog__ack-row:hover {
+  border-color: var(--color-sf-border-strong);
+  background: var(--color-sf-bg-surface-muted);
+}
+
+.handover-dialog__ack-row.is-invalid {
+  border: 2px solid var(--color-sf-fg-danger-primary);
+  background: var(--color-sf-bg-danger-primary);
+  padding: calc(var(--sf-space-3) - 1px) calc(var(--sf-space-4) - 1px);
+}
+
+.handover-dialog__ack-row.is-success {
+  border: 2px solid var(--color-sf-fg-success-primary);
+  background: var(--color-sf-bg-success-primary);
+  padding: calc(var(--sf-space-3) - 1px) calc(var(--sf-space-4) - 1px);
+}
+
+.handover-dialog__ack-row.is-success:hover,
+.handover-dialog__ack-row.is-invalid:hover {
+  background: var(--color-sf-bg-surface-muted);
+}
+
+.handover-dialog__ack-row:focus-within {
+  outline: 2px solid var(--color-sf-fg-brand-primary);
+  outline-offset: 2px;
+}
+
+/* When the row already carries a state-driven border (success
+   or invalid) the focus-within outline is redundant and would
+   stack on top of it, producing a visible "double border" around
+   the row. The state border itself is the focus affordance in
+   that case, so suppress the outline. */
+.handover-dialog__ack-row.is-success:focus-within,
+.handover-dialog__ack-row.is-invalid:focus-within {
+  outline: none;
+}
+
+.handover-dialog__ack-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sf-space-3);
+  min-width: 0;
+  flex: 1;
+}
+
+.handover-dialog__ack-person {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sf-space-3);
+  min-width: 0;
+}
+
+.handover-dialog__ack-person.is-empty {
+  opacity: 0.7;
+}
+
+.handover-dialog__ack-person-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  flex-shrink: 0;
+  letter-spacing: 0;
+  line-height: 1;
+  text-align: center;
+}
+
+.handover-dialog__ack-person-avatar.is-empty {
+  background: var(--color-sf-bg-avatar-slate);
+  color: var(--color-sf-fg-avatar-slate);
+}
+
+.handover-dialog__ack-person-avatar-text {
+  display: inline-block;
+  line-height: 1;
+  text-align: center;
+  width: auto;
+}
+
+.handover-dialog__ack-person-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+}
+
+.handover-dialog__ack-person-name {
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+  line-height: 1.3;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.handover-dialog__ack-person-role,
+.handover-dialog__ack-person-placeholder {
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  line-height: 1.3;
+}
+
+.handover-dialog__ack-status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sf-space-1);
+  flex-shrink: 0;
+  padding: 4px 10px;
+  border-radius: var(--sf-radius-full);
+  background: var(--color-sf-bg-success-primary);
+  color: var(--color-sf-fg-success-primary);
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  white-space: nowrap;
+}
+
+.handover-dialog__ack-row[data-checked="false"] .handover-dialog__ack-status {
+  background: var(--color-sf-bg-neutral-primary);
+  color: var(--color-sf-fg-neutral-primary);
+}
+
+.handover-dialog__ack-status-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+}
+
+.handover-dialog__ack-status-icon.is-muted {
+  color: var(--color-sf-fg-neutral-primary);
+  opacity: 0.9;
+}
+
+.handover-dialog__ack-status-text.is-muted {
+  color: var(--color-sf-fg-neutral-primary);
+  opacity: 0.9;
+}
+
+.handover-dialog__ack-action {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.handover-dialog__ack-input.e-checkbox-wrapper .e-frame {
+  border-color: var(--color-sf-border-strong);
+}
+
+.handover-dialog__ack-input.e-checkbox-wrapper.e-check .e-frame {
+  background: var(--color-sf-fg-brand-primary);
+  border-color: var(--color-sf-fg-brand-primary);
+}
+
+.handover-dialog__ack-input.e-checkbox-wrapper.e-focus .e-frame,
+.handover-dialog__ack-input.e-checkbox-wrapper.e-check:focus .e-frame {
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--color-sf-fg-brand-primary) 25%, transparent);
+}
+
+/* -----------------------------------------------------------------------------
+   11. Footer — Cancel / Save draft / Submit (dialog) + internal submit CTA (page).
+   ----------------------------------------------------------------------------- */
+.handover-dialog__footer {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.handover-form__footer {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: var(--sf-space-2);
+  padding: var(--sf-space-3) var(--sf-space-5);
+  background: var(--app-card-bg);
+  border-top: 1px solid var(--color-sf-divider);
+  z-index: 1;
+}
+
+.handover-form__footer-submit.e-btn {
+  padding: 8px 18px;
+  border-radius: var(--sf-radius-md);
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  background: var(--color-sf-fg-brand-primary);
+  color: #fff;
+  border: 1px solid var(--color-sf-fg-brand-primary);
+  transition: filter var(--sf-duration-fast) var(--sf-ease-in),
+    background var(--sf-duration-fast) var(--sf-ease-in);
+}
+
+.handover-form__footer-submit.e-btn:hover:not(:disabled) {
+  filter: brightness(0.95);
+}
+
+.handover-form__footer-submit.e-btn:disabled,
+.handover-form__footer-submit.e-btn.is-disabled {
+  background: var(--color-sf-bg-disabled);
+  color: var(--color-sf-fg-disabled);
+  border-color: var(--color-sf-bg-disabled);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+.handover-form__submit-bridge {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.btn.is-disabled.e-btn,
+.btn.is-disabled.e-btn:disabled {
+  background: var(--color-sf-bg-disabled);
+  color: var(--color-sf-fg-disabled);
+  border-color: var(--color-sf-bg-disabled);
+  cursor: not-allowed;
+  opacity: 0.8;
+}
+
+/* -----------------------------------------------------------------------------
+   12. Field state helpers — invalid / success / hint chrome used by the
+   per-field live validation system.
+   ----------------------------------------------------------------------------- */
+.handover-dialog__field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.handover-dialog__field--full {
+  grid-column: 1 / -1;
+}
+
+.handover-dialog__label {
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.handover-dialog__required {
+  color: var(--color-sf-fg-danger-primary);
+  font-weight: var(--sf-font-semibold);
+}
+
+.handover-dialog__field-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.handover-dialog__field-dot[data-state="error"] {
+  background: var(--color-sf-fg-danger-primary);
+}
+
+.handover-dialog__field-check {
+  margin-left: auto;
+  color: var(--color-sf-fg-success-primary);
+  flex-shrink: 0;
+}
+
+.handover-dialog__field-hint {
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-medium);
+  color: var(--color-sf-fg-secondary);
+  line-height: 1.4;
+}
+
+.handover-dialog__field-hint[data-state="error"] {
+  color: var(--color-sf-fg-danger-primary);
+}
+
+.handover-dialog__field-hint[data-state="warning"] {
+  color: var(--color-sf-fg-warning-primary);
+}
+
+.handover-dialog__field-hint[data-state="success"] {
+  color: var(--color-sf-fg-success-primary);
+}
+
+/* -----------------------------------------------------------------------------
+   13. Responsive collapse — tablet (≤ 1023px) + mobile (≤ 767px).
+   ----------------------------------------------------------------------------- */
+@media (max-width: 1023px) {
+  .handover-dialog__people {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .handover-dialog__conditions {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .e-dialog.handover-dialog {
+    max-width: min(560px, calc(100vw - 32px));
+  }
+
+  .handover-dialog__ack-main {
+    flex-wrap: wrap;
+  }
+
+  .handover-dialog__ack-status {
+    margin-left: auto;
+  }
+}
+
+@media (max-width: 767px) {
+  .e-dialog.handover-dialog {
+    max-width: calc(100vw - 16px);
+  }
+
+  .handover-dialog__scroll {
+    padding: var(--sf-space-4);
+  }
+
+  .e-dialog.handover-dialog .e-dlg-footer {
+    padding: var(--sf-space-3) var(--sf-space-4);
+  }
+
+  .handover-dialog__footer {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+
+  .handover-form__footer {
+    padding-inline: var(--sf-space-4);
+    justify-content: stretch;
+  }
+
+  .handover-form__footer-submit.e-btn {
+    flex: 1 1 auto;
+  }
+
+  .handover-dialog__ack-row {
+    align-items: flex-start;
+    padding: var(--sf-space-3);
+  }
+
+  .handover-dialog__ack-main {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sf-space-2);
+  }
+
+  .handover-dialog__ack-status {
+    margin-left: 0;
+  }
+}

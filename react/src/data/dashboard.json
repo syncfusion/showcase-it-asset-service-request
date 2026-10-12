@@ -1,0 +1,194 @@
+{
+  "kpis": [
+    {
+      "id": "open",
+      "label": "Open requests",
+      "value": 18,
+      "delta": "+3 since yesterday",
+      "note": "+3 since yesterday",
+      "icon": "inbox",
+      "iconVariant": "info",
+      "title": "Drill into open requests"
+    },
+    {
+      "id": "sla",
+      "label": "SLA at risk",
+      "value": 4,
+      "delta": "Breach window < 4h",
+      "note": "Breach window < 4h",
+      "icon": "alarm-clock",
+      "iconVariant": "danger",
+      "title": "Filter SLA at risk"
+    },
+    {
+      "id": "aging",
+      "label": "Aging assets",
+      "value": 27,
+      "delta": "Purchase age ≥ 4 yrs",
+      "note": "Purchase age ≥ 4 yrs",
+      "icon": "hourglass",
+      "iconVariant": "warning",
+      "title": "Aging assets ≥ 4 years"
+    },
+    {
+      "id": "handovers",
+      "label": "Pending handovers",
+      "value": 6,
+      "delta": "Awaiting recipient ack",
+      "note": "Awaiting recipient ack",
+      "icon": "file-signature",
+      "iconVariant": "success",
+      "title": "Handovers awaiting signature"
+    }
+  ],
+  "volume": {
+    "title": "Request volume · last 14 days",
+    "subtitle": "All channels · sample fixture data",
+    "categories": [
+      "Sep 15",
+      "Sep 16",
+      "Sep 17",
+      "Sep 18",
+      "Sep 19",
+      "Sep 20",
+      "Sep 21",
+      "Sep 22",
+      "Sep 23",
+      "Sep 24",
+      "Sep 25",
+      "Sep 26",
+      "Sep 27",
+      "Sep 28"
+    ],
+    "series": {
+      "all": [42, 55, 38, 70, 62, 48, 28, 75, 88, 66, 52, 60, 80, 94],
+      "incidents": [12, 18, 9, 22, 16, 14, 6, 25, 31, 19, 13, 17, 22, 28],
+      "service": [30, 37, 29, 48, 46, 34, 22, 50, 57, 47, 39, 43, 58, 66]
+    }
+  },
+  "sla": {
+    "title": "SLA health",
+    "subtitle": "Open tickets by remaining SLA",
+    "buckets": [
+      {
+        "id": "on-track",
+        "label": "On track",
+        "count": 8,
+        "colorToken": "--color-sf-chart-4"
+      },
+      {
+        "id": "watch",
+        "label": "Watch",
+        "count": 5,
+        "colorToken": "--color-sf-chart-1"
+      },
+      {
+        "id": "at-risk",
+        "label": "At risk",
+        "count": 4,
+        "colorToken": "--color-sf-chart-3"
+      },
+      {
+        "id": "breached",
+        "label": "Breached",
+        "count": 1,
+        "colorToken": "--color-sf-chart-5"
+      }
+    ]
+  },
+  "assistant": {
+    "title": "AI assistant",
+    "subtitle": "Illustrative · not a live model",
+    "bannerLabel": "Sample AI",
+    "prompts": [
+      { "label": "SLA summary", "prompt": "Summarize SLA at-risk tickets" },
+      { "label": "Handover tips", "prompt": "Draft handover checklist for A-00125" },
+      { "label": "KB search", "prompt": "Find KB for laptop not charging" }
+    ],
+    "conversation": [
+      {
+        "id": "greeting",
+        "role": "assistant",
+        "meta": "Assistant · just now",
+        "text": "Good morning, Neil. Four tickets sit inside a 4-hour SLA window. Want a ranked list with suggested owners?"
+      },
+      {
+        "id": "user-followup",
+        "role": "user",
+        "meta": "You",
+        "text": "Yes — prioritize critical and high, and link any matching KB articles."
+      },
+      {
+        "id": "sla-summary",
+        "role": "assistant",
+        "meta": "Assistant · sample",
+        "text": "Top SLA risks across the active board",
+        "richText": "<p><strong>Top SLA risks</strong></p><ol style=\"margin:8px 0 0;padding-left:1.1rem;list-style:decimal\"><li style=\"margin-bottom:6px\"><strong>r-00042</strong> · Laptop not charging (Critical) · Dana Quinn · 1h 40m left</li><li style=\"margin-bottom:6px\"><strong>r-00051</strong> · VPN dropouts (High) · 2h 10m left</li><li><strong>r-00047</strong> · Badge reader offline (High) · 3h 05m left</li></ol>",
+        "citations": [
+          { "label": "KB · Asset handover", "route": "knowledge", "kb": "kb-handover" },
+          { "label": "KB · Power & battery", "route": "knowledge", "kb": "kb-power" }
+        ],
+        "actions": [
+          { "id": "open-board", "label": "Open board", "kind": "navigate", "route": "requests" },
+          { "id": "copy-summary", "label": "Copy summary", "kind": "copy" }
+        ]
+      }
+    ],
+    "cannedResponses": [
+      {
+        "match": "sla",
+        "id": "sla-summary",
+        "meta": "Assistant · sample",
+        "text": "Top SLA risks across the active board",
+        "richText": "<p><strong>Top SLA risks</strong></p><ol style=\"margin:8px 0 0;padding-left:1.1rem;list-style:decimal\"><li style=\"margin-bottom:6px\"><strong>r-00042</strong> · Laptop not charging (Critical) · Dana Quinn · 1h 40m left</li><li style=\"margin-bottom:6px\"><strong>r-00051</strong> · VPN dropouts (High) · 2h 10m left</li><li><strong>r-00047</strong> · Badge reader offline (High) · 3h 05m left</li></ol>",
+        "citations": [
+          { "label": "KB · Asset handover", "route": "knowledge", "kb": "kb-handover" },
+          { "label": "KB · Power & battery", "route": "knowledge", "kb": "kb-power" }
+        ],
+        "actions": [
+          { "id": "open-board", "label": "Open board", "kind": "navigate", "route": "requests" },
+          { "id": "copy-summary", "label": "Copy summary", "kind": "copy" }
+        ]
+      },
+      {
+        "match": "handover",
+        "id": "handover-tips",
+        "meta": "Assistant · sample",
+        "text": "Handover checklist for A-00125",
+        "richText": "<p><strong>Handover checklist for A-00125</strong></p><ul style=\"margin:8px 0 0;padding-left:1.1rem;list-style:disc\"><li>Confirm recipient identity via SSO</li><li>Capture signature on the e-form</li><li>Wipe the previous owner's profile before re-issue</li></ul>",
+        "citations": [{ "label": "KB · Asset handover", "route": "knowledge", "kb": "kb-handover" }],
+        "actions": [
+          { "id": "open-board", "label": "Open board", "kind": "navigate", "route": "requests" },
+          { "id": "copy-summary", "label": "Copy summary", "kind": "copy" }
+        ]
+      },
+      {
+        "match": "kb",
+        "id": "kb-search",
+        "meta": "Assistant · sample",
+        "text": "KB matches for \"laptop not charging\"",
+        "richText": "<p><strong>KB matches for &quot;laptop not charging&quot;</strong></p><ul style=\"margin:8px 0 0;padding-left:1.1rem;list-style:disc\"><li>KB · Power & battery — 92% match</li><li>KB · Vendor warranty escalation — 64% match</li><li>KB · Loaner request workflow — 41% match</li></ul>",
+        "actions": [
+          { "id": "open-board", "label": "Open board", "kind": "navigate", "route": "knowledge" }
+        ]
+      },
+      {
+        "match": "default",
+        "id": "supportive-default",
+        "meta": "Assistant",
+        "text": "Let me know what you'd like to explore next — try one of the suggestion chips or ask about a ticket, asset, or KB article."
+      }
+    ]
+  },
+  "pageActions": {
+    "askAssistant": { "label": "Ask assistant", "icon": "bot" },
+    "refresh": { "label": "Refresh dashboard", "icon": "refresh-ccw" }
+  },
+  "filters": {
+    "seriesOptions": [
+      { "id": "all", "label": "All" },
+      { "id": "incidents", "label": "Incidents" },
+      { "id": "service", "label": "Service" }
+    ]
+  }
+}

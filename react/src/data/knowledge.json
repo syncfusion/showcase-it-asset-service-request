@@ -1,0 +1,372 @@
+{
+  "articles": [
+    {
+      "id": "kb-handover",
+      "title": "Asset handover SOP",
+      "summary": "Checklist, signatures, PDF receipt",
+      "category": "Handover",
+      "updated": "2025-02-18",
+      "helpful": 92,
+      "revision": "Rev 3.2",
+      "owner": { "name": "Neil Iyer", "initials": "NI" },
+      "body": [
+        "Use this procedure whenever custody of a tagged asset changes. Complete the digital handover form, capture both signatures, and generate the PDF receipt before updating inventory status.",
+        "Required fields: asset tag, from/to identity, reason (Onboarding, Transfer, Offboarding, Loan), condition notes, accessories checklist, and dual acknowledgement.",
+        "Validation: recipient cannot match donor; condition notes required when status is Damaged; at least one accessory or “None” must be selected.",
+        "After submit, the system writes a timeline event, links the PDF under Documents, and notifies both parties. Sample AI can draft condition notes — always review before signing."
+      ]
+    },
+    {
+      "id": "kb-power",
+      "title": "Laptop power & battery triage",
+      "summary": "Charging, adapters, SMC reset",
+      "category": "Hardware",
+      "updated": "2025-01-09",
+      "helpful": 88,
+      "revision": "Rev 2.7",
+      "owner": { "name": "Maya Tan", "initials": "MT" },
+      "body": [
+        "Confirm the wall outlet is live and the adapter’s LED is solid green. A blinking LED usually points to a firmware handshake failure — try a known-good outlet and a different surge strip before swapping adapters.",
+        "Battery health below 80% of design capacity triggers the “Consider replacement” banner in the inventory detail. For MacBook fleets run `battery -l` from the dock; for ThinkPad fleets use Lenovo Vantage.",
+        "If the laptop will not power on with a verified adapter, perform an SMC reset (Intel) or a shutdown with the Touch ID button held 10 seconds (Apple Silicon). Persistent failure routes to depot repair."
+      ]
+    },
+    {
+      "id": "kb-vpn",
+      "title": "VPN stability on remote endpoints",
+      "summary": "Client versions, split tunnel",
+      "category": "Network",
+      "updated": "2024-12-02",
+      "helpful": 81,
+      "revision": "Rev 4.1",
+      "owner": { "name": "Priya Rao", "initials": "PR" },
+      "body": [
+        "Always run the latest GA client — 5.2.x or newer. Clients older than 12 months are not permitted to connect to the corporate gateway.",
+        "Enable split-tunnel only for the services that need it (Zoom, Teams, public docs). The default profile routes all corporate traffic through the tunnel; only override per the matrix in the KB.",
+        "If a session drops repeatedly, capture a packet trace with the bundled `vpn-diag` script and attach it to the ticket. The script redacts PII before writing the trace."
+      ]
+    },
+    {
+      "id": "kb-badge",
+      "title": "Badge reader offline recovery",
+      "summary": "Lobby panels, controller reset",
+      "category": "Access",
+      "updated": "2025-03-01",
+      "helpful": 76,
+      "revision": "Rev 1.5",
+      "owner": { "name": "Jordan Lee", "initials": "JL" },
+      "body": [
+        "When a lobby reader goes offline, the controller’s heartbeat LED blinks red twice per second. The first line of recovery is a soft reset: hold the recessed button for 5 seconds until the LED turns solid green.",
+        "If the reader is still offline after the soft reset, check the PoE budget on the switch — readers on shared drops frequently lose power when a neighbouring device ramps up.",
+        "A hard reset (power cycle from the panel) should be the last resort. After a hard reset, the controller takes 3–4 minutes to re-register; budget that time before opening a ticket."
+      ]
+    },
+    {
+      "id": "kb-monitor",
+      "title": "External monitor flicker on MacBook",
+      "summary": "EDID, refresh rate, dock firmware",
+      "category": "Hardware",
+      "updated": "2025-02-22",
+      "helpful": 84,
+      "revision": "Rev 2.0",
+      "owner": { "name": "Dana Quinn", "initials": "DQ" },
+      "body": [
+        "Most flicker reports are caused by an EDID handshake failure between the dock and the panel. Update the dock firmware to the latest GA build before changing cables.",
+        "Force the refresh rate to 60 Hz in System Settings → Displays. Variable refresh on macOS 14.x has known compatibility issues with certain LG and Dell panels.",
+        "If the flicker only happens on battery, the dock is starved of power. Use the dock’s barrel-plug PSU — bus-powered docks cannot sustain dual 4K output."
+      ]
+    },
+    {
+      "id": "kb-return",
+      "title": "Returning a loaner laptop",
+      "summary": "Wipe, package, depot drop-off",
+      "category": "Handover",
+      "updated": "2025-01-28",
+      "helpful": 79,
+      "revision": "Rev 1.8",
+      "owner": { "name": "Aisha Kapoor", "initials": "AK" },
+      "body": [
+        "Sign out of iCloud, Google Workspace, and the corporate VPN before returning the loaner. A factory reset runs automatically on first boot at the depot.",
+        "Pack the laptop with its original charger and any accessories you received. The depot rejects returns that arrive without a complete kit, even if the laptop itself is fine.",
+        "Drop off the loaner at the depot reception desk on Floor 3. You will receive a return confirmation email within one business day."
+      ]
+    },
+    {
+      "id": "kb-printer",
+      "title": "Floor printer driver install",
+      "summary": "Pull-print, secure release",
+      "category": "Hardware",
+      "updated": "2025-02-04",
+      "helpful": 71,
+      "revision": "Rev 3.0",
+      "owner": { "name": "Liam Park", "initials": "LP" },
+      "body": [
+        "Run the `printer-bind` script from Self Service. The script discovers the nearest pull-print printer and installs the secure-release driver without admin rights.",
+        "All floor printers require badge release. After sending the job, tap your badge on any printer’s release pad within 4 hours or the job is purged.",
+        "If the script fails with error 0x80070005, the user account is missing the Print Spooler permission — open a ticket and assign it to the Desktop Engineering queue."
+      ]
+    },
+    {
+      "id": "kb-dock",
+      "title": "Docking station firmware policy",
+      "summary": "Quarterly update, signed binaries",
+      "category": "Hardware",
+      "updated": "2024-11-18",
+      "helpful": 68,
+      "revision": "Rev 2.4",
+      "owner": { "name": "Maya Tan", "initials": "MT" },
+      "body": [
+        "Dock firmware updates ship quarterly through the IT Asset channel. Skipping an update is allowed but the dock will surface a banner on every connect reminding the user to schedule the update.",
+        "Only firmware signed by the dock vendor is allowed. The fleet ships with Secure Boot keys that refuse unsigned images, so do not attempt to flash third-party firmware.",
+        "After a firmware update the dock reboots once; this interrupts any active display stream. Plan updates around meetings, demos, or all-hands."
+      ]
+    },
+    {
+      "id": "kb-2fa",
+      "title": "Two-factor recovery codes",
+      "summary": "Backup, regeneration, lost device",
+      "category": "Access",
+      "updated": "2025-02-12",
+      "helpful": 90,
+      "revision": "Rev 5.0",
+      "owner": { "name": "Neil Iyer", "initials": "NI" },
+      "body": [
+        "Each account receives ten single-use recovery codes at enrollment. Store them in the corporate password manager — paper copies in your desk drawer are not sufficient.",
+        "If you lose your phone, sign in with a recovery code and re-enroll a new device. Old codes remain valid; they do not get revoked when a new device is added.",
+        "To regenerate codes, open your account security settings and click “Regenerate”. The old codes stop working the moment the new codes are generated."
+      ]
+    },
+    {
+      "id": "kb-visitor",
+      "title": "Visitor Wi-Fi access",
+      "summary": "SSID, voucher, sponsor approval",
+      "category": "Access",
+      "updated": "2024-12-15",
+      "helpful": 73,
+      "revision": "Rev 1.3",
+      "owner": { "name": "Jordan Lee", "initials": "JL" },
+      "body": [
+        "The visitor SSID is `corp-guest` and is open. Visitors are prompted for a voucher code on first connect; the code is single-use and expires after 12 hours.",
+        "Hosts generate voucher codes from the lobby kiosk. Each visitor must have a named sponsor who remains in the building for the duration of the visit.",
+        "If the visitor needs access to internal services, the sponsor must file a temporary access request at least two business days in advance."
+      ]
+    },
+    {
+      "id": "kb-wifi",
+      "title": "Corporate Wi-Fi profile setup",
+      "summary": "SSID, EAP, certificate",
+      "category": "Network",
+      "updated": "2025-02-08",
+      "helpful": 86,
+      "revision": "Rev 3.4",
+      "owner": { "name": "Priya Rao", "initials": "PR" },
+      "body": [
+        "The corporate SSID is `corp-secure`. It uses WPA2-Enterprise with EAP-TLS. The client certificate is auto-provisioned on enrolment.",
+        "On macOS the profile is delivered through the MDM channel; on Windows it ships via Intune. Do not manually import the certificate — the MDM-managed identity is the only trusted one.",
+        "If the profile fails to install, check that the device clock is within 5 minutes of network time. A skewed clock is the most common cause of EAP-TLS handshake failures."
+      ]
+    },
+    {
+      "id": "kb-dns",
+      "title": "DNS resolver policy",
+      "summary": "DoH, split-horizon, fallback",
+      "category": "Network",
+      "updated": "2025-01-22",
+      "helpful": 80,
+      "revision": "Rev 2.1",
+      "owner": { "name": "Aisha Kapoor", "initials": "AK" },
+      "body": [
+        "All corporate endpoints use the internal DoH resolver at `https://dns.corp.internal/dns-query`. The resolver enforces split-horizon DNS — internal names resolve to RFC1918 addresses.",
+        "If the DoH endpoint is unreachable, the client falls back to the OS default resolver. Fallback traffic is logged and may be denied for internal-only names.",
+        "Do not disable the resolver service to “fix” slow DNS. The slowdown is usually a network path issue, not a resolver issue; capture a trace and open a ticket."
+      ]
+    },
+    {
+      "id": "kb-backup",
+      "title": "Endpoint backup retention",
+      "summary": "90-day rolling, restore drill",
+      "category": "Software",
+      "updated": "2025-02-27",
+      "helpful": 82,
+      "revision": "Rev 4.2",
+      "owner": { "name": "Liam Park", "initials": "LP" },
+      "body": [
+        "Every managed endpoint has a 90-day rolling backup. Files deleted from the device remain restorable for 90 days; after that the snapshot is purged.",
+        "The backup excludes the user’s Downloads folder and any directory tagged with the `nobackup` extended attribute. Mark scratch space with `nobackup` to keep it out of the snapshot.",
+        "A restore drill runs quarterly. The IT team picks five random endpoints and verifies the restore; you may be asked to keep the device plugged in overnight."
+      ]
+    },
+    {
+      "id": "kb-os",
+      "title": "OS upgrade window policy",
+      "summary": "GA+30, deferral, rollback",
+      "category": "Software",
+      "updated": "2025-03-04",
+      "helpful": 78,
+      "revision": "Rev 6.0",
+      "owner": { "name": "Dana Quinn", "initials": "DQ" },
+      "body": [
+        "OS upgrades are released GA+30. This delay lets the vendor’s first patch land before we deploy at scale, which materially reduces the rollback rate.",
+        "Critical updates (security advisories with CVSS ≥ 9) are exempted from the GA+30 delay and may deploy within 24 hours of release.",
+        "If an upgrade breaks a critical application on your device, file a rollback request within 7 days. Rollbacks after day 7 require a manual image and are reserved for fleet-wide issues."
+      ]
+    },
+    {
+      "id": "kb-phishing",
+      "title": "Phishing report workflow",
+      "summary": "Report button, triage, takedown",
+      "category": "Security",
+      "updated": "2025-02-14",
+      "helpful": 91,
+      "revision": "Rev 2.9",
+      "owner": { "name": "Maya Tan", "initials": "MT" },
+      "body": [
+        "Use the Report Phishing button in Outlook or the Slack `/report-phish` shortcut. Both routes land in the same triage queue within 60 seconds.",
+        "The triage team has a 30-minute SLA during business hours. After triage, malicious messages are purged from every mailbox in the tenant.",
+        "Never forward a suspicious message to a colleague to “ask if it’s real���. The triage team needs the original headers, which a forward strips."
+      ]
+    },
+    {
+      "id": "kb-encryption",
+      "title": "Full-disk encryption policy",
+      "summary": "FileVault, BitLocker, recovery key",
+      "category": "Security",
+      "updated": "2024-12-10",
+      "helpful": 85,
+      "revision": "Rev 3.7",
+      "owner": { "name": "Neil Iyer", "initials": "NI" },
+      "body": [
+        "Every managed device ships with full-disk encryption enabled (FileVault on macOS, BitLocker on Windows). Encryption is enforced by the MDM channel and cannot be disabled by the user.",
+        "The recovery key is escrowed to the corporate identity provider. A user who forgets their password can recover the key through the self-service portal without opening a ticket.",
+        "If the recovery portal is unavailable, the device must be re-imaged. This is intentional: the recovery key is the only path back into the encrypted volume."
+      ]
+    },
+    {
+      "id": "kb-onboarding",
+      "title": "New hire onboarding pack",
+      "summary": "Hardware, accounts, day one",
+      "category": "Handover",
+      "updated": "2025-02-25",
+      "helpful": 88,
+      "revision": "Rev 4.3",
+      "owner": { "name": "Aisha Kapoor", "initials": "AK" },
+      "body": [
+        "New hire packs ship to the manager 5 business days before the start date. The pack includes a laptop, dock, monitor, and accessories selected from the role’s hardware matrix.",
+        "Accounts are provisioned the morning of day one. The manager receives a welcome email with the new hire’s temporary password and a list of the SaaS apps they have been granted.",
+        "On day one, the new hire meets their onboarding buddy for a 30-minute orientation. The buddy walks them through the device, the password manager, and the request portal."
+      ]
+    },
+    {
+      "id": "kb-offboarding",
+      "title": "Offboarding checklist",
+      "summary": "Returns, transfers, data retention",
+      "category": "Handover",
+      "updated": "2025-01-15",
+      "helpful": 83,
+      "revision": "Rev 2.5",
+      "owner": { "name": "Jordan Lee", "initials": "JL" },
+      "body": [
+        "The offboarding workflow runs the day after the employee’s last day. Accounts are disabled, devices are requested for return, and the manager is asked to nominate a data custodian.",
+        "Email is forwarded to the manager for 30 days. After 30 days the mailbox is archived; the archive is searchable for 7 years per the corporate retention policy.",
+        "Files in the employee’s personal drive (OneDrive) are transferred to the data custodian. Personal files in the device’s local folders are not retained; the user is responsible for moving them before they leave."
+      ]
+    },
+    {
+      "id": "kb-transfer",
+      "title": "Internal transfer workflow",
+      "summary": "Role change, access review, hardware",
+      "category": "Handover",
+      "updated": "2024-11-29",
+      "helpful": 74,
+      "revision": "Rev 1.9",
+      "owner": { "name": "Liam Park", "initials": "LP" },
+      "body": [
+        "Internal transfers retain the existing device unless the new role’s hardware matrix requires a swap. The matrix is enforced by the HR feed; if the matrix says the new role needs a MacBook Pro 16″, the swap is automatic.",
+        "Access changes run through the IGA platform. The new role’s group memberships are added and the old role’s memberships are revoked. There is no manual override for this step.",
+        "The transfer is visible in the request portal as a single ticket. The ticket closes when the access review and the hardware swap (if any) are both complete."
+      ]
+    },
+    {
+      "id": "kb-headset",
+      "title": "Headset pairing & audio quality",
+      "summary": "Bluetooth, USB, firmware",
+      "category": "Hardware",
+      "updated": "2025-02-19",
+      "helpful": 77,
+      "revision": "Rev 2.3",
+      "owner": { "name": "Priya Rao", "initials": "PR" },
+      "body": [
+        "Bluetooth headsets paired to multiple devices can stutter when two devices stream audio at the same time. Disable Bluetooth on the second device during calls for the best quality.",
+        "USB headsets take priority over Bluetooth in the OS audio routing. If a USB headset is plugged in but the system is playing through Bluetooth, quit and reopen the audio app to force a re-routing.",
+        "Firmware updates for the corporate headsets ship through the device management channel. The update is silent and takes about 90 seconds."
+      ]
+    },
+    {
+      "id": "kb-vpn-failover",
+      "title": "VPN failover to backup gateway",
+      "summary": "Health check, manual switch",
+      "category": "Network",
+      "updated": "2025-02-10",
+      "helpful": 72,
+      "revision": "Rev 1.6",
+      "owner": { "name": "Aisha Kapoor", "initials": "AK" },
+      "body": [
+        "The primary VPN gateway runs a health check every 30 seconds. If two consecutive checks fail, the client automatically falls over to the backup gateway.",
+        "Manual failover is available from the VPN client’s menu. Use it when the primary gateway is sluggish but not yet flagged as failed; the client will return to the primary once the health check recovers.",
+        "If both gateways are unavailable, the client logs an error and the user should connect via the mobile hotspot until the gateways recover."
+      ]
+    },
+    {
+      "id": "kb-sla",
+      "title": "Incident severity and SLA",
+      "summary": "P1, P2, P3, response targets",
+      "category": "Software",
+      "updated": "2025-01-30",
+      "helpful": 80,
+      "revision": "Rev 3.5",
+      "owner": { "name": "Dana Quinn", "initials": "DQ" },
+      "body": [
+        "Incidents are classified P1 through P3. P1 is a complete outage affecting more than 50 users; P2 is a degraded service affecting a team; P3 is a single-user issue.",
+        "P1 targets: 15-minute response, 4-hour resolution. P2 targets: 1-hour response, 1-business-day resolution. P3 targets: 1-business-day response, 5-business-day resolution.",
+        "Severity can be reclassified during an incident. The on-call lead has the authority to upgrade or downgrade, and any change is logged on the incident timeline."
+      ]
+    },
+    {
+      "id": "kb-zerotrust",
+      "title": "Zero-trust access for SaaS",
+      "summary": "Conditional access, posture, MFA",
+      "category": "Security",
+      "updated": "2025-02-21",
+      "helpful": 87,
+      "revision": "Rev 2.2",
+      "owner": { "name": "Neil Iyer", "initials": "NI" },
+      "body": [
+        "All SaaS access is gated by conditional access. The policy requires a managed device, an MFA challenge, and a compliant posture (encryption on, OS up to date).",
+        "Unmanaged devices can read public documents but cannot access internal-only SaaS. The policy enforces this at the identity provider, not at the SaaS app, so the user sees a single, consistent experience.",
+        "If a user is travelling and the managed device fails the posture check, they can request a temporary exception from the on-call lead. Exceptions are time-boxed to 24 hours."
+      ]
+    },
+    {
+      "id": "kb-loadbalancer",
+      "title": "Internal load balancer health checks",
+      "summary": "Probe paths, drain, failure modes",
+      "category": "Network",
+      "updated": "2024-12-20",
+      "helpful": 70,
+      "revision": "Rev 1.4",
+      "owner": { "name": "Liam Park", "initials": "LP" },
+      "body": [
+        "Internal load balancers probe `/healthz` on every backend. The probe must return 200 within 200 ms; otherwise the backend is taken out of rotation.",
+        "When a backend is being drained for maintenance, the load balancer stops sending new requests but allows in-flight requests to complete. Draining is non-disruptive and reversible.",
+        "If a backend is consistently failing the probe, check the application logs first. The most common cause is a missing database connection, not a load-balancer misconfiguration."
+      ]
+    }
+  ],
+  "categories": [
+    { "id": "all", "label": "All articles", "icon": "library", "count": 24 },
+    { "id": "Handover", "label": "Handover", "icon": "handshake", "count": 5 },
+    { "id": "Hardware", "label": "Hardware", "icon": "cpu", "count": 5 },
+    { "id": "Network", "label": "Network", "icon": "wifi", "count": 5 },
+    { "id": "Access", "label": "Access", "icon": "key-round", "count": 3 }
+  ]
+}

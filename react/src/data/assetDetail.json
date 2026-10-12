@@ -1,0 +1,242 @@
+{
+  "details": {
+    "A-00125": {
+      "costCenter": "CC-IT-440",
+      "warrantyEndsAt": "2025-06-14",
+      "timeline": [
+        {
+          "at": "2024-11-02",
+          "actor": "Dana Quinn",
+          "title": "Custody confirmed",
+          "note": "Condition: Good · Accessories: Charger, sleeve",
+          "attachments": [
+            {
+              "id": "doc-handover-00125",
+              "name": "Handover receipt · 2024-11-02",
+              "kind": "PDF",
+              "sizeBytes": 186440,
+              "uploadedAt": "2024-11-02",
+              "uploadedBy": "Dana Quinn"
+            }
+          ]
+        },
+        {
+          "at": "2025-03-12",
+          "actor": "Neil Iyer",
+          "title": "Ticket r-00042 opened",
+          "note": "Priority Critical · assigned Neil Iyer"
+        },
+        {
+          "at": "2023-06-01",
+          "actor": "AppleCare+",
+          "title": "Warranty extended"
+        },
+        {
+          "at": "2021-06-18",
+          "actor": "MDM profile IT-STD-14",
+          "title": "Imaged & enrolled"
+        }
+      ],
+      "documents": [
+        {
+          "id": "doc-handover-00125",
+          "name": "Handover receipt · 2024-11-02",
+          "kind": "PDF",
+          "sizeBytes": 186440,
+          "uploadedAt": "2024-11-02",
+          "uploadedBy": "Dana Quinn",
+          "view": true
+        },
+        {
+          "id": "doc-po-88421",
+          "name": "Purchase PO-88421",
+          "kind": "PDF",
+          "sizeBytes": 94208,
+          "uploadedAt": "2021-06-18",
+          "uploadedBy": "IT Procurement",
+          "view": true
+        }
+      ],
+      "linkedTickets": [
+        {
+          "id": "r-00042",
+          "title": "Laptop not charging · Dana Quinn",
+          "priority": "Critical",
+          "status": "In progress",
+          "sla": { "kind": "risk", "text": "1h 40m" },
+          "owner": { "name": "Neil Iyer", "initials": "NI" }
+        }
+      ]
+    },
+    "A-00188": {
+      "costCenter": "CC-IT-220",
+      "warrantyEndsAt": "2026-02-09",
+      "timeline": [
+        {
+          "at": "2025-08-14",
+          "actor": "Maya Tan",
+          "title": "Custody confirmed",
+          "note": "Condition: Good · Charger only"
+        },
+        {
+          "at": "2024-11-04",
+          "actor": "IT Depot",
+          "title": "Imaged & enrolled"
+        },
+        {
+          "at": "2022-02-09",
+          "actor": "Lenovo Warranty",
+          "title": "Warranty registered"
+        }
+      ],
+      "documents": [
+        {
+          "id": "doc-handover-00188",
+          "name": "Handover receipt · 2025-08-14",
+          "kind": "PDF",
+          "sizeBytes": 174320,
+          "uploadedAt": "2025-08-14",
+          "uploadedBy": "Maya Tan",
+          "view": true
+        }
+      ],
+      "linkedTickets": []
+    },
+    "A-00091": {
+      "costCenter": "CC-IT-105",
+      "warrantyEndsAt": "2024-12-01",
+      "timeline": [
+        {
+          "at": "2025-09-22",
+          "actor": "Omar Muniz",
+          "title": "Battery service complete",
+          "note": "Replaced battery · diagnostics clean"
+        },
+        {
+          "at": "2025-09-10",
+          "actor": "IT Depot",
+          "title": "Sent to repair bay",
+          "note": "Battery health 47%"
+        },
+        {
+          "at": "2023-12-01",
+          "actor": "Dell Warranty",
+          "title": "Warranty registered"
+        },
+        {
+          "at": "2020-12-01",
+          "actor": "MDM profile IT-STD-09",
+          "title": "Imaged & enrolled"
+        }
+      ],
+      "documents": [
+        {
+          "id": "doc-repair-00091",
+          "name": "Battery service report",
+          "kind": "PDF",
+          "sizeBytes": 88200,
+          "uploadedAt": "2025-09-22",
+          "uploadedBy": "Omar Muniz",
+          "view": true
+        },
+        {
+          "id": "doc-po-72031",
+          "name": "Purchase PO-72031",
+          "kind": "PDF",
+          "sizeBytes": 72100,
+          "uploadedAt": "2020-12-01",
+          "uploadedBy": "IT Procurement",
+          "view": true
+        }
+      ],
+      "linkedTickets": [
+        {
+          "id": "r-00112",
+          "title": "Battery replacement · Omar Muniz",
+          "priority": "High",
+          "status": "In progress",
+          "sla": { "kind": "safe", "text": "SLA 3d" },
+          "owner": { "name": "Omar Muniz", "initials": "OM" }
+        }
+      ]
+    },
+    "A-00204": {
+      "costCenter": "CC-FAC-018",
+      "warrantyEndsAt": "2027-05-21",
+      "timeline": [
+        {
+          "at": "2026-04-12",
+          "actor": "Aisha Sanders",
+          "title": "Custody confirmed",
+          "note": "Condition: Good · Stand + cables included"
+        },
+        {
+          "at": "2023-05-21",
+          "actor": "MDM profile IT-STD-22",
+          "title": "Imaged & enrolled"
+        }
+      ],
+      "documents": [
+        {
+          "id": "doc-handover-00204",
+          "name": "Handover receipt · 2026-04-12",
+          "kind": "PDF",
+          "sizeBytes": 160200,
+          "uploadedAt": "2026-04-12",
+          "uploadedBy": "Aisha Sanders",
+          "view": true
+        }
+      ],
+      "linkedTickets": []
+    },
+    "A-00112": {
+      "costCenter": "CC-IT-302",
+      "warrantyEndsAt": "2025-10-19",
+      "timeline": [
+        {
+          "at": "2025-10-12",
+          "actor": "Rita Hayes",
+          "title": "Returned from repair",
+          "note": "Keyboard replaced"
+        },
+        {
+          "at": "2025-10-04",
+          "actor": "IT Depot",
+          "title": "Sent to repair bay",
+          "note": "Sticky shift key"
+        },
+        {
+          "at": "2024-10-19",
+          "actor": "MDM profile IT-STD-17",
+          "title": "Warranty extended"
+        },
+        {
+          "at": "2022-10-19",
+          "actor": "MDM profile IT-STD-11",
+          "title": "Imaged & enrolled"
+        }
+      ],
+      "documents": [
+        {
+          "id": "doc-repair-00112",
+          "name": "Keyboard service report",
+          "kind": "PDF",
+          "sizeBytes": 96400,
+          "uploadedAt": "2025-10-12",
+          "uploadedBy": "Rita Hayes",
+          "view": true
+        }
+      ],
+      "linkedTickets": [
+        {
+          "id": "r-00098",
+          "title": "Keyboard replacement · Rita Hayes",
+          "priority": "Medium",
+          "status": "Resolved",
+          "sla": { "kind": "safe", "text": "SLA 5d" },
+          "owner": { "name": "Jules Sato", "initials": "JS" }
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,653 @@
+/* Syncfusion's `e-appbar` base classes give us layout primitives
+   (flex row, padding, height) — we override colors with our tokens
+   and add the app-bar-specific nodes. */
+
+.it-appbar.e-appbar {
+  background: var(--app-card-bg);
+  border-bottom: 1px solid var(--app-card-border);
+  color: var(--color-sf-fg-primary);
+  height: var(--app-appbar-height);
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-3);
+  padding-inline: var(--sf-space-4);
+  z-index: 30;
+  position: sticky;
+  top: 0;
+}
+
+/* Nav toggle (always visible — opens the drawer on mobile,
+   collapses / expands the docked sidebar on desktop). The
+   Syncfusion AppBar wrapper is a flex row so this button slots in
+   as the very first child. */
+.it-appbar__menu {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--sf-radius-md);
+  color: var(--color-sf-fg-secondary);
+  background: transparent;
+  flex-shrink: 0;
+}
+
+.it-appbar__menu:hover {
+  background: var(--color-sf-bg-surface-muted);
+  color: var(--color-sf-fg-primary);
+}
+
+.it-appbar__menu[aria-pressed="true"] {
+  background: var(--color-sf-bg-brand-subtle);
+  color: var(--color-sf-fg-brand-primary);
+}
+
+/* Inline breadcrumb rendered to the right of the nav toggle. The
+   links / current page share a single type ramp; the separator
+   is a slash with reduced opacity to keep the visual weight low. */
+.it-appbar__crumbs {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-1);
+  min-width: 0;
+  font-size: var(--sf-text-sm);
+  color: var(--color-sf-fg-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.it-appbar__crumb-group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sf-space-1);
+  min-width: 0;
+}
+
+.it-appbar__crumb {
+  color: var(--color-sf-fg-secondary);
+  text-decoration: none;
+  font-weight: var(--sf-font-medium);
+  border-radius: var(--sf-radius-sm);
+  padding: 2px var(--sf-space-1);
+  transition: color var(--sf-transition), background var(--sf-transition);
+}
+
+a.it-appbar__crumb:hover {
+  color: var(--color-sf-fg-primary);
+  background: var(--color-sf-bg-surface-muted);
+}
+
+.it-appbar__crumb--current {
+  color: var(--color-sf-fg-primary);
+  font-weight: var(--sf-font-semibold);
+}
+
+.it-appbar__crumb-sep {
+  color: var(--color-sf-fg-secondary);
+  opacity: 0.7;
+}
+
+/* On very narrow viewports, drop everything except the current
+   crumb so the actions stay reachable. The collapsed sidebar
+   still opens via the leading toggle. */
+@media (max-width: 540px) {
+  .it-appbar__crumbs {
+    font-size: var(--sf-text-xs);
+  }
+  .it-appbar__crumb-group .it-appbar__crumb:not(.it-appbar__crumb--current) {
+    display: none;
+  }
+  .it-appbar__crumb-group .it-appbar__crumb-sep {
+    display: none;
+  }
+}
+
+/* Brand mark (hidden ≥ 769px) */
+.it-appbar__brand {
+  display: none;
+  align-items: center;
+  gap: var(--sf-space-2);
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+  white-space: nowrap;
+}
+
+.it-appbar__brand-mark {
+  width: 24px;
+  height: 24px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--sf-radius-sm);
+  background: var(--color-sf-bg-brand-subtle);
+  color: var(--color-sf-fg-brand-primary);
+}
+
+/* Search */
+.it-appbar__search {
+  flex: 1;
+  min-width: 0;
+  max-width: 560px;
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  height: 36px;
+  padding-inline: var(--sf-space-3);
+  background: var(--color-sf-bg-surface-muted);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-md);
+  color: var(--color-sf-fg-secondary);
+  transition: border-color var(--sf-transition), background var(--sf-transition);
+}
+
+.it-appbar__search:focus-within {
+  border-color: var(--color-sf-border-brand);
+  background: var(--app-card-bg);
+}
+
+.it-appbar__search-icon {
+  color: var(--color-sf-fg-secondary);
+  flex-shrink: 0;
+}
+
+.it-appbar__search input {
+  flex: 1;
+  min-width: 0;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--color-sf-fg-primary);
+  font-size: var(--sf-text-sm);
+}
+
+.it-appbar__search input::placeholder {
+  color: var(--color-sf-fg-secondary);
+}
+
+/* Hide search on narrow mobile (visible at ≥ 481px) */
+@media (max-width: 480px) {
+  .it-appbar__search {
+    display: none;
+  }
+}
+
+/* Actions */
+.it-appbar__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-1);
+  flex-shrink: 0;
+}
+
+.icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: var(--sf-radius-md);
+  color: var(--color-sf-fg-secondary);
+  background: transparent;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background var(--sf-transition), color var(--sf-transition);
+}
+
+.icon-btn:hover {
+  background: var(--color-sf-bg-surface-muted);
+  color: var(--color-sf-fg-primary);
+}
+
+.icon-btn[aria-pressed="true"] {
+  background: var(--color-sf-bg-brand-subtle);
+  color: var(--color-sf-fg-brand-primary);
+}
+
+/* Profile pill (demo) — rendered as a Syncfusion ChipList with a
+   single chip. The chip carries the same surface, border, and
+   height as the previous `<div class="it-profile-pill">`, plus a
+   green "J" avatar that replaces the legacy status dot. */
+.e-chip-list.it-profile-pill {
+  display: inline-flex;
+  align-items: center;
+  height: 36px;
+}
+
+.e-chip-list.it-profile-pill .e-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  height: 36px;
+  padding: 0 var(--sf-space-3) 0 4px;
+  border-radius: var(--sf-radius-full);
+  background: var(--color-sf-bg-surface-muted);
+  border: 1px solid var(--app-card-border);
+  color: var(--color-sf-fg-primary);
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-medium);
+  white-space: nowrap;
+  cursor: default;
+}
+
+.e-chip-list.it-profile-pill .e-chip:hover {
+  background: var(--color-sf-bg-surface-muted);
+  box-shadow: none;
+}
+
+/* The "J" avatar doubles as the status dot — tokenised success
+   green so the on-call / online indicator still reads at a glance. */
+.e-chip-list.it-profile-pill .e-chip .e-chip-avatar {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  background: var(--color-sf-fg-success-primary);
+  color: #fff;
+  font-size: 12px;
+  font-weight: var(--sf-font-semibold);
+  margin: 0;
+  box-shadow: 0 0 0 2px var(--color-sf-bg-surface-muted);
+}
+
+@media (max-width: 540px) {
+  .e-chip-list.it-profile-pill {
+    display: none;
+  }
+}
+
+/* Mobile-only nodes: brand stays hidden ≥ 769px. The nav toggle
+   is visible at every breakpoint now (it controls the drawer on
+   mobile and the dock on desktop). */
+@media (max-width: 768px) {
+  .it-appbar__brand {
+    display: flex;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Syncfusion ButtonComponent → icon-only button hook
+   ---------------------------------------------------------------------
+   The theme + bell buttons in the actions row used to be plain
+   `<button class="icon-btn">`. They are now Syncfusion
+   `ButtonComponent`s with `cssClass="e-round e-flat"` + the
+   `appbar-icon-btn` hook class so the visual matches the previous
+   implementation. The double-class selector below is intentionally
+   more specific than Syncfusion's `.e-btn` rules so it loads after
+   them and wins. */
+.e-btn.appbar-icon-btn,
+.e-btn.e-round.appbar-icon-btn,
+.e-btn.e-flat.appbar-icon-btn {
+  width: 36px;
+  height: 36px;
+  min-width: 36px;
+  padding: 0;
+  border-radius: var(--sf-radius-md);
+  background: transparent;
+  color: var(--color-sf-fg-secondary);
+  border: 1px solid transparent;
+  box-shadow: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition: background var(--sf-transition), color var(--sf-transition);
+}
+
+.e-btn.appbar-icon-btn:hover,
+.e-btn.appbar-icon-btn.e-btn:hover {
+  background: var(--color-sf-bg-surface-muted);
+  color: var(--color-sf-fg-primary);
+}
+
+/* Notification badge anchored to the top-right of the bell button. */
+.it-appbar__notif-wrap {
+  position: relative;
+  display: inline-flex;
+}
+
+.it-appbar__notif-badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 8px;
+  height: 12px;
+  padding: 0 5px;
+  border-radius: var(--sf-radius-full);
+  background: var(--color-sf-fg-danger-primary);
+  color: #fff;
+  font-size: 8px;
+  font-weight: var(--sf-font-semibold);
+  line-height: 12px;
+  text-align: center;
+  box-shadow: 0 0 0 1.5px var(--app-card-bg);
+  pointer-events: none;
+}
+
+.e-btn.appbar-icon-btn:focus,
+.e-btn.appbar-icon-btn.e-btn:focus {
+  /* Syncfusion's focus ring uses the brand color — layer ours on top
+     so it tracks our token system. */
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-sf-border-brand);
+  background: var(--color-sf-bg-surface-muted);
+  color: var(--color-sf-fg-primary);
+}
+
+.e-btn.appbar-icon-btn[aria-pressed="true"] {
+  background: var(--color-sf-bg-brand-subtle);
+  color: var(--color-sf-fg-brand-primary);
+}
+
+/* Syncfusion renders its icon-only content in a `<span>` wrapper —
+   centre the lucide SVG inside that span. */
+.e-btn.appbar-icon-btn > span,
+.e-btn.appbar-icon-btn .e-btn-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+/* Bell wrapper positions the unread-count badge on the bell button. */
+.appbar-bell-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.appbar-bell__badge {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  border-radius: var(--sf-radius-full);
+  background: var(--color-sf-fg-danger-primary);
+  color: #fff;
+  font-size: 10px;
+  font-weight: var(--sf-font-semibold);
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  box-shadow: 0 0 0 2px var(--app-card-bg);
+}
+
+/* ---------------------------------------------------------------------
+  Notifications popover — non-modal DialogComponent below the app bar
+  ---------------------------------------------------------------------
+  Pin the Syncfusion dialog wrapper to the top-right so it appears
+  beside the notification bell without covering the page. */
+.it-notifications.e-dialog {
+  /* The Syncfusion dialog wrapper already provides surface, border,
+     and elevation via the `e-dialog` class. Re-anchor its width so
+     `width: 360px` actually applies to the content (Syncfusion
+     measures from the wrapper). */
+  inset: auto;
+  top: calc(var(--app-appbar-height) + var(--sf-space-2));
+  right: var(--sf-space-4);
+  margin: 0;
+  width: 360px;
+  height: auto;
+  max-width: calc(100vw - 32px);
+  max-height: calc(100vh - var(--app-appbar-height) - 32px);
+  border-radius: var(--sf-radius-lg);
+  overflow: hidden;
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  box-shadow: var(--sf-shadow-lg);
+}
+
+/* Header — sync the surface with the body, keep close icon accessible. */
+.it-notifications .e-dlg-header {
+  box-sizing: border-box;
+  width: 100%;
+  background: var(--app-card-bg);
+  color: var(--color-sf-fg-primary);
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  padding: var(--sf-space-3) var(--sf-space-4);
+  border-bottom: 1px solid var(--app-card-border);
+}
+
+.it-notifications .e-dlg-header-content {
+  padding: 0;
+}
+
+.it-notifications__title {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+}
+
+.it-notifications__count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 18px;
+  padding: 0 6px;
+  border-radius: var(--sf-radius-full);
+  background: var(--color-sf-bg-brand-subtle);
+  color: var(--color-sf-fg-danger-primary);
+  font-size: 10px;
+  font-weight: var(--sf-font-semibold);
+  line-height: 1;
+  letter-spacing: 0.02em;
+}
+
+.it-notifications .e-dlg-closeicon-btn,
+.it-notifications .e-dlg-closeicon-btn:hover {
+  background: transparent;
+  color: var(--color-sf-fg-secondary);
+  border-radius: var(--sf-radius-sm);
+}
+
+.it-notifications .e-dlg-closeicon-btn:hover {
+  background: var(--color-sf-bg-surface-muted);
+  color: var(--color-sf-fg-primary);
+}
+
+/* Body — reset Syncfusion's default padding so the list bleeds edge
+   to edge, then add our own section padding. */
+.it-notifications .e-dlg-content {
+  padding: 0;
+  background: var(--app-card-bg);
+  color: var(--color-sf-fg-primary);
+  max-height: min(60vh, 480px);
+  overflow-y: auto;
+}
+
+.it-notifications__body {
+  display: flex;
+  flex-direction: column;
+}
+
+.it-notifications__topbar {
+  display: flex;
+  justify-content: flex-end;
+  padding: var(--sf-space-2) var(--sf-space-4);
+  border-bottom: 1px solid var(--app-card-border);
+  background: var(--color-sf-bg-surface-muted);
+}
+
+.it-notifications__title-text {
+  font-size: 10px;
+  font-weight: var(--sf-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-sf-fg-secondary);
+}
+
+.it-notifications__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sf-space-2);
+  padding: var(--sf-space-6) var(--sf-space-4);
+  color: var(--color-sf-fg-secondary);
+  font-size: var(--sf-text-sm);
+}
+
+.it-notifications__empty svg {
+  color: var(--color-sf-fg-success-primary);
+}
+
+.it-notifications__empty-title {
+  margin: 0;
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+}
+
+.it-notifications__empty-hint {
+  margin: 0;
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  text-align: center;
+  max-width: 240px;
+}
+
+.it-notifications__section {
+  padding: var(--sf-space-3) 0;
+  border-bottom: 1px solid var(--app-card-border);
+}
+
+.it-notifications__section:last-of-type {
+  border-bottom: none;
+}
+
+.it-notifications__heading {
+  margin: 0;
+  padding: 0 var(--sf-space-4) var(--sf-space-2);
+  font-size: 10px;
+  font-weight: var(--sf-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-sf-fg-secondary);
+}
+
+.it-notifications__list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.it-notifications__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sf-space-3);
+  width: 100%;
+  padding: var(--sf-space-2) var(--sf-space-4);
+  text-decoration: none;
+  text-align: left;
+  color: var(--color-sf-fg-primary);
+  background: transparent;
+  border: 0;
+  font: inherit;
+  cursor: pointer;
+  transition: background var(--sf-transition);
+  position: relative;
+}
+
+.it-notifications__item:hover {
+  background: var(--color-sf-bg-surface-muted);
+}
+
+.it-notifications__item:focus-visible {
+  outline: none;
+  background: var(--color-sf-bg-surface-muted);
+  box-shadow: inset 2px 0 0 var(--color-sf-border-brand);
+}
+
+.it-notifications__dot {
+  flex-shrink: 0;
+  width: 8px;
+  height: 8px;
+  border-radius: var(--sf-radius-full);
+  margin-top: 6px;
+  background: var(--color-sf-fg-secondary);
+}
+
+.it-notifications__dot--danger {
+  background: var(--color-sf-fg-danger-primary);
+}
+
+.it-notifications__dot--warning {
+  background: var(--color-sf-fg-warning-primary);
+}
+
+.it-notifications__dot--info {
+  background: var(--color-sf-fg-brand-primary);
+}
+
+.it-notifications__dot--success {
+  background: var(--color-sf-fg-success-primary);
+}
+
+.it-notifications__text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+  flex: 1;
+}
+
+.it-notifications__item-title {
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-medium);
+  color: var(--color-sf-fg-primary);
+  line-height: 1.35;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-break: break-word;
+}
+
+.it-notifications__item-sub {
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  line-height: 1.35;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.it-notifications__footer {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: var(--sf-space-3) var(--sf-space-4);
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-medium);
+  color: var(--color-sf-fg-brand-primary);
+  text-decoration: none;
+  border: 0;
+  border-top: 1px solid var(--app-card-border);
+  background: var(--app-card-bg);
+  font-family: inherit;
+  cursor: pointer;
+  transition: background var(--sf-transition);
+}
+
+.it-notifications__footer:hover,
+.it-notifications__footer:focus-visible {
+  background: var(--color-sf-bg-surface-muted);
+  color: var(--color-sf-fg-brand-primary);
+  outline: none;
+}
+
+/* On narrow viewports, the popup should bleed toward the screen
+   edges so the bell-anchor logic doesn't push it off-screen. */
+@media (max-width: 540px) {
+  .it-notifications.e-dialog {
+    width: calc(100vw - 32px) !important;
+    max-width: calc(100vw - 32px);
+  }
+}

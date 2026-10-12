@@ -1,0 +1,643 @@
+/* =============================================================================
+   IT Asset & Service Request Portal — Requests surface styles
+   Mirrors `prototype/styles.css` `#view-requests` block + responsive collapse.
+   Token-driven, no new tokens.
+   ============================================================================= */
+
+:root {
+  /* Column min-width tokens the spec calls for. The desktop grid uses
+     the larger value; the tablet grid uses the smaller so the four
+     columns fit the content width without horizontal scroll. */
+  --app-kanban-col-min: 268px;
+  --app-kanban-col-min-tablet: 200px;
+
+  /* Total board width — the kanban fills its parent up to a
+     generous cap so the four columns have enough room to read on
+     wide / 4K screens (1920px ≈ 4 columns × ~470px each, which
+     keeps the cards readable without leaving large empty bands).
+     The design-system content cap (`--app-content-max` = 1440px)
+     is intentionally *not* the board cap here: the kanban is the
+     one surface that's designed to expand, since the four fixed
+     columns scale horizontally to fill available width. */
+  --app-kanban-max-width: 1920px;
+}
+
+/* Page body — toolbar on top, board below. */
+.requests-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-content-gap);
+  padding: var(--sf-space-4) var(--app-content-inset-inline);
+  min-width: 0;
+}
+
+/* Live region for drag-and-drop announcements. Visually hidden but
+   announced by AT. */
+.requests-live {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ----------------------------------------------------------------------------
+   Toolbar (requests-specific override on the shared .toolbar block).
+   ---------------------------------------------------------------------------- */
+.toolbar--requests {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  flex-wrap: wrap;
+}
+
+.toolbar--requests .toolbar__search {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  height: 36px;
+  min-width: 220px;
+  flex: 1;
+  max-width: 360px;
+  padding-inline: var(--sf-space-3);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-md);
+  background: var(--app-card-bg);
+  color: var(--color-sf-fg-secondary);
+  transition: border-color var(--sf-transition);
+}
+
+.toolbar--requests .toolbar__search:focus-within {
+  border-color: var(--color-sf-fg-brand-primary);
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--color-sf-fg-brand-primary) 25%, transparent);
+}
+
+.toolbar--requests .toolbar__search input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  outline: none;
+  color: var(--color-sf-fg-primary);
+  min-width: 0;
+  font: inherit;
+}
+
+.toolbar--requests .toolbar__search input::placeholder {
+  color: var(--color-sf-fg-secondary);
+}
+
+.toolbar__new-request {
+  margin-left: auto;
+}
+
+/* ----------------------------------------------------------------------------
+   Chip group (priority)
+   ---------------------------------------------------------------------------- */
+.chip-group {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  flex-wrap: wrap;
+}
+
+.chip {
+  display: inline-flex;
+  align-items: center;
+  height: 32px;
+  padding-inline: var(--sf-space-3);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-full);
+  background: var(--app-card-bg);
+  color: var(--color-sf-fg-secondary);
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: color var(--sf-transition),
+    background var(--sf-transition),
+    border-color var(--sf-transition);
+}
+
+.chip:hover {
+  color: var(--color-sf-fg-primary);
+  border-color: var(--color-sf-border-brand);
+}
+
+.chip.is-active {
+  background: var(--app-nav-active-bg);
+  border-color: var(--color-sf-border-brand);
+  color: var(--app-nav-active-fg);
+}
+
+.chip:focus-visible {
+  outline: 2px solid var(--app-focus-ring);
+  outline-offset: 2px;
+}
+
+/* ----------------------------------------------------------------------------
+   Kanban board + column chrome
+   ---------------------------------------------------------------------------- */
+.kanban {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--app-content-gap);
+  min-width: 0;
+  align-items: start;
+}
+
+.kanban-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-3);
+  min-width: 0;
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-lg);
+  box-shadow: var(--sf-shadow-sm);
+  padding: var(--sf-space-3);
+  min-height: 320px;
+}
+
+.kanban-col__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sf-space-2);
+  padding-bottom: var(--sf-space-2);
+  border-bottom: 1px solid var(--app-card-border);
+}
+
+.kanban-col__title {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+}
+
+.kanban-col__count {
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-medium);
+  color: var(--color-sf-fg-secondary);
+  font-variant-numeric: tabular-nums;
+  background: var(--color-sf-bg-surface-muted);
+  padding: 2px 8px;
+  border-radius: var(--sf-radius-full);
+}
+
+.kanban-col__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-2);
+  min-height: 120px;
+}
+
+.kanban-col__empty {
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  font-style: italic;
+  padding: var(--sf-space-3) var(--sf-space-2);
+  text-align: center;
+}
+
+/* ----------------------------------------------------------------------------
+   Kanban card chrome (rendered as JSX inside a Syncfusion card template)
+   ---------------------------------------------------------------------------- */
+.kanban-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-2);
+  padding: var(--sf-space-3);
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-md);
+  box-shadow: var(--sf-shadow-sm);
+  cursor: grab;
+  transition: box-shadow var(--sf-transition),
+    transform var(--sf-transition),
+    border-color var(--sf-transition);
+  /* Card width — fills the column body edge-to-edge. The previous
+     `max-width: 320px` cap made the cards read as narrow "tickets"
+     on 1440px+ viewports, but on 4K screens the column widens to
+     ~340px+ and the card sat centred with empty bands on either
+     side. The column already provides the card's outer chrome
+     (border / radius / padding), so the card just needs to fill
+     the inner column body. Syncfusion's KanbanComponent has no
+     native card-width prop; the skill (customization-and-styling.md
+     → CSS Customization) drives card width from the .e-card /
+     .kanban-card host class. */
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.kanban-card:hover {
+  border-color: var(--color-sf-border-brand);
+  box-shadow: var(--sf-shadow-md);
+}
+
+.kanban-card:active {
+  cursor: grabbing;
+}
+
+/* ----------------------------------------------------------------------------
+   Per-status left border — each card carries a 4px colored rail on the
+   left edge, keyed off `data-status`. The colors mirror the column-header
+   border-top tokens so the card chrome visually echoes the column it's
+   in. Tokens used here are the same `--color-sf-fg-*-primary` vars the
+   .kanban-col-header--* rules already consume.
+   ---------------------------------------------------------------------------- */
+.kanban-card[data-status='New'] {
+  border-left: 4px solid var(--color-sf-fg-neutral-primary);
+}
+
+.kanban-card[data-status='Triaged'] {
+  border-left: 4px solid var(--color-sf-fg-info-primary);
+}
+
+.kanban-card[data-status='InProgress'] {
+  border-left: 4px solid var(--color-sf-fg-warning-primary);
+}
+
+.kanban-card[data-status='Resolved'] {
+  border-left: 4px solid var(--color-sf-fg-success-primary);
+}
+
+.kanban-card__id {
+  font-family: var(--sf-font-mono);
+  font-size: 0.6875rem;
+  color: var(--color-sf-fg-secondary);
+  letter-spacing: 0.02em;
+}
+
+.kanban-card__title {
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-medium);
+  color: var(--color-sf-fg-primary);
+  line-height: var(--sf-leading-tight);
+}
+
+.kanban-card__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  flex-wrap: wrap;
+}
+
+/* SLA chip — safe + at-risk variants share base, at-risk adds the
+   `--color-sf-bg-danger-primary` / `--color-sf-fg-danger-primary` fill. */
+.kanban-card__sla {
+  display: inline-flex;
+  align-items: center;
+  height: 20px;
+  padding-inline: 8px;
+  border-radius: var(--sf-radius-full);
+  font-size: 0.6875rem;
+  font-weight: var(--sf-font-semibold);
+  background: var(--app-status-info-bg);
+  color: var(--app-status-info-fg);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.kanban-card__sla.is-risk {
+  background: var(--color-sf-bg-danger-primary);
+  color: var(--color-sf-fg-danger-primary);
+}
+
+/* Owner pill — only rendered when `owner !== null` per the spec. */
+.owner-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  margin-left: auto;
+}
+
+.owner-pill__avatar {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--color-sf-bg-brand-subtle);
+  color: var(--color-sf-fg-brand-primary);
+  font-size: 0.625rem;
+  font-weight: var(--sf-font-semibold);
+  display: flex;
+  justify-content: center;
+}
+
+/* ----------------------------------------------------------------------------
+   Badges (status + priority) — re-uses the assets page's .badge / .badge--*
+   tokens. The `.badge--danger` variant is for Critical priority.
+   ---------------------------------------------------------------------------- */
+.badge--danger {
+  background: var(--color-sf-bg-danger-primary);
+  color: var(--color-sf-fg-danger-primary);
+}
+
+/* ----------------------------------------------------------------------------
+   Syncfusion KanbanComponent host — the wrapper has min-width 0 so the
+   kanban's internal scroll container collapses correctly. We restyle
+   the kanban's `.e-kanban-*` primitives to use our tokens so the
+   board matches the prototype's chrome.
+   ---------------------------------------------------------------------------- */
+.kanban-host {
+  min-width: 0;
+}
+.requests-kanban.e-kanban {
+  /* Syncfusion's KanbanComponent owns the inner column layout — its
+     `.e-kanban-content` is a flex/scroll container with `.e-kanban-column`
+     children. Forcing `display: grid` on the host collapses the inner
+     layout and the columns end up sized to the cards (~60px), so we
+     keep the host as a normal block and let the framework own sizing.
+     Width — fill the parent up to the max-width cap. Syncfusion's
+     KanbanComponent has no native `width` prop; the skill
+     (customization-and-styling.md → CSS Customization) drives width
+     from the `.e-kanban` host class. */
+  width: 100%;
+  max-width: var(--app-kanban-max-width);
+  margin-inline: auto;
+  background: transparent;
+  border: 0;
+}
+
+.requests-kanban.e-kanban .e-kanban-header {
+  border: 0;
+  background: transparent;
+}
+
+.requests-kanban.e-kanban .e-kanban-content {
+  /* Horizontal scroll on narrow viewports — the four 268px columns
+     would otherwise force the page itself to scroll. The kanban owns
+     the per-column flex layout; we just add overflow handling.
+     `display: contents` was removed here because it was collapsing the
+     grid onto the cards and squishing the columns to ~60px. */
+  display: flex;
+  gap: var(--app-content-gap);
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.requests-kanban.e-kanban .e-kanban-column {
+  /* Column sizing — `flex: 1 1 0` lets the four columns grow
+     equally to fill the available row width on wide / 4K screens
+     instead of all stopping at the 268px min-width. `min-width`
+     stays at 268px so the columns never collapse below a
+     readable width; on viewports narrower than ~4×268px the
+     `.e-kanban-content` row's `overflow-x: auto` takes over and
+     the user scrolls horizontally. The previous `flex: 0 0 auto`
+     was the root cause of the wide empty bands on 4K — the
+     columns sized to their min-width and never grew, regardless
+     of how much room the row had. */
+  min-width: var(--app-kanban-col-min);
+  flex: 1 1 0;
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-lg);
+  box-shadow: var(--sf-shadow-sm);
+  padding: var(--sf-space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-3);
+}
+
+.requests-kanban .e-card-wrapper {
+    padding: 0px !important;
+}
+
+/* Per-column header chrome — our custom template renders
+   .kanban-col__header / .kanban-col__title / .kanban-col__count.
+   The Syncfusion kanban theme sets
+     `.e-kanban .e-kanban-table .e-header-cells { background: var(--color-sf-content-bg-color-alt1) }`
+   which paints the entire <th> light grey in light mode and dark
+   slate in dark mode. We force the table cell transparent so the
+   column chrome (border-top rail + .kanban-col__header surface)
+   shows through cleanly. */
+.requests-kanban.e-kanban .e-kanban-table .e-header-cells,
+.requests-kanban.e-kanban .e-kanban-column-header {
+  padding: 0 0 var(--sf-space-2) 0;
+  border-bottom: 1px solid var(--app-card-border);
+  background: transparent;
+  color: var(--color-sf-fg-primary);
+}
+
+.requests-kanban.e-kanban .e-kanban-column-header.kanban-col-header--neutral {
+  border-top: 3px solid var(--color-sf-fg-neutral-primary);
+  border-top-left-radius: var(--sf-radius-lg);
+  border-top-right-radius: var(--sf-radius-lg);
+}
+
+.requests-kanban.e-kanban .e-kanban-column-header.kanban-col-header--info {
+  border-top: 3px solid var(--color-sf-fg-info-primary);
+  border-top-left-radius: var(--sf-radius-lg);
+  border-top-right-radius: var(--sf-radius-lg);
+}
+
+.requests-kanban.e-kanban .e-kanban-column-header.kanban-col-header--warning {
+  border-top: 3px solid var(--color-sf-fg-warning-primary);
+  border-top-left-radius: var(--sf-radius-lg);
+  border-top-right-radius: var(--sf-radius-lg);
+}
+
+.requests-kanban.e-kanban .e-kanban-column-header.kanban-col-header--success {
+  border-top: 3px solid var(--color-sf-fg-success-primary);
+  border-top-left-radius: var(--sf-radius-lg);
+  border-top-right-radius: var(--sf-radius-lg);
+}
+
+.requests-kanban.e-kanban .e-kanban-column .e-kanban-row {
+  background: transparent;
+}
+
+/* Override the kanban's built-in card chrome so our .kanban-card
+   is the only chrome on screen. */
+.requests-kanban.e-kanban .e-card,
+.requests-kanban.e-kanban .e-kanban-card {
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0 0 var(--sf-space-2) 0;
+}
+
+.requests-kanban.e-kanban .e-card-header {
+  display: none;
+}
+
+.requests-kanban.e-kanban .e-card-content {
+  padding: 0;
+}
+
+/* Empty-state overlay positioning — the overlay's children are
+   absolute-positioned over their column via data-status lookup. */
+.kanban-empty-overlay {
+  position: relative;
+  display: none;
+}
+
+.kanban-empty-overlay .kanban-col__empty {
+  display: none;
+}
+
+/* ----------------------------------------------------------------------------
+   New request dialog chrome (the Syncfusion DialogComponent renders
+   standard .e-dialog / .e-dlg-* primitives — these rules restyle the
+   primitives to use our tokens.
+   ---------------------------------------------------------------------------- */
+.e-dialog.requests-dialog {
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-lg);
+  box-shadow: var(--sf-shadow-lg);
+  color: var(--color-sf-fg-primary);
+}
+
+.e-dialog.requests-dialog .e-dlg-header {
+  background: transparent;
+  border-bottom: 1px solid var(--app-card-border);
+  color: var(--color-sf-fg-primary);
+  font-size: var(--sf-text-base);
+  font-weight: var(--sf-font-semibold);
+  padding: var(--sf-space-3) var(--sf-space-4);
+}
+
+.e-dialog.requests-dialog .e-dlg-header-content {
+  color: var(--color-sf-fg-primary);
+}
+
+.e-dialog.requests-dialog .e-dlg-content {
+  background: transparent;
+  color: var(--color-sf-fg-primary);
+  padding: var(--sf-space-4);
+}
+
+.e-dialog.requests-dialog .e-dlg-footer {
+  background: transparent;
+  border-top: 1px solid var(--app-card-border);
+  padding: var(--sf-space-3) var(--sf-space-4);
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--sf-space-2);
+}
+
+.requests-dialog__form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-3);
+  min-width: 0;
+}
+
+.requests-dialog__field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-1);
+  min-width: 0;
+}
+
+.requests-dialog__label {
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.requests-dialog__input.e-input-group,
+.requests-dialog__input.e-input-group.e-control-wrapper,
+.requests-dialog__textarea.e-input-group {
+  background: var(--app-card-bg);
+  border-color: var(--app-card-border);
+  border-radius: var(--sf-radius-md);
+  color: var(--color-sf-fg-primary);
+}
+
+.requests-dialog__input.e-input-group input,
+.requests-dialog__input.e-input-group.e-control-wrapper input,
+.requests-dialog__textarea.e-input-group textarea {
+  background: transparent;
+  color: var(--color-sf-fg-primary);
+  font-family: inherit;
+}
+
+.requests-dialog__input.e-input-group.e-control-wrapper.e-input-focus,
+.requests-dialog__textarea.e-input-group.e-input-focus {
+  box-shadow: 0 0 0 3px
+    color-mix(in srgb, var(--color-sf-fg-brand-primary) 25%, transparent);
+  border-color: var(--color-sf-fg-brand-primary);
+}
+
+.requests-dialog__error {
+  color: var(--color-sf-fg-danger-primary);
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-medium);
+  min-height: 1.25em;
+}
+
+/* ----------------------------------------------------------------------------
+   Toast surface (mirrors .assets-toast-stack positioning).
+   ---------------------------------------------------------------------------- */
+.requests-toast-stack {
+  position: fixed;
+  right: var(--sf-space-4);
+  bottom: var(--sf-space-4);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-2);
+  width: min(360px, calc(100vw - 32px));
+  pointer-events: none;
+}
+
+/* ----------------------------------------------------------------------------
+   Tablet (768–1023px) — board stays a single row of four columns with a
+   reduced column min-width.
+   ---------------------------------------------------------------------------- */
+@media (max-width: 1023px) {
+  .requests-body {
+    padding: var(--sf-space-3) var(--app-content-inset-inline);
+  }
+
+  /* Tablet — same flex column layout as desktop, just a smaller
+     min-width per column. The `grid-template-columns` override was
+     dropped because the host is no longer a grid. */
+  .requests-kanban.e-kanban .e-kanban-column {
+    min-width: var(--app-kanban-col-min-tablet);
+  }
+}
+
+/* ----------------------------------------------------------------------------
+   Mobile (≤ 767px) — board stacks vertically so the user can scroll
+   between columns.
+   ---------------------------------------------------------------------------- */
+@media (max-width: 767px) {
+  .requests-body {
+    padding: var(--sf-space-3);
+  }
+
+  .toolbar--requests {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar--requests .toolbar__search {
+    max-width: none;
+  }
+
+  .toolbar__new-request {
+    margin-left: 0;
+  }
+
+  /* Mobile — let the kanban content's `overflow-x: auto` take over so
+     the user can swipe between columns. We keep each column at the
+     tablet min-width so the cards remain readable. */
+  .requests-kanban.e-kanban .e-kanban-column {
+    min-width: var(--app-kanban-col-min-tablet);
+    min-height: auto;
+  }
+}

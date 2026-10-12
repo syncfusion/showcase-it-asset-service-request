@@ -1,0 +1,138 @@
+.kpi-strip {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--app-content-gap);
+}
+
+/* KPI card — Syncfusion e-card baseline + project-specific chrome.
+   The `e-card` class (from @syncfusion/ej2-layouts/tailwind3.css)
+   gives us the canonical card surface, border-radius, and the
+   built-in hover/elevation transitions. We layer our existing
+   dashboard tokens on top so the visual treatment stays consistent
+   with the rest of the dashboard cards, then override the few
+   e-card defaults (padding, header layout) to match the prototype's
+   KPI tile. */
+.kpi-card.e-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  min-height: var(--app-kpi-min-height, 136px);
+  padding: 0;
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-lg);
+  box-shadow: var(--sf-shadow-sm);
+  text-align: left;
+  transition: border-color var(--sf-transition), box-shadow var(--sf-transition),
+    transform var(--sf-transition);
+  color: inherit;
+  font: inherit;
+}
+
+.kpi-card.e-card:focus-visible {
+  outline: 2px solid var(--app-focus-ring);
+  outline-offset: 3px;
+}
+
+/* Header — hosts the label caption (left) and the icon medallion
+   (right). Override e-card-header's default flex so the medallion
+   stays absolutely positioned inside the header. */
+.kpi-card__header.e-card-header {
+  position: relative;
+  display: block;
+  padding: 20px var(--sf-space-4) 0;
+  border: 0;
+}
+
+.kpi-card__caption.e-card-header-caption {
+  display: block;
+  text-align: left;
+}
+
+.kpi-card__label.e-card-header-title {
+  display: block;
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-medium);
+  color: var(--color-sf-fg-secondary);
+  padding: 0;
+  margin: 0;
+  padding-right: calc(34px + var(--sf-space-2));
+}
+
+/* Content — value sits at the top, note below. e-card-content
+   already gives us the canonical padding; we trim it to match the
+   prototype's vertical rhythm. */
+.kpi-card__content.e-card-content {
+  padding: 0 var(--sf-space-4) 20px;
+  text-align: left;
+}
+
+.kpi-card__icon {
+  position: absolute;
+  top: 17px;
+  right: var(--sf-space-4);
+  width: 34px;
+  height: 34px;
+  border-radius: var(--sf-radius-md);
+  display: grid;
+  place-items: center;
+}
+
+.kpi-card__icon--info {
+  background: var(--app-status-info-bg);
+  color: var(--app-status-info-fg);
+}
+
+.kpi-card__icon--warning {
+  background: var(--app-status-warning-bg);
+  color: var(--app-status-warning-fg);
+}
+
+.kpi-card__icon--danger {
+  background: var(--app-status-danger-bg);
+  color: var(--app-status-danger-fg);
+}
+
+.kpi-card__icon--success {
+  background: var(--app-status-success-bg);
+  color: var(--app-status-success-fg);
+}
+
+.kpi-card__value {
+  display: block;
+  margin-top: var(--sf-space-3);
+  font-size: var(--sf-text-3xl);
+  font-weight: var(--sf-font-bold);
+  line-height: 1;
+  color: var(--color-sf-fg-primary);
+  letter-spacing: -0.02em;
+}
+
+.kpi-card__note {
+  display: block;
+  margin-top: var(--sf-space-3);
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+}
+
+.kpi-card__note strong {
+  color: var(--color-sf-fg-primary);
+  font-weight: var(--sf-font-semibold);
+}
+
+/* When the dashboard can't fit four cards in a single row at the
+   content inset, fold to two columns. The Desktop-and-down query
+   triggers when 4 × 240px no longer fits inside the dashboard's
+   content-width minus padding. */
+@media (max-width: 1279px) {
+  .kpi-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 767px) {
+  .kpi-strip {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}

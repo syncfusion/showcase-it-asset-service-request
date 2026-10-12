@@ -1,0 +1,66 @@
+.chart-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--app-card-bg);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-lg);
+  box-shadow: var(--sf-shadow-sm);
+}
+
+.card__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--sf-space-3);
+  padding: var(--sf-space-4);
+  border-bottom: 1px solid var(--app-card-border);
+}
+
+.card__title {
+  font-size: var(--sf-text-lg);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+  letter-spacing: -0.01em;
+}
+
+.card__subtitle {
+  margin-top: 2px;
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+}
+
+.chart-card__sum {
+  margin-top: 6px;
+  display: flex;
+  align-items: baseline;
+  gap: var(--sf-space-2);
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+}
+
+.chart-card__sum strong {
+  font-size: var(--sf-text-base);
+  color: var(--color-sf-fg-primary);
+  font-weight: var(--sf-font-bold);
+  letter-spacing: -0.01em;
+}
+
+.card__body {
+  padding: var(--sf-space-4);
+  flex: 1;
+  min-height: 0;
+  position: relative;
+}
+
+.bar-chart-sf {
+  width: 100%;
+  height: 232px;
+}
+
+.chart-defs-svg {
+  position: absolute;
+  pointer-events: none;
+  width: 0;
+  height: 0;
+}

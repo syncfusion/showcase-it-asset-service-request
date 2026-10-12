@@ -1,0 +1,129 @@
+/* App shell grid — sidebar / appbar / main column.
+   On ≥ 769px (≥ 1024px desktop query) the layout uses CSS Grid with
+   `grid-template-areas` matching the prototype (see
+   `prototype/styles.css` and `prototype/index.html`):
+
+       "sidebar appbar"
+       "sidebar main"
+
+   Syncfusion's `SidebarComponent` renders into `.app-shell__sidebar`.
+   On mobile (≤ 768px) the grid collapses to one column and the
+   sidebar floats over content as a Syncfusion `Over` drawer. */
+
+.app-shell {
+  display: grid;
+  grid-template-columns: var(--app-sidebar-width) minmax(0, 1fr);
+  grid-template-rows: var(--app-appbar-height) minmax(0, 1fr);
+  grid-template-areas:
+    "sidebar appbar"
+    "sidebar main";
+  min-height: 100vh;
+  overflow: hidden;
+  background: var(--app-shell-bg);
+  color: var(--app-shell-fg);
+}
+
+/* Docked (collapsed) state — sidebar shrinks to 64px. */
+.app-shell.sidebar-collapsed {
+  grid-template-columns: var(--app-sidebar-collapsed) minmax(0, 1fr);
+}
+
+.app-shell__sidebar {
+  grid-area: sidebar;
+  position: relative;
+  display: flex;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.app-shell__appbar {
+  grid-area: appbar;
+  display: flex;
+  min-width: 0;
+}
+
+.app-shell__main {
+  grid-area: main;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  overflow: hidden;
+  background: var(--app-shell-bg);
+}
+
+/* Mobile drawer backdrop. Hidden on desktop; visible when the
+   sidebar pushes `.is-open` to the app-shell via a small bridge in
+   Sidebar.jsx (sets `data-mobile-open="true"` on the wrapper when
+   the mobile drawer opens). We use a button so it's keyboard
+   accessible. */
+.app-shell__backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--color-sf-overlay);
+  border: 0;
+  padding: 0;
+  z-index: 35;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity var(--sf-transition), visibility var(--sf-transition);
+  cursor: pointer;
+}
+
+.app-shell[data-mobile-open="true"] .app-shell__backdrop {
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (max-width: 1023px) {
+  .app-shell {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "appbar"
+      "main";
+  }
+
+  .app-shell.sidebar-collapsed {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .app-shell__sidebar {
+    position: fixed;
+    inset: 0 auto 0 0;
+    width: min(280px, 86vw);
+    z-index: 40;
+    box-shadow: var(--sf-shadow-lg);
+    /* Hide drawer off-screen by default. The Syncfusion `Over`
+       sidebar toggles its own visibility; we sync the backdrop here
+       so the page underneath is dimmed when the drawer is open. */
+    transform: translateX(-105%);
+    transition: transform 200ms ease;
+  }
+
+  .app-shell[data-mobile-open="true"] .app-shell__sidebar {
+    transform: translateX(0);
+  }
+
+  .app-shell__backdrop {
+    display: block;
+  }
+}
+
+/* Shared page body used by every routed page */
+.page-body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--app-content-inset-inline);
+}
+
+.page-placeholder {
+  color: var(--color-sf-fg-secondary);
+  font-size: var(--sf-text-sm);
+  padding: var(--sf-space-6);
+  background: var(--app-card-bg);
+  border: 1px dashed var(--app-card-border);
+  border-radius: var(--sf-radius-md);
+  max-width: 720px;
+}

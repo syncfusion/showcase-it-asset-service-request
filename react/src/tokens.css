@@ -1,0 +1,188 @@
+/* ============================================================================
+   IT Asset & Service Request Portal — design tokens
+   Mirrors the project's `design tokens/15 Apr v1` token sheet.
+   Light theme is the default. Dark mode overrides sit in index.css.
+   ============================================================================ */
+
+:root {
+  /* Primitive color */
+  --sf-color-white: #ffffff;
+  --sf-color-slate-25: #f8fafc;
+  --sf-color-slate-50: #f6f8fb;
+  --sf-color-slate-100: #eef2f6;
+  --sf-color-slate-200: #e5e9f0;
+  --sf-color-slate-300: #d0d5dd;
+  --sf-color-slate-500: #667085;
+  --sf-color-slate-700: #344054;
+  --sf-color-slate-900: #172033;
+  --sf-color-blue-50: #eef4ff;
+  --sf-color-blue-200: #d6e4ff;
+  --sf-color-blue-600: #175cd3;
+  --sf-color-green-50: #ecfdf3;
+  --sf-color-green-600: #027a48;
+  --sf-color-amber-50: #fffaeb;
+  --sf-color-amber-600: #b54708;
+  --sf-color-red-50: #fef3f2;
+  --sf-color-red-600: #b42318;
+  --sf-color-violet-50: #f4f3ff;
+  --sf-color-violet-600: #5925dc;
+  --sf-color-cyan-600: #088ab2;
+
+  /* Spacing · radius · elevation · type */
+  --sf-space-1: 4px;
+  --sf-space-2: 8px;
+  --sf-space-3: 12px;
+  --sf-space-4: 16px;
+  --sf-space-5: 20px;
+  --sf-space-6: 24px;
+  --sf-space-8: 32px;
+  --sf-radius-sm: 6px;
+  --sf-radius-md: 8px;
+  --sf-radius-lg: 12px;
+  --sf-radius-xl: 14px;
+  --sf-radius-full: 9999px;
+  --sf-shadow-sm: 0 1px 3px rgb(16 24 40 / 8%);
+  --sf-shadow-md: 0 4px 12px rgb(16 24 40 / 10%);
+  --sf-shadow-lg: 0 12px 32px rgb(16 24 40 / 16%);
+  --sf-font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --sf-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --sf-text-xs: 0.75rem;
+  --sf-text-sm: 0.875rem;
+  --sf-text-base: 0.9375rem;
+  --sf-text-lg: 1.125rem;
+  --sf-text-xl: 1.25rem;
+  --sf-text-2xl: 1.5rem;
+  --sf-text-3xl: 1.875rem;
+  --sf-leading-tight: 1.25;
+  --sf-leading-normal: 1.5;
+  --sf-font-medium: 500;
+  --sf-font-semibold: 600;
+  --sf-font-bold: 700;
+  --sf-transition: 160ms ease;
+
+  /* Layout chrome */
+  --app-sidebar-width: 240px;
+  --app-sidebar-collapsed: 64px;
+  --app-appbar-height: 56px;
+  --app-pageheader-height: 56px;
+  --app-content-max: 1440px;
+  --app-content-inset-inline: var(--sf-space-6);
+  --app-content-gap: var(--sf-space-4);
+
+  /* Semantic — light */
+  --color-sf-bg-primary: var(--sf-color-slate-50);
+  --color-sf-bg-surface: var(--sf-color-white);
+  --color-sf-bg-surface-muted: var(--sf-color-slate-25);
+  --color-sf-bg-surface-hover: var(--sf-color-blue-50);
+  --color-sf-fg-primary: var(--sf-color-slate-900);
+  --color-sf-fg-secondary: var(--sf-color-slate-500);
+  --color-sf-border-primary: var(--sf-color-slate-200);
+  --color-sf-border-strong: var(--sf-color-slate-300);
+  --color-sf-fg-brand-primary: var(--sf-color-blue-600);
+  --color-sf-bg-brand-subtle: var(--sf-color-blue-50);
+  --color-sf-border-brand: var(--sf-color-blue-200);
+  --color-sf-bg-success-primary: var(--sf-color-green-50);
+  --color-sf-fg-success-primary: var(--sf-color-green-600);
+  --color-sf-bg-warning-primary: var(--sf-color-amber-50);
+  --color-sf-fg-warning-primary: var(--sf-color-amber-600);
+  --color-sf-bg-danger-primary: var(--sf-color-red-50);
+  --color-sf-fg-danger-primary: var(--sf-color-red-600);
+  --color-sf-bg-info-primary: var(--sf-color-blue-50);
+  --color-sf-fg-info-primary: var(--sf-color-blue-600);
+  --color-sf-bg-neutral-primary: var(--sf-color-slate-100);
+  --color-sf-fg-neutral-primary: var(--sf-color-slate-700);
+  --color-sf-chart-1: var(--sf-color-blue-600);
+  --color-sf-chart-2: var(--sf-color-cyan-600);
+  --color-sf-chart-3: var(--sf-color-amber-600);
+  --color-sf-chart-4: var(--sf-color-green-600);
+  --color-sf-chart-5: var(--sf-color-violet-600);
+  --color-sf-focus-ring: var(--sf-color-blue-600);
+  --color-sf-overlay: rgb(15 23 42 / 48%);
+  --color-sf-scrollbar: rgb(100 116 139 / 35%);
+
+  /* Handover-dialog condition semantics — each condition has a
+     matching foreground/background/border pair so the condition
+     cards, indicator dots, and selected states all pull from the
+     same palette. */
+  --color-sf-bg-condition-good: var(--sf-color-green-50);
+  --color-sf-fg-condition-good: var(--sf-color-green-600);
+  --color-sf-border-condition-good: var(--sf-color-green-600);
+  --color-sf-bg-condition-fair: var(--sf-color-amber-50);
+  --color-sf-fg-condition-fair: var(--sf-color-amber-600);
+  --color-sf-border-condition-fair: var(--sf-color-amber-600);
+  --color-sf-bg-condition-damaged: var(--sf-color-red-50);
+  --color-sf-fg-condition-damaged: var(--sf-color-red-600);
+  --color-sf-border-condition-damaged: var(--sf-color-red-600);
+
+  /* Subtle borders for divider-style chrome inside dialog sections. */
+  --color-sf-divider: var(--sf-color-slate-100);
+  --color-sf-divider-strong: var(--sf-color-slate-200);
+
+  /* Avatar background — a violet token slot for person chips so the
+     avatar fill isn't a single color (mirrors Linear's people-pill
+     treatment). The HSL hue is set per-person in the component. */
+  --color-sf-bg-avatar-violet: var(--sf-color-violet-50);
+  --color-sf-fg-avatar-violet: var(--sf-color-violet-600);
+  --color-sf-bg-avatar-blue: var(--sf-color-blue-50);
+  --color-sf-fg-avatar-blue: var(--sf-color-blue-600);
+  --color-sf-bg-avatar-cyan: var(--sf-color-cyan-600);
+  --color-sf-fg-avatar-cyan: var(--sf-color-white);
+  --color-sf-bg-avatar-amber: var(--sf-color-amber-50);
+  --color-sf-fg-avatar-amber: var(--sf-color-amber-600);
+  --color-sf-bg-avatar-green: var(--sf-color-green-50);
+  --color-sf-fg-avatar-green: var(--sf-color-green-600);
+  --color-sf-bg-avatar-slate: var(--sf-color-slate-100);
+  --color-sf-fg-avatar-slate: var(--sf-color-slate-700);
+
+  /* Disabled affordance — used for the disabled primary submit
+     button. Uses a token-driven muted surface so light/dark themes
+     both get a coherent "off" state. */
+  --color-sf-bg-disabled: var(--sf-color-slate-100);
+  --color-sf-fg-disabled: var(--sf-color-slate-500);
+
+  /* Asset card gradient stops — the source-asset preview card uses a
+     CSS linear-gradient built from the brand surface + a softer
+     muted surface. Tokens here, not raw hex values in the CSS. */
+  --color-sf-asset-card-gradient-from: var(--color-sf-bg-surface-muted);
+  --color-sf-asset-card-gradient-to: var(--color-sf-bg-brand-subtle);
+
+  /* Easing curves for enter/exit transitions (capped at 200 ms per
+     the design rules). */
+  --sf-ease-in: cubic-bezier(0.2, 0, 0, 1);
+  --sf-ease-out: cubic-bezier(0.4, 0, 0.6, 1);
+  --sf-duration-fast: 120ms;
+  --sf-duration-base: 160ms;
+  --sf-duration-slow: 200ms;
+
+  /* Component aliases */
+  --app-shell-bg: var(--color-sf-bg-primary);
+  --app-shell-fg: var(--color-sf-fg-primary);
+  --app-card-bg: var(--color-sf-bg-surface);
+  --app-card-border: var(--color-sf-border-primary);
+  --app-card-shadow: var(--sf-shadow-sm);
+  --app-nav-active-bg: var(--color-sf-bg-brand-subtle);
+  --app-nav-active-fg: var(--color-sf-fg-brand-primary);
+  --app-focus-ring: var(--color-sf-focus-ring);
+
+  /* ----------------------------------------------------------------------------
+     Status pill / chip palette — the asset grid's status column, the
+     dashboard KPI card icons, and the knowledge / requests surface
+     badges all pull from these token pairs. Each pair is
+     background+foreground so the chip stays legible in both light and
+     dark mode. The four pairs cover the full asset lifecycle:
+        Allocated  → blue   (e-info)
+        Available  → green  (e-success)
+        InRepair   → red    (e-danger)
+        Retired    → gray   (e-primary / neutral)
+     ---------------------------------------------------------------------------- */
+  --app-status-info-bg: var(--color-sf-bg-info-primary);
+  --app-status-info-fg: var(--color-sf-fg-info-primary);
+  --app-status-success-bg: var(--color-sf-bg-success-primary);
+  --app-status-success-fg: var(--color-sf-fg-success-primary);
+  --app-status-warning-bg: var(--color-sf-bg-warning-primary);
+  --app-status-warning-fg: var(--color-sf-fg-warning-primary);
+  --app-status-danger-bg: var(--color-sf-bg-danger-primary);
+  --app-status-danger-fg: var(--color-sf-fg-danger-primary);
+  --app-status-neutral-bg: var(--color-sf-bg-neutral-primary);
+  --app-status-neutral-fg: var(--color-sf-fg-neutral-primary);
+}

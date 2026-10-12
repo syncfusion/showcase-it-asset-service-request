@@ -1,0 +1,278 @@
+{
+  "columnOptions": [
+    { "key": "New", "label": "New", "badgeToken": "neutral" },
+    { "key": "Triaged", "label": "Triaged", "badgeToken": "info" },
+    { "key": "InProgress", "label": "In progress", "badgeToken": "warning" },
+    { "key": "Resolved", "label": "Resolved", "badgeToken": "success" }
+  ],
+  "priorityOptions": [
+    { "id": "all", "label": "All priorities" },
+    { "id": "Critical", "label": "Critical" },
+    { "id": "High", "label": "High" },
+    { "id": "sla-risk", "label": "SLA risk" }
+  ],
+  "slaOptions": [
+    { "id": "sla-1d", "label": "SLA 1d", "chip": { "kind": "safe", "text": "SLA 1d" } },
+    { "id": "sla-3d", "label": "SLA 3d", "chip": { "kind": "safe", "text": "SLA 3d" } },
+    { "id": "sla-5d", "label": "SLA 5d", "chip": { "kind": "safe", "text": "SLA 5d" } },
+    { "id": "sla-7d", "label": "SLA 7d", "chip": { "kind": "safe", "text": "SLA 7d" } },
+    { "id": "sla-risk", "label": "At risk (2h 10m)", "chip": { "kind": "risk", "text": "2h 10m" } }
+  ],
+  "ownerOptions": [
+    { "id": "dq", "label": "Dana Quinn", "name": "Dana Quinn", "initials": "DQ" },
+    { "id": "nc", "label": "Neil Chen", "name": "Neil Chen", "initials": "NC" },
+    { "id": "mt", "label": "Maya Tan", "name": "Maya Tan", "initials": "MT" },
+    { "id": "cw", "label": "Carlos Wright", "name": "Carlos Wright", "initials": "CW" },
+    { "id": "as", "label": "Aisha Sanders", "name": "Aisha Sanders", "initials": "AS" },
+    { "id": "tj", "label": "Tomas Jensen", "name": "Tomas Jensen", "initials": "TJ" },
+    { "id": "pl", "label": "Priya Lang", "name": "Priya Lang", "initials": "PL" },
+    { "id": "rh", "label": "Rita Hayes", "name": "Rita Hayes", "initials": "RH" },
+    { "id": "om", "label": "Omar Muniz", "name": "Omar Muniz", "initials": "OM" },
+    { "id": "js", "label": "Jules Sato", "name": "Jules Sato", "initials": "JS" }
+  ],
+  "requests": [
+    {
+      "id": "r-00055",
+      "title": "Provisioning: MacBook Pro 14\" for new hire",
+      "priority": "High",
+      "status": "New",
+      "sla": { "kind": "safe", "text": "SLA 3d" },
+      "owner": { "name": "Dana Quinn", "initials": "DQ" },
+      "createdAt": "2026-10-01"
+    },
+    {
+      "id": "r-00056",
+      "title": "VPN client keeps dropping on Windows 11",
+      "priority": "Medium",
+      "status": "Triaged",
+      "sla": { "kind": "safe", "text": "SLA 5d" },
+      "owner": { "name": "Neil Chen", "initials": "NC" },
+      "createdAt": "2026-09-28"
+    },
+    {
+      "id": "r-00057",
+      "title": "Monitor flicker on Dell U2723QE (HQ · Floor 3)",
+      "priority": "High",
+      "status": "InProgress",
+      "sla": { "kind": "risk", "text": "2h 10m" },
+      "owner": { "name": "Maya Tan", "initials": "MT" },
+      "createdAt": "2026-09-25"
+    },
+    {
+      "id": "r-00058",
+      "title": "Onboard 12 new monitors to West campus",
+      "priority": "Low",
+      "status": "Resolved",
+      "sla": { "kind": "safe", "text": "SLA 7d" },
+      "owner": { "name": "Carlos Wright", "initials": "CW" },
+      "createdAt": "2026-09-20"
+    },
+    {
+      "id": "r-00059",
+      "title": "Okta MFA outage blocking all logins",
+      "priority": "Critical",
+      "status": "New",
+      "sla": { "kind": "risk", "text": "1h 45m" },
+      "owner": null,
+      "createdAt": "2026-10-05"
+    },
+    {
+      "id": "r-00060",
+      "title": "Replace broken keyboard for Aisha (Engineering)",
+      "priority": "Low",
+      "status": "Triaged",
+      "sla": { "kind": "safe", "text": "SLA 5d" },
+      "owner": { "name": "Aisha Sanders", "initials": "AS" },
+      "createdAt": "2026-09-29"
+    },
+    {
+      "id": "r-00061",
+      "title": "Adobe Creative Cloud license renewal",
+      "priority": "Medium",
+      "status": "InProgress",
+      "sla": { "kind": "safe", "text": "SLA 3d" },
+      "owner": { "name": "Tomas Jensen", "initials": "TJ" },
+      "createdAt": "2026-09-30"
+    },
+    {
+      "id": "r-00062",
+      "title": "Restore archived ticket — Q2 handover",
+      "priority": "High",
+      "status": "Resolved",
+      "sla": { "kind": "safe", "text": "SLA 1d" },
+      "owner": { "name": "Priya Lang", "initials": "PL" },
+      "createdAt": "2026-09-22"
+    },
+    {
+      "id": "r-00063",
+      "title": "Intune enrollment failing for iOS 18 fleet",
+      "priority": "Critical",
+      "status": "Triaged",
+      "sla": { "kind": "risk", "text": "3h 20m" },
+      "owner": { "name": "Rita Hayes", "initials": "RH" },
+      "createdAt": "2026-10-03"
+    },
+    {
+      "id": "r-00064",
+      "title": "Decommission 18 retired laptops from Archive",
+      "priority": "Medium",
+      "status": "New",
+      "sla": { "kind": "safe", "text": "SLA 7d" },
+      "owner": { "name": "Omar Muniz", "initials": "OM" },
+      "createdAt": "2026-10-04"
+    },
+    {
+      "id": "r-00065",
+      "title": "Trackpad ghost clicks on ThinkPad X1 Carbon",
+      "priority": "Low",
+      "status": "InProgress",
+      "sla": { "kind": "safe", "text": "SLA 5d" },
+      "owner": { "name": "Jules Sato", "initials": "JS" },
+      "createdAt": "2026-09-26"
+    },
+    {
+      "id": "r-00066",
+      "title": "prod logins 503 after Okta failover",
+      "priority": "Critical",
+      "status": "InProgress",
+      "sla": { "kind": "risk", "text": "45m" },
+      "owner": { "name": "Dana Quinn", "initials": "DQ" },
+      "createdAt": "2026-10-05"
+    },
+    {
+      "id": "r-00067",
+      "title": "Yubikey replacement for departing manager",
+      "priority": "Medium",
+      "status": "Resolved",
+      "sla": { "kind": "safe", "text": "SLA 3d" },
+      "owner": { "name": "Neil Chen", "initials": "NC" },
+      "createdAt": "2026-09-18"
+    },
+    {
+      "id": "r-00068",
+      "title": "VPN split-tunnel policy update for contractors",
+      "priority": "High",
+      "status": "New",
+      "sla": { "kind": "safe", "text": "SLA 5d" },
+      "owner": null,
+      "createdAt": "2026-10-02"
+    },
+    {
+      "id": "r-00069",
+      "title": "Investigate battery drain on iPhone 15 loaners",
+      "priority": "Medium",
+      "status": "Triaged",
+      "sla": { "kind": "risk", "text": "4h 30m" },
+      "owner": { "name": "Maya Tan", "initials": "MT" },
+      "createdAt": "2026-09-30"
+    },
+    {
+      "id": "r-00070",
+      "title": "Procure 6 additional 27\" monitors for Ops",
+      "priority": "Low",
+      "status": "Resolved",
+      "sla": { "kind": "safe", "text": "SLA 7d" },
+      "owner": { "name": "Carlos Wright", "initials": "CW" },
+      "createdAt": "2026-09-15"
+    },
+    {
+      "id": "r-00071",
+      "title": "Printer driver install — Floor 3 west wing",
+      "priority": "Low",
+      "status": "New",
+      "sla": { "kind": "safe", "text": "SLA 5d" },
+      "owner": { "name": "Aisha Sanders", "initials": "AS" },
+      "createdAt": "2026-10-04"
+    },
+    {
+      "id": "r-00072",
+      "title": "payroll export failing for EU region",
+      "priority": "Critical",
+      "status": "Triaged",
+      "sla": { "kind": "risk", "text": "2h 05m" },
+      "owner": { "name": "Tomas Jensen", "initials": "TJ" },
+      "createdAt": "2026-10-05"
+    },
+    {
+      "id": "r-00073",
+      "title": "Software request: JetBrains All Products Pack",
+      "priority": "Medium",
+      "status": "InProgress",
+      "sla": { "kind": "safe", "text": "SLA 3d" },
+      "owner": { "name": "Priya Lang", "initials": "PL" },
+      "createdAt": "2026-09-27"
+    },
+    {
+      "id": "r-00074",
+      "title": "Docking station firmware update for West campus",
+      "priority": "High",
+      "status": "Resolved",
+      "sla": { "kind": "safe", "text": "SLA 5d" },
+      "owner": { "name": "Rita Hayes", "initials": "RH" },
+      "createdAt": "2026-09-19"
+    },
+    {
+      "id": "r-00075",
+      "title": "Investigate high CPU on shared staging server",
+      "priority": "High",
+      "status": "New",
+      "sla": { "kind": "risk", "text": "3h 50m" },
+      "owner": { "name": "Omar Muniz", "initials": "OM" },
+      "createdAt": "2026-10-04"
+    },
+    {
+      "id": "r-00076",
+      "title": "Offboard 4 contractors — return assets by Friday",
+      "priority": "Medium",
+      "status": "Triaged",
+      "sla": { "kind": "safe", "text": "SLA 5d" },
+      "owner": { "name": "Jules Sato", "initials": "JS" },
+      "createdAt": "2026-09-29"
+    },
+    {
+      "id": "r-00077",
+      "title": "backup job failure across 2 regions",
+      "priority": "Critical",
+      "status": "InProgress",
+      "sla": { "kind": "risk", "text": "1h 10m" },
+      "owner": { "name": "Dana Quinn", "initials": "DQ" },
+      "createdAt": "2026-10-05"
+    },
+    {
+      "id": "r-00078",
+      "title": "Quarterly access review — Marketing SaaS",
+      "priority": "Low",
+      "status": "Resolved",
+      "sla": { "kind": "safe", "text": "SLA 7d" },
+      "owner": { "name": "Neil Chen", "initials": "NC" },
+      "createdAt": "2026-09-12"
+    },
+    {
+      "id": "r-00079",
+      "title": "Hardware refresh: Surface Laptop 5 for Design",
+      "priority": "Medium",
+      "status": "New",
+      "sla": { "kind": "safe", "text": "SLA 3d" },
+      "owner": { "name": "Maya Tan", "initials": "MT" },
+      "createdAt": "2026-10-03"
+    },
+    {
+      "id": "r-00080",
+      "title": "Update certificate for kiosk.itsupport.local",
+      "priority": "High",
+      "status": "Triaged",
+      "sla": { "kind": "safe", "text": "SLA 5d" },
+      "owner": { "name": "Carlos Wright", "initials": "CW" },
+      "createdAt": "2026-09-30"
+    },
+    {
+      "id": "r-00081",
+      "title": "page duty alert stuck across 3 teams",
+      "priority": "Critical",
+      "status": "Resolved",
+      "sla": { "kind": "risk", "text": "5h 12m" },
+      "owner": { "name": "Aisha Sanders", "initials": "AS" },
+      "createdAt": "2026-09-21"
+    }
+  ]
+}

@@ -1,0 +1,1004 @@
+/* =============================================================================
+   IT Asset & Service Request Portal — Assets surface styles
+   Mirrors `prototype/styles.css` `#view-assets` block + responsive collapse.
+   Token-driven, no new tokens.
+   ============================================================================= */
+
+:root {
+  --app-filter-rail-width: 240px;
+}
+
+/* Page body — single CSS Grid that holds the filter rail (left) and
+   the content column (right, with toolbar + grid). The mobile/tablet
+   media queries below collapse this to a single column. */
+.assets-body {
+  display: grid;
+  grid-template-columns: var(--app-filter-rail-width) minmax(0, 1fr);
+  gap: var(--app-content-gap);
+  align-items: start;
+  padding: var(--sf-space-4) var(--app-content-inset-inline);
+}
+
+.assets-content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--app-content-gap);
+  min-width: 0;
+}
+
+/* ----------------------------------------------------------------------------
+   Filter rail
+   ---------------------------------------------------------------------------- */
+.filter-rail {
+  position: sticky;
+  top: 0;
+  padding: var(--sf-space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-4);
+  height: 100%;
+}
+
+.filter-rail__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sf-space-2);
+}
+
+.filter-rail__title {
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+}
+
+.filter-rail__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-4);
+}
+
+.filter-group {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-2);
+}
+
+.filter-group__label {
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.filter-option {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  font-size: var(--sf-text-sm);
+  color: var(--color-sf-fg-primary);
+  cursor: pointer;
+  padding: 2px 0;
+}
+
+.filter-option input[type="checkbox"],
+.filter-option input[type="radio"] {
+  accent-color: var(--color-sf-fg-brand-primary);
+  cursor: pointer;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.filter-option__count {
+  margin-left: auto;
+  color: var(--color-sf-fg-secondary);
+  font-size: var(--sf-text-xs);
+  font-variant-numeric: tabular-nums;
+}
+
+/* The Clear ghost button */
+.filter-rail__clear {
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-medium);
+  color: var(--color-sf-fg-secondary);
+  padding: 4px 8px;
+  border-radius: var(--sf-radius-sm);
+  border: 1px solid transparent;
+  background: transparent;
+  transition: color var(--sf-transition), background var(--sf-transition);
+}
+
+.filter-rail__clear:hover {
+  color: var(--color-sf-fg-primary);
+  background: var(--color-sf-bg-surface-muted);
+}
+
+/* ----------------------------------------------------------------------------
+   Toolbar
+   ---------------------------------------------------------------------------- */
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  flex-wrap: wrap;
+}
+
+.toolbar__search {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  height: 36px;
+  min-width: 220px;
+  flex: 1;
+  max-width: 320px;
+  padding-inline: var(--sf-space-3);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-md);
+  background: var(--app-card-bg);
+  color: var(--color-sf-fg-secondary);
+  transition: border-color var(--sf-transition);
+}
+
+.toolbar__search:focus-within {
+  border-color: var(--color-sf-fg-brand-primary);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--color-sf-fg-brand-primary) 25%, transparent);
+}
+
+.toolbar__search input {
+  flex: 1;
+  border: 0;
+  background: transparent;
+  outline: none;
+  color: var(--color-sf-fg-primary);
+  min-width: 0;
+}
+
+.toolbar__search input::placeholder {
+  color: var(--color-sf-fg-secondary);
+}
+
+.toolbar__filter-toggle {
+  display: none; /* visible only ≤ 1023px */
+  align-items: center;
+  gap: 6px;
+  height: 36px;
+  padding-inline: var(--sf-space-3);
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-md);
+  background: var(--app-card-bg);
+  color: var(--color-sf-fg-secondary);
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-medium);
+}
+
+.toolbar__filter-toggle[aria-pressed="true"] {
+  background: var(--app-nav-active-bg);
+  border-color: var(--color-sf-border-brand);
+  color: var(--app-nav-active-fg);
+}
+
+/* ----------------------------------------------------------------------------
+   Data table wrap + grid chrome
+   ---------------------------------------------------------------------------- */
+.data-table-wrap {
+  overflow: auto;
+  border: 1px solid var(--app-card-border);
+  border-radius: var(--sf-radius-lg);
+  background: var(--app-card-bg);
+}
+
+.data-table-empty {
+  padding: var(--sf-space-8) var(--sf-space-4);
+  text-align: center;
+  font-size: var(--sf-text-sm);
+  color: var(--color-sf-fg-secondary);
+}
+
+/* ----------------------------------------------------------------------------
+   Table footer (result-count + pager) — the Syncfusion grid's built-in
+   pager slots in below the grid; the result-count line is rendered
+   here so the layout matches the prototype's `.table-footer`.
+   ---------------------------------------------------------------------------- */
+.table-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sf-space-3);
+  padding: var(--sf-space-3) 0 0;
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  flex-wrap: wrap;
+}
+
+.table-footer__count {
+  font-variant-numeric: tabular-nums;
+}
+
+/* Syncfusion grid host — the wrapper has min-width 0 so the grid
+   scrolls horizontally inside the data-table-wrap. */
+.asset-grid {
+  min-width: 0;
+}
+
+.asset-grid .e-grid {
+  border: 0;
+  background: transparent;
+  font-family: var(--sf-font-sans);
+}
+
+/* Header — match the prototype's `.data-table th` */
+.asset-grid .e-headercell,
+.asset-grid .e-headercontent,
+.asset-grid .e-header {
+  background: var(--color-sf-bg-surface-muted) !important;
+}
+
+.asset-grid .e-headercell .e-headercelldiv,
+.asset-grid .e-headercell {
+  font-size: var(--sf-text-xs) !important;
+  font-weight: var(--sf-font-semibold) !important;
+  color: var(--color-sf-fg-secondary) !important;
+  background: var(--color-sf-bg-surface-muted) !important;
+}
+
+/* Body cells */
+.asset-grid .e-rowcell,
+.asset-grid .e-row .e-rowcell {
+  font-size: var(--sf-text-sm);
+  color: var(--color-sf-fg-primary);
+  border-bottom: 1px solid var(--app-card-border) !important;
+  background: var(--app-card-bg);
+  vertical-align: middle;
+  padding: 12px 14px;
+}
+
+.asset-grid .e-row:last-child .e-rowcell {
+  border-bottom: 0 !important;
+}
+
+.asset-grid .e-row:hover .e-rowcell {
+  background: var(--color-sf-bg-surface-hover) !important;
+}
+
+/* Clickable rows — the asset grid's `recordClick` handler
+   navigates to `/handover?asset=<id>`, so the row's cursor
+   and keyboard focus state have to advertise the
+   affordance. */
+.asset-grid .e-row {
+  cursor: pointer;
+}
+
+.asset-grid .e-row.e-selectionbackground .e-rowcell,
+.asset-grid .e-row.e-active .e-rowcell {
+  background: var(--color-sf-bg-brand-subtle) !important;
+}
+
+/* Cell templates — `.asset-cell`, `.badge`, `.owner-pill` */
+.asset-cell {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-3);
+}
+
+.asset-thumb {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--sf-radius-md);
+  background: linear-gradient(
+    145deg,
+    var(--sf-color-slate-100),
+    var(--sf-color-slate-200)
+  );
+  border: 1px solid var(--app-card-border);
+  display: grid;
+  place-items: center;
+  color: var(--color-sf-fg-secondary);
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.asset-cell__meta {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.asset-cell__title {
+  font-weight: var(--sf-font-medium);
+  color: var(--color-sf-fg-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.asset-cell__sub {
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  font-family: var(--sf-font-mono);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  height: 22px;
+  padding-inline: 8px;
+  border-radius: var(--sf-radius-full);
+  font-size: 0.6875rem;
+  font-weight: var(--sf-font-semibold);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.badge--info {
+  background: var(--app-status-info-bg);
+  color: var(--app-status-info-fg);
+}
+
+.badge--success {
+  background: var(--app-status-success-bg);
+  color: var(--app-status-success-fg);
+}
+
+.badge--warning {
+  background: var(--app-status-warning-bg);
+  color: var(--app-status-warning-fg);
+}
+
+.badge--neutral {
+  background: var(--app-status-neutral-bg);
+  color: var(--app-status-neutral-fg);
+}
+
+/* ----------------------------------------------------------------------------
+   Status chip (Syncfusion `ChipListComponent`)
+   The inner `.e-chip` element is coloured by Syncfusion's built-in
+   `e-info` / `e-success` / `e-danger` / `e-primary` `cssClass`
+   variants. Syncfusion ships the colour palette in its own
+   stylesheet, but the asset grid's chips need a slightly subtler
+   background tint than the default, so we override the inner
+   `.e-chip` background + text colour using our design-token
+   aliases. The asset lifecycle mapping is:
+      e-info    → Allocated (blue)
+      e-success → Available (green)
+      e-danger  → InRepair  (red)
+      e-primary → Retired   (gray)
+   ---------------------------------------------------------------------------- */
+.asset-chip.e-chip-list > .e-chip.e-info {
+  background: var(--app-status-info-bg);
+  color: var(--app-status-info-fg);
+}
+
+.asset-chip.e-chip-list > .e-chip.e-success {
+  background: var(--app-status-success-bg);
+  color: var(--app-status-success-fg);
+}
+
+.asset-chip.e-chip-list > .e-chip.e-danger {
+  background: var(--app-status-danger-bg);
+  color: var(--app-status-danger-fg);
+}
+
+.asset-chip.e-chip-list > .e-chip.e-primary {
+  background: var(--app-status-neutral-bg);
+  color: var(--app-status-neutral-fg);
+}
+
+.asset-chip.e-chip-list {
+  display: inline-flex;
+  align-items: center;
+  height: 22px;
+  padding: 0 10px;
+  border-radius: var(--sf-radius-full);
+  font-size: 0.6875rem;
+  font-weight: var(--sf-font-semibold);
+  letter-spacing: 0.01em;
+  font-family: var(--sf-font-sans);
+  vertical-align: middle;
+  margin: 0;
+  border: 0;
+  cursor: default;
+  background: transparent;
+}
+
+.asset-chip.e-chip-list > .e-chip {
+  height: 22px;
+  margin: 0;
+  padding: 0 6px;
+  font: inherit;
+  letter-spacing: inherit;
+  cursor: default;
+  border-radius: var(--sf-radius-full);
+}
+
+.asset-chip.e-chip-list .e-chip-text {
+  padding: 0;
+  line-height: 1;
+}
+
+.owner-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  font-size: var(--sf-text-sm);
+  color: var(--color-sf-fg-primary);
+}
+
+.owner-pill__avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--color-sf-bg-brand-subtle);
+  color: var(--color-sf-fg-brand-primary);
+  font-size: 0.625rem;
+  font-weight: var(--sf-font-semibold);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+
+/* Pager — token-driven overrides on the Syncfusion built-in pager */
+.asset-grid .e-pager {
+  background: transparent !important;
+  border-top: 1px solid var(--app-card-border);
+  padding-top: var(--sf-space-2);
+}
+
+.asset-grid .e-pagercontainer {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.asset-grid .e-numericitem,
+.asset-grid .e-prev,
+.asset-grid .e-next,
+.asset-grid .e-first,
+.asset-grid .e-last {
+  background: var(--app-card-bg) !important;
+  border: 1px solid var(--app-card-border) !important;
+  border-radius: var(--sf-radius-sm) !important;
+  color: var(--color-sf-fg-secondary) !important;
+  font-size: var(--sf-text-xs) !important;
+  min-width: 28px;
+  height: 28px;
+}
+
+.asset-grid .e-numericitem:hover,
+.asset-grid .e-prev:hover,
+.asset-grid .e-next:hover,
+.asset-grid .e-first:hover,
+.asset-grid .e-last:hover {
+  color: var(--color-sf-fg-primary) !important;
+  border-color: var(--color-sf-border-brand) !important;
+}
+
+/* Active page — paint the `.e-pager .e-currentitem` with a
+   high-contrast brand fill + white text so the active page is
+   unambiguously the focal point of the pager in BOTH light
+   and dark themes. The previous rule used
+   `--app-nav-active-bg` (a navy `--color-sf-bg-brand-subtle`)
+   + `--app-nav-active-fg` (a light-blue
+   `--color-sf-fg-brand-primary`) — that combination collapses
+   to low-contrast indigo-on-navy in dark mode because
+   Syncfusion's Tailwind3 base overrides both colour variables
+   in dark mode. The `.e-pager .e-currentitem` selector chain
+   matches Syncfusion's own rule so we win on specificity,
+   and `!important` keeps our values locked even when the
+   Syncfusion stylesheet re-paints `--color-sf-primary`. */
+.asset-grid .e-pager .e-currentitem,
+.asset-grid .e-pager .e-currentitem:hover {
+  background: var(--color-sf-fg-brand-primary) !important;
+  border-color: var(--color-sf-fg-brand-primary) !important;
+  color: var(--sf-color-white) !important;
+  font-weight: var(--sf-font-semibold) !important;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 18%);
+}
+
+[data-theme="dark"] .asset-grid .e-pager .e-currentitem,
+[data-theme="dark"] .asset-grid .e-pager .e-currentitem:hover {
+  background: var(--color-sf-fg-brand-primary) !important;
+  border-color: var(--color-sf-fg-brand-primary) !important;
+  color: var(--app-card-bg) !important;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 40%);
+}
+
+.asset-grid .e-pagerdropdown,
+.asset-grid .e-pagesize {
+  background: var(--app-card-bg);
+  color: var(--color-sf-fg-primary);
+}
+
+/* ----------------------------------------------------------------------------
+   Toast surface (bottom-right inside .assets-body, mirrors the dashboard's
+   .dashboard-toast-stack positioning).
+   ---------------------------------------------------------------------------- */
+.assets-toast-stack {
+  position: fixed;
+  right: var(--sf-space-4);
+  bottom: var(--sf-space-4);
+  z-index: 100;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-2);
+  width: min(360px, calc(100vw - 32px));
+  pointer-events: none;
+}
+
+/* ----------------------------------------------------------------------------
+   Tablet — rail collapses behind toggle
+   ---------------------------------------------------------------------------- */
+@media (max-width: 1023px) {
+  .assets-body {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .filter-rail {
+    position: static;
+    display: none;
+  }
+
+  .filter-rail.is-open {
+    display: flex;
+  }
+
+  .toolbar__filter-toggle {
+    display: inline-flex;
+  }
+
+  .toolbar__search {
+    max-width: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .assets-body {
+    padding: var(--sf-space-3);
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .toolbar__search {
+    max-width: none;
+  }
+
+  /* Horizontal scroll for the grid on mobile */
+  .data-table-wrap {
+    overflow-x: auto;
+  }
+}
+
+/* ============================================================================
+   Asset detail modal
+   Styles the Syncfusion `DialogComponent` body the
+   `AssetDetailModal` component renders. The dialog host itself
+   keeps Syncfusion's default `e-dialog` chrome; we only need to
+   style the inner content (header, body, footer, identity
+   column, tab strip, timeline, documents, linked tickets).
+   All values resolve to the existing `tokens.css` palette —
+   no new design tokens are added.
+   ========================================================================= */
+
+/* Modal host — make sure the dialog max-width is honored and the
+   header / footer / body flex correctly. Syncfusion's `e-dialog`
+   ships its own padding; we override that here so the modal reads
+   as a single coherent surface. */
+.asset-detail-dialog.e-dialog {
+  max-width: 1080px;
+}
+
+.asset-detail-dialog .e-dlg-header {
+  padding: 0;
+  border-bottom: 1px solid var(--app-card-border);
+}
+
+.asset-detail-dialog .e-dlg-content {
+  padding: 0;
+}
+
+.asset-detail-dialog .e-dlg-footer {
+  padding: 0;
+  border-top: 1px solid var(--app-card-border);
+  background: var(--color-sf-bg-surface-muted);
+}
+
+/* Header row (title block + status badge + close button) */
+.asset-detail-dialog__header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sf-space-3);
+  padding: var(--sf-space-4) var(--sf-space-5);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.asset-detail-dialog__title-block {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.asset-detail-dialog__body {
+  padding: var(--sf-space-5);
+  overflow: auto;
+}
+
+/* Modal-level layout: two columns (identity + tabs). On
+   ≤ 1023px viewports the columns stack. */
+.asset-detail {
+  display: grid;
+  grid-template-columns: 1fr 1.1fr;
+  gap: var(--sf-space-5);
+  align-items: start;
+}
+
+.asset-detail__identity {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-4);
+}
+
+/* Large icon thumbnail in the identity column */
+.asset-photo {
+  aspect-ratio: 16 / 10;
+  border-radius: var(--sf-radius-lg);
+  border: 1px solid var(--app-card-border);
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--sf-color-blue-50) 80%, transparent),
+    var(--sf-color-slate-100)
+  );
+  display: grid;
+  place-items: center;
+  color: var(--color-sf-fg-brand-primary);
+}
+
+.asset-photo svg {
+  width: 64px;
+  height: 64px;
+  opacity: 0.85;
+}
+
+/* Meta-grid — six labelled rows in a two-column sub-grid */
+.meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--sf-space-3);
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.meta-item__label {
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-sf-fg-secondary);
+  font-weight: var(--sf-font-semibold);
+}
+
+.meta-item__value {
+  font-size: var(--sf-text-sm);
+  color: var(--color-sf-fg-primary);
+  font-weight: var(--sf-font-medium);
+}
+
+.meta-item__value.mono {
+  font-family: var(--sf-font-mono);
+  font-size: var(--sf-text-xs);
+}
+
+/* Lifecycle stepper */
+.stepper {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+  overflow-x: auto;
+  padding-block: var(--sf-space-2);
+  margin: 0;
+  padding-inline: 0;
+  list-style: none;
+}
+
+.stepper__step {
+  flex: 1;
+  min-width: 96px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  position: relative;
+  gap: var(--sf-space-2);
+  list-style: none;
+}
+
+.stepper__step:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 14px;
+  left: calc(50% + 16px);
+  right: calc(-50% + 16px);
+  height: 2px;
+  background: var(--app-card-border);
+}
+
+.stepper__step.is-complete:not(:last-child)::after,
+.stepper__step.is-active:not(:last-child)::after {
+  background: var(--color-sf-fg-brand-primary);
+}
+
+.stepper__dot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid var(--app-card-border);
+  background: var(--app-card-bg);
+  display: grid;
+  place-items: center;
+  font-size: 0.6875rem;
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-secondary);
+  z-index: 1;
+  position: relative;
+}
+
+.stepper__step.is-complete .stepper__dot {
+  background: var(--color-sf-fg-brand-primary);
+  border-color: var(--color-sf-fg-brand-primary);
+  color: #fff;
+}
+
+.stepper__step.is-active .stepper__dot {
+  border-color: var(--color-sf-fg-brand-primary);
+  color: var(--color-sf-fg-brand-primary);
+  box-shadow: 0 0 0 4px
+    color-mix(in srgb, var(--color-sf-fg-brand-primary) 20%, transparent);
+}
+
+.stepper__label {
+  font-size: 0.6875rem;
+  font-weight: var(--sf-font-medium);
+  color: var(--color-sf-fg-secondary);
+  max-width: 88px;
+}
+
+.stepper__step.is-active .stepper__label,
+.stepper__step.is-complete .stepper__label {
+  color: var(--color-sf-fg-primary);
+}
+
+/* Tab strip */
+.detail-tabs {
+  display: flex;
+  gap: var(--sf-space-1);
+  border-bottom: 1px solid var(--app-card-border);
+  margin-bottom: var(--sf-space-4);
+}
+
+.detail-tab {
+  height: 36px;
+  padding-inline: var(--sf-space-3);
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-medium);
+  color: var(--color-sf-fg-secondary);
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  background: transparent;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+  cursor: pointer;
+}
+
+.detail-tab[aria-selected="true"] {
+  color: var(--color-sf-fg-brand-primary);
+  border-bottom-color: var(--color-sf-fg-brand-primary);
+}
+
+.detail-tab:hover {
+  color: var(--color-sf-fg-primary);
+}
+
+.tab-panel[hidden] {
+  display: none;
+}
+
+/* Timeline */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding-left: 4px;
+  margin: 0;
+  list-style: none;
+}
+
+.timeline__item {
+  display: grid;
+  grid-template-columns: 16px 1fr;
+  gap: var(--sf-space-3);
+  position: relative;
+  padding-bottom: var(--sf-space-4);
+  list-style: none;
+}
+
+.timeline__item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline__rail {
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+
+.timeline__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--color-sf-fg-brand-primary);
+  border: 2px solid var(--app-card-bg);
+  box-shadow: 0 0 0 2px var(--color-sf-fg-brand-primary);
+  margin-top: 4px;
+  z-index: 1;
+}
+
+.timeline__item:not(:last-child) .timeline__rail::after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  bottom: -4px;
+  width: 2px;
+  background: var(--app-card-border);
+}
+
+.timeline__content {
+  min-width: 0;
+}
+
+.timeline__title {
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+  margin: 0;
+}
+
+.timeline__meta {
+  margin: 2px 0 0;
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+}
+
+.timeline__note {
+  margin: var(--sf-space-1) 0 0;
+  font-size: var(--sf-text-sm);
+  color: var(--color-sf-fg-secondary);
+}
+
+.timeline__attachments {
+  list-style: none;
+  margin: var(--sf-space-2) 0 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.timeline__attachment {
+  list-style: none;
+}
+
+.timeline__attachment-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-brand-primary);
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.timeline__attachment-link:hover {
+  text-decoration: underline;
+}
+
+/* Documents list */
+.asset-detail__docs {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-2);
+}
+
+.asset-detail__doc-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-3);
+  padding: 10px 12px;
+  border: 1px solid var(--app-card-border);
+  border-radius: 8px;
+  background: var(--app-card-bg);
+  list-style: none;
+}
+
+.asset-detail__doc-icon {
+  color: var(--color-sf-fg-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.asset-detail__doc-body {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.asset-detail__doc-name {
+  font-size: var(--sf-text-sm);
+  color: var(--color-sf-fg-primary);
+  font-weight: var(--sf-font-semibold);
+}
+
+.asset-detail__doc-sub {
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+}
+
+/* Linked tickets — re-use the kanban-card class from Requests.css
+   styles. We surface a thin wrapper so the card stretches to the
+   full width of the tab panel. */
+.asset-detail__tickets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-2);
+}
+
+.asset-detail__ticket {
+  width: 100%;
+  text-align: left;
+  font-family: inherit;
+  font-size: inherit;
+  cursor: pointer;
+}
+
+/* Empty-state message shared across all three tabs */
+.asset-detail__empty {
+  padding: var(--sf-space-6) var(--sf-space-4);
+  text-align: center;
+  font-size: var(--sf-text-sm);
+  color: var(--color-sf-fg-secondary);
+  border: 1px dashed var(--app-card-border);
+  border-radius: var(--sf-radius-md);
+  background: var(--color-sf-bg-surface-muted);
+}
+
+/* Responsive — stack the identity column above the tab strip on
+   tablets / phones. */
+@media (max-width: 1023px) {
+  .asset-detail {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .asset-detail-dialog.e-dialog {
+    max-width: 100%;
+  }
+}

@@ -1,0 +1,236 @@
+/* Syncfusion Sidebar wrapper.
+   The library renders an element with id `it-sidebar` directly
+   inside the component. We position the SidebarComponent inside
+   `.app-shell__sidebar` (see AppShell.css) so the grid cell, not
+   Syncfusion's sibling-push mechanism, controls its size.
+
+   On desktop the cell is 240px and the panel is always visible — we
+   make sure the Syncfusion root is `position: static` inside our
+   grid so it fills the cell normally instead of escaping with
+   `position: fixed`. On mobile the parent css slides the whole
+   `.app-shell__sidebar` cell via `transform: translateX(...)`. */
+
+.it-sidebar.e-sidebar {
+  background: var(--app-card-bg);
+  border-right: 1px solid var(--app-card-border);
+  color: var(--color-sf-fg-primary);
+  box-shadow: none;
+  /* Override Syncfusion's theme `position: fixed` so the panel
+     stays in the grid cell. We set `static` on desktop and `fixed`
+     on mobile (the latter is overridden again to position the
+     cell via the parent transform). */
+  position: static !important;
+  transform: none !important;
+  visibility: visible !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  z-index: auto;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  transition: width var(--sf-transition);
+}
+
+@media (max-width: 1023px) {
+  /* On mobile the cell is positioned by the parent grid, but we
+     still want the Syncfusion root to fill that cell instead of
+     fighting it. We let the parent drive the transform so the
+     slide-in animation matches the backdrop fade. */
+  .it-sidebar.e-sidebar {
+    position: static !important;
+    transform: none !important;
+  }
+}
+
+.it-sidebar .it-sidebar__inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100%;
+  width: 100%;
+}
+
+/* Brand block */
+.it-sidebar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-3);
+  height: var(--app-appbar-height);
+  padding-inline: var(--sf-space-4);
+  border-bottom: 1px solid var(--app-card-border);
+  flex-shrink: 0;
+}
+
+.it-sidebar__brand-mark {
+  width: 32px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--sf-radius-md);
+  background: var(--color-sf-bg-brand-subtle);
+  color: var(--color-sf-fg-brand-primary);
+  flex-shrink: 0;
+}
+
+.it-sidebar__brand-text {
+  display: flex;
+  flex-direction: column;
+  line-height: var(--sf-leading-tight);
+  min-width: 0;
+}
+
+.it-sidebar__brand-title {
+  font-weight: var(--sf-font-semibold);
+  font-size: var(--sf-text-sm);
+  color: var(--color-sf-fg-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.it-sidebar__brand-sub {
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Nav */
+.it-sidebar__nav {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  padding: var(--sf-space-3) var(--sf-space-3);
+  display: flex;
+  flex-direction: column;
+  gap: var(--sf-space-2);
+}
+
+.it-sidebar__nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.it-sidebar__section-label {
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--color-sf-fg-secondary);
+  padding: var(--sf-space-2) var(--sf-space-2) var(--sf-space-1);
+}
+
+.it-nav-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sf-space-3);
+  width: 100%;
+  height: 40px;
+  padding-inline: var(--sf-space-3);
+  border-radius: var(--sf-radius-md);
+  color: var(--color-sf-fg-primary);
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-medium);
+  text-align: left;
+  background: transparent;
+  border: 1px solid transparent;
+  transition: background var(--sf-transition), color var(--sf-transition);
+  text-decoration: none;
+  position: relative;
+}
+
+.it-nav-item:hover {
+  background: var(--color-sf-bg-surface-muted);
+}
+
+.it-nav-item.is-active {
+  background: var(--app-nav-active-bg);
+  color: var(--app-nav-active-fg);
+}
+
+.it-nav-item__icon {
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  color: inherit;
+}
+
+.it-nav-item__label {
+  flex: 1;
+  min-width: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.it-nav-item__badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 20px;
+  padding-inline: var(--sf-space-2);
+  border-radius: var(--sf-radius-full);
+  background: var(--color-sf-bg-danger-primary);
+  color: var(--color-sf-fg-danger-primary);
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.it-nav-item.is-active .it-nav-item__badge {
+  background: var(--color-sf-bg-surface);
+  color: var(--color-sf-fg-danger-primary);
+}
+
+/* Footer */
+.it-sidebar__footer {
+  flex-shrink: 0;
+  padding: var(--sf-space-3) var(--sf-space-4);
+  font-size: var(--sf-text-xs);
+  color: var(--color-sf-fg-secondary);
+  border-top: 1px solid var(--app-card-border);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ---------- Collapsed (docked) state ----------
+   The shell owns the docked-state class (`.app-shell.sidebar-collapsed`)
+   which shrinks the grid's first column. We hide the labels and
+   section metadata here. The collapse toggle fires
+   `onCollapseToggle` from Sidebar.jsx so AppShell handles the
+   grid-template-columns flip. */
+.app-shell.sidebar-collapsed .it-sidebar .it-sidebar__brand-text,
+.app-shell.sidebar-collapsed .it-sidebar .it-nav-item__label,
+.app-shell.sidebar-collapsed .it-sidebar .it-nav-item__badge,
+.app-shell.sidebar-collapsed .it-sidebar .it-sidebar__section-label,
+.app-shell.sidebar-collapsed .it-sidebar .it-sidebar__footer {
+  display: none;
+}
+
+.app-shell.sidebar-collapsed .it-sidebar .it-sidebar__nav ul {
+  align-items: center;
+}
+
+.app-shell.sidebar-collapsed .it-sidebar .it-nav-item {
+  justify-content: center;
+  padding-inline: 0;
+  width: 40px;
+  height: 40px;
+  margin-inline: auto;
+}
+
+/* Center the brand block in the collapsed state */
+.app-shell.sidebar-collapsed .it-sidebar .it-sidebar__brand {
+  justify-content: center;
+  padding-inline: 0;
+}

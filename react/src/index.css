@@ -1,0 +1,396 @@
+/* ============================================================================
+   IT Asset & Service Request Portal — global styles
+   Loads design tokens (light default), then adds the dark-mode override,
+   base reset, and a few focus utilities shared across the shell.
+   ============================================================================ */
+@import "@syncfusion/ej2-base/styles/tailwind3.css";
+
+/* Buttons */
+@import "@syncfusion/ej2-buttons/styles/tailwind3.css";
+
+/* Inputs (TextBox, Signature, NumericTextBox, Uploader) */
+@import "@syncfusion/ej2-inputs/styles/tailwind3.css";
+
+/* Popups (Dialog, Tooltip, Spinner) */
+@import "@syncfusion/ej2-popups/styles/tailwind3.css";
+
+/* Lists (ListView) */
+@import "@syncfusion/ej2-lists/styles/tailwind3.css";
+
+/* Navigations (Sidebar, Tabs, TreeView, Stepper, Toolbar, Menu, Breadcrumb) */
+@import "@syncfusion/ej2-navigations/styles/tailwind3.css";
+
+/* Layouts (Cards, Timeline, Splitter, Dashboard Layout) */
+@import "@syncfusion/ej2-layouts/styles/tailwind3.css";
+
+/* Notifications (Toast, Skeleton, Badge, Message, Spinner) */
+@import "@syncfusion/ej2-notifications/styles/tailwind3.css";
+
+@import "@syncfusion/ej2-splitbuttons/styles/tailwind3.css";
+@import "@syncfusion/ej2-dropdowns/styles/tailwind3.css";
+
+@import "@syncfusion/ej2-grids/styles/tailwind3.css";
+@import "@syncfusion/ej2-kanban/styles/tailwind3.css";
+/* Interactive Chat — AI AssistView (Syncfusion Ops-assistant rail). */
+@import "@syncfusion/ej2-interactive-chat/styles/ai-assistview/tailwind3.css";
+@import "./tokens.css";
+
+/* Dark theme — primitives + a handful of shadows / overlays re-bound
+   to dark equivalents. Semantic tokens cascade automatically through
+   the cascade (semantic vars reference the primitives). */
+:root[data-theme="dark"] {
+  --sf-color-white: #111827;
+  --sf-color-slate-25: #1f2937;
+  --sf-color-slate-50: #0f172a;
+  --sf-color-slate-100: #1e293b;
+  --sf-color-slate-200: #334155;
+  --sf-color-slate-300: #475569;
+  --sf-color-slate-500: #94a3b8;
+  --sf-color-slate-700: #cbd5e1;
+  --sf-color-slate-900: #e5e7eb;
+  --sf-color-blue-50: #1e3a8a;
+  --sf-color-blue-200: #1d4ed8;
+  --sf-color-blue-600: #93c5fd;
+  --sf-color-green-50: #052e1b;
+  --sf-color-green-600: #86efac;
+  --sf-color-amber-50: #451a03;
+  --sf-color-amber-600: #fbbf24;
+  --sf-color-red-50: #450a0a;
+  --sf-color-red-600: #fca5a5;
+  --sf-color-violet-50: #2e1065;
+  --sf-color-violet-600: #c4b5fd;
+  --sf-color-cyan-600: #67e8f9;
+  --sf-shadow-sm: 0 1px 3px rgb(0 0 0 / 35%);
+  --sf-shadow-md: 0 4px 12px rgb(0 0 0 / 40%);
+  --sf-shadow-lg: 0 12px 32px rgb(0 0 0 / 50%);
+  --color-sf-overlay: rgb(2 6 23 / 72%);
+  --color-sf-divider: var(--sf-color-slate-200);
+  --color-sf-divider-strong: var(--sf-color-slate-300);
+  --color-sf-bg-disabled: var(--sf-color-slate-200);
+  --color-sf-fg-disabled: var(--sf-color-slate-500);
+  --color-sf-asset-card-gradient-from: var(--sf-color-slate-100);
+  --color-sf-asset-card-gradient-to: var(--sf-color-slate-200);
+
+  /* ----------------------------------------------------------------------
+     Row-hover surface — in light mode `--color-sf-bg-surface-hover` is a
+     soft blue-50 wash. Re-binding it here to slate-200 (one step
+     lighter than the card chrome) means the grid's row hover reads as
+     a gentle "lift" against the dark surface in dark mode, while the
+     selected/active state still uses the deeper `--color-sf-bg-brand-
+     subtle` (a navy-50) so hover and selection stay visually distinct.
+     Without this override, both hover and selection collapsed to the
+     same deep blue in dark mode and the row hover became invisible.
+     The colour-mix() inside the per-grid CSS rules further nudges
+     the hover tint to sit clearly above the underlying card
+     background.
+     ---------------------------------------------------------------------- */
+  --color-sf-bg-surface-hover: var(--sf-color-slate-200);
+
+  /* --------------------------------------------------------------------------
+     Syncfusion (Tailwind3 theme) CSS variable overrides.
+
+     The Syncfusion component stylesheets
+     (`@syncfusion/ej2-{base,buttons,kanban,popups,…}/styles/tailwind3.css`)
+     are authored against the `.e-dark-mode` ancestor selector. Our app
+     uses `[data-theme="dark"]` on `<html>` instead, so Syncfusion's
+     built-in dark palette never applies — its `--color-sf-*` variables
+     keep their *light* defaults (`#fff` for content, `#f9fafb` for
+     surface alt1, etc.), which is what was painting the kanban column
+     header cells, card wrappers, content rows, and the Syncfusion
+     `ChipListComponent` background white in dark mode.
+
+     The block below re-binds the Syncfusion variables inside our
+     `:root[data-theme="dark"]` so every Syncfusion component on every
+     surface (Requests kanban, Dashboard charts, Dialogs, Inputs,
+     Buttons) follows our dark palette. We map each Syncfusion variable
+     onto our own primitive / semantic tokens so a future palette tweak
+     still cascades through.
+
+     Mirrors the values Syncfusion ships in
+     `node_modules/@syncfusion/ej2-base/styles/tailwind3.css` under
+     `.e-dark-mode` (lines ~2405-2520) and adds kanban-specific
+     `content-bg-color-*` overrides for the column header / card
+     wrapper / table-cell backgrounds that were the visible white
+     surfaces in dark mode.
+     -------------------------------------------------------------------------- */
+  /* Content surface (kanban host, card content, dialog body) */
+  --color-sf-content-bg-color: var(--app-card-bg);
+  --color-sf-content-bg-color-alt1: var(--sf-color-slate-100);
+  --color-sf-content-bg-color-alt2: var(--sf-color-slate-200);
+  --color-sf-content-bg-color-alt3: var(--sf-color-slate-200);
+  --color-sf-content-bg-color-alt4: var(--sf-color-slate-300);
+  --color-sf-content-bg-color-alt5: var(--sf-color-slate-500);
+  --color-sf-content-bg-color-hover: var(--sf-color-slate-200);
+  --color-sf-content-bg-color-pressed: var(--sf-color-slate-300);
+  --color-sf-content-bg-color-focus: var(--sf-color-slate-200);
+  --color-sf-content-bg-color-selected: var(--sf-color-slate-300);
+  --color-sf-content-bg-color-dragged: var(--sf-color-slate-300);
+  --color-sf-content-bg-color-disabled: var(--sf-color-slate-100);
+
+  /* Flyouts (DropDownList, Menu, AutoComplete popup panels) */
+  --color-sf-flyout-bg-color: var(--app-card-bg);
+  --color-sf-flyout-bg-color-hover: var(--sf-color-slate-200);
+  --color-sf-flyout-bg-color-pressed: var(--sf-color-slate-300);
+  --color-sf-flyout-bg-color-focus: var(--sf-color-slate-200);
+  --color-sf-flyout-bg-color-selected: var(--sf-color-slate-300);
+
+  /* Secondary surface (the kanban column header table cells, content
+     rows, and the Syncfusion `ChipListComponent` background all read
+     from this — binding it to our muted surface kills the white
+     "New" / "Triaged" pill surround and the white kanban-card chrome
+     in one stroke). */
+  --color-sf-secondary-bg-color: var(--app-card-bg);
+  --color-sf-secondary-bg-color-hover: var(--sf-color-slate-200);
+  --color-sf-secondary-bg-color-pressed: var(--sf-color-slate-300);
+  --color-sf-secondary-bg-color-focus: var(--sf-color-slate-200);
+  --color-sf-secondary-bg-color-disabled: var(--sf-color-slate-100);
+
+  /* Text colours — Syncfusion paints its header titles, card titles,
+     and content with these. Bump to a light slate so dark-mode text
+     stays legible on the now-dark surfaces. */
+  --color-sf-content-text-color: var(--sf-color-slate-900);
+  --color-sf-content-text-color-alt1: var(--sf-color-slate-700);
+  --color-sf-content-text-color-alt2: var(--sf-color-slate-500);
+  --color-sf-content-text-color-alt3: var(--sf-color-slate-300);
+  --color-sf-content-text-color-alt4: var(--sf-color-slate-500);
+
+  /* Borders — the kanban table cells, card wrapper outlines, and
+     dialog dividers all draw from these. Bump to a mid-slate so the
+     dark surface keeps its visible edge against the darker page
+     background. */
+  --color-sf-border: var(--sf-color-slate-300);
+  --color-sf-border-light: var(--sf-color-slate-200);
+  --color-sf-border-dark: var(--sf-color-slate-300);
+  --color-sf-border-fade: var(--sf-color-slate-200);
+
+  /* Chip / button palette — the Syncfusion `ChipListComponent` uses
+     these for `e-info` / `e-success` / `e-warning` / `e-danger` /
+     `e-primary` variants. Without overrides, the chip's background
+     stays the bright primary fill (e.g. `#0e7490` cyan for `e-info`)
+     which clashes with our subtler status pill palette. Re-map them
+     to the same `app-status-*` tokens our `.badge--*` rules use so
+     the kanban's "High" / "Medium" priority chips and the column
+     chrome pills all stay in lock-step. */
+  --color-sf-primary-bg-color: var(--sf-color-blue-600);
+  --color-sf-primary-bg-color-hover: var(--sf-color-blue-600);
+  --color-sf-primary-bg-color-pressed: var(--sf-color-blue-600);
+  --color-sf-primary-bg-color-focus: var(--sf-color-blue-600);
+  --color-sf-primary-bg-color-disabled: var(--sf-color-slate-500);
+  --color-sf-primary-text-color: var(--sf-color-white);
+  --color-sf-primary-border-color: var(--sf-color-blue-600);
+
+  --color-sf-success-bg-color: var(--app-status-success-bg);
+  --color-sf-success-bg-color-hover: var(--app-status-success-bg);
+  --color-sf-success-bg-color-pressed: var(--app-status-success-bg);
+  --color-sf-success-bg-color-focus: var(--app-status-success-bg);
+  --color-sf-success-bg-color-disabled: var(--app-status-success-bg);
+  --color-sf-success-text-color: var(--app-status-success-fg);
+
+  --color-sf-info-bg-color: var(--app-status-info-bg);
+  --color-sf-info-bg-color-hover: var(--app-status-info-bg);
+  --color-sf-info-bg-color-pressed: var(--app-status-info-bg);
+  --color-sf-info-bg-color-focus: var(--app-status-info-bg);
+  --color-sf-info-bg-color-disabled: var(--app-status-info-bg);
+  --color-sf-info-text-color: var(--app-status-info-fg);
+
+  --color-sf-warning-bg-color: var(--app-status-warning-bg);
+  --color-sf-warning-bg-color-hover: var(--app-status-warning-bg);
+  --color-sf-warning-bg-color-pressed: var(--app-status-warning-bg);
+  --color-sf-warning-bg-color-focus: var(--app-status-warning-bg);
+  --color-sf-warning-bg-color-disabled: var(--app-status-warning-bg);
+  --color-sf-warning-text-color: var(--app-status-warning-fg);
+
+  --color-sf-danger-bg-color: var(--app-status-danger-bg);
+  --color-sf-danger-bg-color-hover: var(--app-status-danger-bg);
+  --color-sf-danger-bg-color-pressed: var(--app-status-danger-bg);
+  --color-sf-danger-bg-color-focus: var(--app-status-danger-bg);
+  --color-sf-danger-bg-color-disabled: var(--app-status-danger-bg);
+  --color-sf-danger-text-color: var(--app-status-danger-fg);
+
+  /* Chip palette — the Syncfusion `ChipListComponent` reads from
+     `--color-sf-chip-*-bg-color` / `-text` / `-border-color` (a
+     separate namespace from the `e-info` / `e-warning` button
+     variables). The kanban's priority chips ("High" / "Medium" /
+     "Critical" / "Low") are rendered with these classes, so without
+     overrides they keep their bright pastels
+     (`#fff7ed` light orange, `#ecfeff` light cyan, etc.) in dark
+     mode. Re-map each chip pair onto our `app-status-*` tokens so
+     the priority chip background + text stay legible on the dark
+     card chrome. */
+  --color-sf-chip-primary-bg-color: var(--app-status-info-bg);
+  --color-sf-chip-primary-bg-color-hover: var(--app-status-info-bg);
+  --color-sf-chip-primary-bg-color-pressed: var(--app-status-info-bg);
+  --color-sf-chip-primary-bg-color-disabled: var(--app-status-info-bg);
+  --color-sf-chip-secondary-bg-color: var(--app-status-neutral-bg);
+  --color-sf-chip-secondary-bg-color-hover: var(--app-status-neutral-bg);
+  --color-sf-chip-secondary-bg-color-pressed: var(--app-status-neutral-bg);
+  --color-sf-chip-secondary-bg-color-disabled: var(--app-status-neutral-bg);
+  --color-sf-chip-success-bg-color: var(--app-status-success-bg);
+  --color-sf-chip-success-bg-color-hover: var(--app-status-success-bg);
+  --color-sf-chip-success-bg-color-pressed: var(--app-status-success-bg);
+  --color-sf-chip-success-bg-color-disabled: var(--app-status-success-bg);
+  --color-sf-chip-success-text: var(--app-status-success-fg);
+  --color-sf-chip-success-border-color: var(--app-status-success-bg);
+  --color-sf-chip-success-border-color-hover: var(--app-status-success-bg);
+  --color-sf-chip-success-border-color-pressed: var(--app-status-success-bg);
+  --color-sf-chip-success-border-color-disabled: var(--app-status-success-bg);
+  --color-sf-chip-warning-bg-color: var(--app-status-warning-bg);
+  --color-sf-chip-warning-bg-color-hover: var(--app-status-warning-bg);
+  --color-sf-chip-warning-bg-color-pressed: var(--app-status-warning-bg);
+  --color-sf-chip-warning-bg-color-disabled: var(--app-status-warning-bg);
+  --color-sf-chip-warning-text: var(--app-status-warning-fg);
+  --color-sf-chip-warning-border-color: var(--app-status-warning-bg);
+  --color-sf-chip-warning-border-color-hover: var(--app-status-warning-bg);
+  --color-sf-chip-warning-border-color-pressed: var(--app-status-warning-bg);
+  --color-sf-chip-warning-border-color-disabled: var(--app-status-warning-bg);
+  --color-sf-chip-danger-bg-color: var(--app-status-danger-bg);
+  --color-sf-chip-danger-bg-color-hover: var(--app-status-danger-bg);
+  --color-sf-chip-danger-bg-color-pressed: var(--app-status-danger-bg);
+  --color-sf-chip-danger-bg-color-disabled: var(--app-status-danger-bg);
+  --color-sf-chip-danger-text: var(--app-status-danger-fg);
+  --color-sf-chip-danger-border-color: var(--app-status-danger-bg);
+  --color-sf-chip-danger-border-color-hover: var(--app-status-danger-bg);
+  --color-sf-chip-danger-border-color-pressed: var(--app-status-danger-bg);
+  --color-sf-chip-danger-border-color-disabled: var(--app-status-danger-bg);
+  --color-sf-chip-info-bg-color: var(--app-status-info-bg);
+  --color-sf-chip-info-bg-color-hover: var(--app-status-info-bg);
+  --color-sf-chip-info-bg-color-pressed: var(--app-status-info-bg);
+  --color-sf-chip-info-bg-color-disabled: var(--app-status-info-bg);
+  --color-sf-chip-info-text: var(--app-status-info-fg);
+  --color-sf-chip-info-border-color: var(--app-status-info-bg);
+  --color-sf-chip-info-border-color-hover: var(--app-status-info-bg);
+  --color-sf-chip-info-border-color-pressed: var(--app-status-info-bg);
+  --color-sf-chip-info-border-color-disabled: var(--app-status-info-bg);
+
+  /* ----------------------------------------------------------------------
+     AI AssistView (Syncfusion Ops-assistant rail).
+
+     The chat component reuses the `--color-sf-content-bg-color`,
+     `-text-color`, `-border` and `-primary-bg-color` variables we
+     already re-bound above, so the bubble surfaces, prompt composer,
+     suggestions list, and "Send" button pick up our dark palette
+     automatically. The few variables below are the AssistView-specific
+     bits that don't share a name with the kanban / chip / button
+     variables — the placeholder text colour, the response-prompt
+     avatar background, the suggestion-item hover/active states, and
+     the response-item accent (the left border that distinguishes a
+     user prompt from an assistant response). Without these the
+     placeholder text stays dark grey on dark, the prompt bubble
+     loses its brand tint, and the response accent bar is invisible
+     against the dark content surface.
+     ---------------------------------------------------------------------- */
+  --color-sf-placeholder-text-color: var(--sf-color-slate-500);
+  --color-sf-icon-color: var(--sf-color-slate-700);
+  --color-sf-icon-color-disabled: var(--sf-color-slate-500);
+  --color-sf-secondary-text-color: var(--sf-color-slate-700);
+  --color-sf-secondary-text-color-hover: var(--sf-color-slate-900);
+  --color-sf-secondary-border-color: var(--sf-color-slate-200);
+  --color-sf-content-text-color-alt3: var(--sf-color-slate-300);
+  --color-sf-content-text-color-alt4: var(--sf-color-slate-500);
+  --color-sf-primary-lighter: var(--sf-color-blue-200);
+  /* Suggestion chip accent — the "Open board" / KB suggestion list
+     relies on the primary-lighter swatch for its left border. The
+     light default (--color-sf-primary-lighter) is a near-white blue
+     that vanishes on a dark surface, so swap to the brand-subtle
+     token. */
+  --color-sf-primary-lighter: var(--color-sf-bg-brand-subtle);
+}
+
+/* Reset */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--sf-font-sans);
+  font-size: var(--sf-text-base);
+  line-height: var(--sf-leading-normal);
+  color: var(--app-shell-fg);
+  background: var(--app-shell-bg);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: var(--sf-font-mono);
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+/* Visible focus ring (design-token driven) */
+:focus-visible {
+  outline: 2px solid var(--app-focus-ring);
+  outline-offset: 2px;
+}
+
+/* Screen-reader-only utility */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+[hidden] {
+  display: none !important;
+}

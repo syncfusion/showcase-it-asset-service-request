@@ -1,0 +1,61 @@
+/* Tiny token-driven button reset the dashboard uses for its
+   non-Syncfusion controls (citation chips, action buttons in the rail,
+   KPI drill-toasts). Sourced from the project's `prototype/styles.css`
+   --btn variants. */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--sf-space-2);
+  height: 32px;
+  padding-inline: var(--sf-space-3);
+  border-radius: var(--sf-radius-md);
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-medium);
+  white-space: nowrap;
+  transition: background var(--sf-transition), color var(--sf-transition),
+    border-color var(--sf-transition);
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--app-focus-ring);
+  outline-offset: 2px;
+}
+
+.btn--primary {
+  background: var(--color-sf-fg-brand-primary);
+  color: #fff;
+  border: 1px solid var(--color-sf-fg-brand-primary);
+}
+
+.btn--primary:hover {
+  filter: brightness(0.95);
+}
+
+.btn--secondary {
+  background: var(--app-card-bg);
+  color: var(--color-sf-fg-primary);
+  border: 1px solid var(--app-card-border);
+}
+
+.btn--secondary:hover {
+  border-color: var(--color-sf-border-brand);
+  color: var(--color-sf-fg-brand-primary);
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--color-sf-fg-brand-primary);
+  border: 1px solid transparent;
+}
+
+.btn--ghost:hover {
+  background: var(--color-sf-bg-brand-subtle);
+}
+
+.btn--sm {
+  height: 26px;
+  padding-inline: var(--sf-space-2);
+  font-size: 0.6875rem;
+}

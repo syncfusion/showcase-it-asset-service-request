@@ -1,0 +1,365 @@
+/* =============================================================================
+   IT Asset & Service Request Portal — Dashboard SLA-at-risk grid
+   Card chrome matches the two charts (`.card / .card__header / .card__body`).
+   Grid-level overrides tune the Syncfusion Tailwind3 grid to the app's
+   token-driven palette and re-skin the pager, search, and filter menu so
+   the grid reads as a third member of the dashboard family.
+   ============================================================================= */
+
+/* -----------------------------------------------------------------------------
+   Card chrome
+   ----------------------------------------------------------------------------- */
+
+.sla-grid-card {
+  /* Inherits the shared `.card` chrome from Dashboard.css. We only
+     add per-card header chip + body padding overrides here. */
+  min-width: 0;
+}
+
+.sla-grid-card .card__header {
+  align-items: center;
+  gap: var(--sf-space-3);
+}
+
+.sla-grid-card__count {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sf-space-1);
+  padding: 4px 10px;
+  border-radius: var(--sf-radius-full);
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-danger-primary);
+  background: var(--color-sf-bg-danger-primary);
+  border: 1px solid var(--color-sf-border-condition-damaged);
+  white-space: nowrap;
+}
+
+.sla-grid-card .card__body {
+  /* Removes the default body padding so the grid's own borders +
+     pager hug the card edge — same as the chart cards. */
+  padding: 0;
+}
+
+/* -----------------------------------------------------------------------------
+   Cell templates
+   ----------------------------------------------------------------------------- */
+
+.sla-grid__ticket {
+  font-family: var(--sf-font-mono);
+  font-size: var(--sf-text-sm);
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-primary);
+  letter-spacing: 0.01em;
+}
+
+.sla-grid__summary {
+  display: block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--color-sf-fg-primary);
+  font-size: var(--sf-text-sm);
+}
+
+.sla-grid__chip {
+  display: inline-flex;
+}
+
+.sla-grid__chip .e-chip {
+  font-size: 0.6875rem;
+  font-weight: var(--sf-font-semibold);
+  height: 22px;
+  line-height: 22px;
+  padding: 0 8px;
+  border-radius: var(--sf-radius-full);
+  text-transform: none;
+}
+
+.sla-grid__status {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--sf-space-2);
+  font-size: var(--sf-text-sm);
+  color: var(--color-sf-fg-primary);
+}
+
+.sla-grid__status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--sla-status-dot, var(--color-sf-fg-secondary));
+  display: inline-block;
+  flex: 0 0 auto;
+}
+
+.sla-grid__sla-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 3px 9px;
+  border-radius: var(--sf-radius-full);
+  font-family: var(--sf-font-mono);
+  font-size: 0.6875rem;
+  font-weight: var(--sf-font-semibold);
+  color: var(--color-sf-fg-danger-primary);
+  background: var(--color-sf-bg-danger-primary);
+  border: 1px solid var(--color-sf-border-condition-damaged);
+  white-space: nowrap;
+}
+
+/* -----------------------------------------------------------------------------
+   Syncfusion grid overrides — token-driven palette, theme-aware
+   The Tailwind3 stylesheet is the source of truth; we only override
+   what the app's design system needs (border colour, header text,
+   pager chrome, hover row, search box).
+   ----------------------------------------------------------------------------- */
+
+.sla-grid-wrap .e-grid {
+  border: 0;
+  border-radius: 0 0 var(--sf-radius-lg) var(--sf-radius-lg);
+  background: transparent;
+}
+
+.sla-grid-wrap .e-gridheader {
+  border: 0;
+  border-bottom: 1px solid var(--color-sf-border-primary);
+  background: transparent;
+}
+
+.sla-grid-wrap .e-headercell {
+  background: transparent;
+  color: var(--color-sf-fg-secondary);
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  padding: var(--sf-space-3) var(--sf-space-3);
+}
+
+.sla-grid-wrap .e-headercell .e-headertext {
+  color: var(--color-sf-fg-secondary);
+  font-size: var(--sf-text-xs);
+  font-weight: var(--sf-font-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.sla-grid-wrap .e-rowcell {
+  font-size: var(--sf-text-sm);
+  color: var(--color-sf-fg-primary);
+  padding: var(--sf-space-3);
+  border-bottom: 1px solid var(--color-sf-divider);
+}
+
+.sla-grid-wrap .e-row {
+  background: transparent;
+  transition: background-color var(--sf-transition);
+}
+
+/* Hover — paint every cell in the hovered row (and the `.e-hover`
+   variant Syncfusion applies for keyboard emulation) with a
+   colour-mix() that lifts the surface above the row's resting
+   background in BOTH light and dark themes:
+     - Light:  base `--color-sf-bg-surface-hover` is a soft blue-50;
+               the 92% blend on top of the card surface keeps the
+               wash gentle but clearly visible.
+     - Dark:   base `--color-sf-bg-surface-hover` re-binds to a
+               slate-200 in dark mode (see index.css); the
+               colour-mix on top of `--app-card-bg` lifts the row
+               a step above the surrounding card chrome.
+   The text colour is reinforced to `--color-sf-fg-primary` so the
+   row's labels stay legible against the lifted background —
+   without this, dark-mode hover left the row's text at the
+   default mid-slate which read as "dimmed" rather than
+   "highlighted". A `:focus-within` rule covers keyboard
+   navigation through the grid (Tab onto a row). */
+.sla-grid-wrap .e-row:hover .e-rowcell,
+.sla-grid-wrap .e-row.e-hover .e-rowcell,
+.sla-grid-wrap .e-row:focus-within .e-rowcell {
+  background: color-mix(
+    in srgb,
+    var(--color-sf-bg-surface-hover) 92%,
+    var(--app-card-bg)
+  ) !important;
+  color: var(--color-sf-fg-primary) !important;
+}
+
+.sla-grid-wrap .e-row:hover .sla-grid__ticket,
+.sla-grid-wrap .e-row:hover .sla-grid__summary,
+.sla-grid-wrap .e-row.e-hover .sla-grid__ticket,
+.sla-grid-wrap .e-row.e-hover .sla-grid__summary,
+.sla-grid-wrap .e-row:focus-within .sla-grid__ticket,
+.sla-grid-wrap .e-row:focus-within .sla-grid__summary {
+  color: var(--color-sf-fg-primary);
+}
+
+.sla-grid-wrap .e-rowcell.e-selectionbackground {
+  background: var(--color-sf-bg-brand-subtle) !important;
+  color: var(--color-sf-fg-primary) !important;
+}
+
+/* Toolbar (search box) */
+.sla-grid-wrap .e-toolbar {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid var(--color-sf-divider);
+  padding: var(--sf-space-3);
+  min-height: 56px;
+}
+
+.sla-grid-wrap .e-toolbar .e-search {
+  background: var(--app-card-bg);
+  border: 1px solid var(--color-sf-border-primary);
+  border-radius: var(--sf-radius-md);
+  color: var(--color-sf-fg-primary);
+  height: 36px;
+}
+
+.sla-grid-wrap .e-toolbar .e-search:focus,
+.sla-grid-wrap .e-toolbar .e-search.e-focus {
+  border-color: var(--color-sf-border-brand);
+  box-shadow: 0 0 0 3px var(--color-sf-bg-brand-subtle);
+}
+
+.sla-grid-wrap .e-toolbar .e-search-icon {
+  color: var(--color-sf-fg-secondary);
+}
+
+/* Pager */
+.sla-grid-wrap .e-pager {
+  background: transparent;
+  border: 0;
+  border-top: 1px solid var(--color-sf-divider);
+  color: var(--color-sf-fg-secondary);
+  font-size: var(--sf-text-sm);
+  min-height: 48px;
+}
+
+.sla-grid-wrap .e-pager .e-pagercontainer {
+  background: transparent;
+  border: 0;
+}
+
+.sla-grid-wrap .e-pager .e-numericitem,
+.sla-grid-wrap .e-pager .e-prevpagedisabled,
+.sla-grid-wrap .e-pager .e-nextpagedisabled,
+.sla-grid-wrap .e-pager .e-prevpage,
+.sla-grid-wrap .e-pager .e-nextpage,
+.sla-grid-wrap .e-pager .e-firstpage,
+.sla-grid-wrap .e-pager .e-lastpage {
+  color: var(--color-sf-fg-secondary);
+  background: transparent;
+  border: 0;
+}
+
+.sla-grid-wrap .e-pager .e-numericitem:hover,
+.sla-grid-wrap .e-pager .e-prevpage:hover,
+.sla-grid-wrap .e-pager .e-nextpage:hover,
+.sla-grid-wrap .e-pager .e-firstpage:hover,
+.sla-grid-wrap .e-pager .e-lastpage:hover {
+  color: var(--color-sf-fg-primary);
+  background: var(--color-sf-bg-surface-hover);
+  border-radius: var(--sf-radius-sm);
+}
+
+/* Active page — use a brand-tinted background with white text
+   so the active page is unambiguously the focal point of the
+   pager in BOTH light and dark themes. The previous rule used
+   `--color-sf-bg-brand-subtle` (navy in dark mode) +
+   `--color-sf-fg-brand-primary` (light blue) — that pair
+   collapses to low-contrast in dark mode because Syncfusion's
+   Tailwind3 base stylesheet paints `.e-pager .e-currentitem`
+   with its own `--color-sf-primary` / `--color-sf-primary-text-
+   color` (indigo + black) and our previous rule had the same
+   specificity. The `.e-pager .e-currentitem` chain matches
+   Syncfusion's selector so we win on specificity, and
+   `!important` keeps our values locked even when Syncfusion
+   re-paints its CSS variables. */
+.sla-grid-wrap .e-pager .e-currentitem,
+.sla-grid-wrap .e-pager .e-currentitem:hover {
+  color: var(--sf-color-white) !important;
+  background: var(--color-sf-fg-brand-primary) !important;
+  border-color: var(--color-sf-fg-brand-primary) !important;
+  border-radius: var(--sf-radius-sm);
+  font-weight: var(--sf-font-semibold);
+  box-shadow: 0 1px 2px rgb(0 0 0 / 18%);
+}
+
+[data-theme="dark"] .sla-grid-wrap .e-pager .e-currentitem,
+[data-theme="dark"] .sla-grid-wrap .e-pager .e-currentitem:hover {
+  color: var(--app-card-bg) !important;
+  background: var(--color-sf-fg-brand-primary) !important;
+  border-color: var(--color-sf-fg-brand-primary) !important;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 40%);
+}
+
+/* Empty-state */
+.data-table-empty {
+  padding: var(--sf-space-6);
+  text-align: center;
+  color: var(--color-sf-fg-secondary);
+  font-size: var(--sf-text-sm);
+}
+
+/* -----------------------------------------------------------------------------
+   Dark theme overrides — re-skin the grid chrome so it follows the rest
+   of the dashboard's `[data-theme="dark"]` palette. The Syncfusion
+   Tailwind3Dark theme handles the inner Syncfusion styling; these
+   overrides handle the token-driven bits that pull from our own CSS
+   variables.
+   ----------------------------------------------------------------------------- */
+
+[data-theme="dark"] .sla-grid-wrap .e-headercell,
+[data-theme="dark"] .sla-grid-wrap .e-headercell .e-headertext {
+  color: var(--color-sf-fg-secondary);
+}
+
+[data-theme="dark"] .sla-grid-wrap .e-rowcell {
+  border-bottom-color: var(--color-sf-divider);
+}
+
+/* Dark-mode hover / selection reinforcement — the row-hover
+   `--color-sf-bg-surface-hover` token is re-bound to a
+   slate-200 in dark mode (see `index.css`), and the colour-mix()
+   on the base rule already lifts the row above its resting
+   card chrome. These dark-mode-specific tweaks reinforce the
+   inner cell content text colour (Syncfusion's default
+   `--color-sf-content-text-color` is set to a mid-slate in dark
+   mode via the index.css Syncfusion variable overrides, which
+   reads as "dimmed" against a slate-200 lift) so the row's
+   labels, status pill, and owner avatar all stay legible. */
+[data-theme="dark"] .sla-grid-wrap .e-row:hover .e-rowcell,
+[data-theme="dark"] .sla-grid-wrap .e-row.e-hover .e-rowcell,
+[data-theme="dark"] .sla-grid-wrap .e-row:focus-within .e-rowcell {
+  color: var(--color-sf-fg-primary) !important;
+}
+
+[data-theme="dark"] .sla-grid-wrap .e-row:hover .sla-grid__status,
+[data-theme="dark"] .sla-grid-wrap .e-row.e-hover .sla-grid__status,
+[data-theme="dark"] .sla-grid-wrap .e-row:focus-within .sla-grid__status,
+[data-theme="dark"] .sla-grid-wrap .e-row:hover .sla-grid__sla-badge,
+[data-theme="dark"] .sla-grid-wrap .e-row.e-hover .sla-grid__sla-badge,
+[data-theme="dark"] .sla-grid-wrap .e-row:focus-within .sla-grid__sla-badge,
+[data-theme="dark"] .sla-grid-wrap .e-row:hover .owner-pill,
+[data-theme="dark"] .sla-grid-wrap .e-row.e-hover .owner-pill,
+[data-theme="dark"] .sla-grid-wrap .e-row:focus-within .owner-pill {
+  color: var(--color-sf-fg-primary);
+}
+
+[data-theme="dark"] .sla-grid-wrap .e-toolbar .e-search {
+  background: var(--app-card-bg);
+  border-color: var(--color-sf-border-primary);
+  color: var(--color-sf-fg-primary);
+}
+
+[data-theme="dark"] .sla-grid-wrap .e-pager {
+  border-top-color: var(--color-sf-divider);
+}
+
+[data-theme="dark"] .sla-grid-wrap .e-pager .e-currentitem,
+[data-theme="dark"] .sla-grid-wrap .e-pager .e-currentitem:hover {
+  color: var(--color-sf-fg-brand-primary);
+  background: var(--color-sf-bg-brand-subtle);
+}

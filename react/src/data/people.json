@@ -1,0 +1,52 @@
+{
+  "people": [
+    {
+      "id": "depot",
+      "name": "IT Depot",
+      "role": "depot",
+      "initials": "IT"
+    },
+    {
+      "id": "dana",
+      "name": "Dana Quinn",
+      "role": "employee",
+      "initials": "DQ"
+    },
+    {
+      "id": "neil",
+      "name": "Neil Iyer",
+      "role": "IT technician",
+      "initials": "NI"
+    },
+    {
+      "id": "maya",
+      "name": "Maya Ruiz",
+      "role": "employee",
+      "initials": "MR"
+    },
+    {
+      "id": "alex",
+      "name": "Alex Chen",
+      "role": "IT admin",
+      "initials": "AC"
+    },
+    {
+      "id": "ravi",
+      "name": "Ravi Patel",
+      "role": "IT technician",
+      "initials": "RP"
+    },
+    {
+      "id": "sara",
+      "name": "Sara Okafor",
+      "role": "employee",
+      "initials": "SO"
+    },
+    {
+      "id": "tomas",
+      "name": "Tomás Lindberg",
+      "role": "contractor",
+      "initials": "TL"
+    }
+  ]
+}
